@@ -53,8 +53,6 @@ main()
     int ch, fell = 0;
     int k;
     struct node *h, *temp, *head, *h1;
-
-    /* Head node construction */
     head = (struct node *)malloc(sizeof(struct node));
     head->label = -1;
     head->next = NULL;
@@ -74,7 +72,6 @@ main()
 
         switch(ch)
         {
-            /* Add a node at any intermediate location */
             case 1:
 
                 printf("\n Enter label after which to add : ");
