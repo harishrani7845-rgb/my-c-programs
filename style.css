@@ -1,0 +1,46 @@
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#111827;
+    color:white;
+}
+
+header{
+    text-align:center;
+    padding:30px;
+}
+
+header h1{
+    font-size:40px;
+}
+
+input{
+    width:70%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+}
+
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+.card{
+    background:#1f2937;
+    text-decoration:none;
+    color:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    font-size:22px;
+    transition:.3s;
+}
+
+.card:hover{
+    background:#2563eb;
+    transform:scale(1.05);
+}
