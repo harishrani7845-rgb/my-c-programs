@@ -36,6 +36,15 @@ button{
 <h2>Singly Linked List Program</h2>
 
 <pre>
+
+</pre>
+<h1>Hello World Program</h1>
+
+<button onclick="copyCode()">📋 Copy Code</button>
+
+<pre id="code">
+#include<stdio.h>
+
 #include <stdio.h>
 #include <conio.h>
 #include <process.h>
@@ -53,6 +62,8 @@ main()
     int ch, fell = 0;
     int k;
     struct node *h, *temp, *head, *h1;
+
+    /* Head node construction */
     head = (struct node *)malloc(sizeof(struct node));
     head->label = -1;
     head->next = NULL;
@@ -73,7 +84,6 @@ main()
         switch(ch)
         {
             case 1:
-
                 printf("\n Enter label after which to add : ");
                 scanf("%d", &k);
 
@@ -101,7 +111,6 @@ main()
                 else
                 {
                     temp = (struct node *)malloc(sizeof(struct node));
-
                     printf("Enter label for new node : ");
                     scanf("%d", &temp->label);
 
@@ -110,9 +119,7 @@ main()
                 }
                 break;
 
-            /* Delete any intermediate node */
             case 2:
-
                 printf("Enter label of node to be deleted\n");
                 scanf("%d", &k);
 
@@ -122,7 +129,6 @@ main()
                 while(h->next != NULL)
                 {
                     h = h->next;
-
                     if(h->label == k)
                     {
                         fell = 1;
@@ -140,12 +146,11 @@ main()
                     h1->next = h->next;
                     free(h);
 
-                    printf("Node deleted successfully \n");
+                    printf("Node deleted successfully\n");
                 }
                 break;
 
             case 3:
-
                 printf("\n\n HEAD -> ");
                 h = head;
 
@@ -163,13 +168,7 @@ main()
         }
     }
 }
-</pre>
-<h1>Hello World Program</h1>
-
-<button onclick="copyCode()">📋 Copy Code</button>
-
-<pre id="code">
-#include<stdio.h>
+}
 </pre>
 
 <script>
