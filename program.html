@@ -36,6 +36,1393 @@ button{
 <h2>Singly Linked List Program</h2>
 
 <textarea>
+Program 1 – Binary Search
+
+
+class BinarySearch
+{
+    static int binarySearch(int a[], int beg, int end, int val)
+    {
+        int mid;
+
+        if (end >= beg)
+        {
+            mid = (beg + end) / 2;
+
+            if (a[mid] == val)
+            {
+                return mid + 1;
+            }
+            else if (a[mid] < val)
+            {
+                return binarySearch(a, mid + 1, end, val);
+            }
+            else
+            {
+                return binarySearch(a, beg, mid - 1, val);
+            }
+        }
+
+        return -1;
+    }
+
+    public static void main(String args[])
+    {
+        int a[] = {8, 10, 22, 27, 37, 44, 49, 55, 69};
+        int val = 37;
+        int n = a.length;
+
+        int res = binarySearch(a, 0, n - 1, val);
+
+        System.out.print("The elements of the array are: ");
+        for (int i = 0; i < n; i++)
+        {
+            System.out.print(a[i] + " ");
+        }
+
+        System.out.println();
+        System.out.println("Element to be searched is: " + val);
+
+        if (res == -1)
+        {
+            System.out.println("Element is not present in the array");
+        }
+        else
+        {
+            System.out.println("Element is present at " + res + " position of array");
+        }
+    }
+}
+
+
+
+Program 2 – Linear Search
+
+
+class LinearSearch
+{
+    static int linearSearch(int a[], int n, int val)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (a[i] == val)
+                return i + 1;
+        }
+        return -1;
+    }
+
+    public static void main(String args[])
+    {
+        int a[] = {55, 29, 10, 40, 57, 41, 20, 24, 45};
+        int val = 10;
+        int n = a.length;
+
+        int res = linearSearch(a, n, val);
+
+        System.out.println();
+        System.out.print("The elements of the array are - ");
+
+        for (int i = 0; i < n; i++)
+            System.out.print(a[i] + " ");
+
+        System.out.println();
+        System.out.println("Element to be searched is - " + val);
+
+        if (res == -1)
+            System.out.println("Element is not present in the array");
+        else
+            System.out.println("Element is present at " + res + " position of array");
+    }
+}  
+
+
+
+public class Selection
+{
+    void selection(int a[])
+    {
+        int i, j, small;
+        int n = a.length;
+
+        for (i = 0; i < n - 1; i++)
+        {
+            small = i;
+
+            for (j = i + 1; j < n; j++)
+            {
+                if (a[j] < a[small])
+                    small = j;
+            }
+
+            int temp = a[small];
+            a[small] = a[i];
+            a[i] = temp;
+        }
+    }
+
+    void printArr(int a[])
+    {
+        int n = a.length;
+
+        for (int i = 0; i < n; i++)
+        {
+            System.out.print(a[i] + " ");
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        int a[] = {91, 49, 4, 19, 10, 21};
+
+        Selection s = new Selection();
+
+        System.out.println("\nBefore sorting array elements are - ");
+        s.printArr(a);
+
+        s.selection(a);
+
+        System.out.println("\nAfter sorting array elements are - ");
+        s.printArr(a);
+
+        System.out.println();
+    }
+}
+
+
+
+Program 3 – Selection Sort
+
+
+public class Selection
+{
+    void selection(int a[])
+    {
+        int i, j, small;
+        int n = a.length;
+
+        for (i = 0; i < n - 1; i++)
+        {
+            small = i;
+
+            for (j = i + 1; j < n; j++)
+            {
+                if (a[j] < a[small])
+                    small = j;
+            }
+
+            int temp = a[small];
+            a[small] = a[i];
+            a[i] = temp;
+        }
+    }
+
+    void printArr(int a[])
+    {
+        int n = a.length;
+
+        for (int i = 0; i < n; i++)
+        {
+            System.out.print(a[i] + " ");
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        int a[] = {91, 49, 4, 19, 10, 21};
+
+        Selection s = new Selection();
+
+        System.out.println("\nBefore sorting array elements are - ");
+        s.printArr(a);
+
+        s.selection(a);
+
+        System.out.println("\nAfter sorting array elements are - ");
+        s.printArr(a);
+
+        System.out.println();
+    }
+}
+
+
+Program 4 – Insertion Sort
+
+public class Insert
+{
+    void insert(int a[])
+    {
+        int i, j, temp;
+        int n = a.length;
+
+        for (i = 1; i < n; i++)
+        {
+            temp = a[i];
+            j = i - 1;
+
+            while (j >= 0 && temp <= a[j])
+            {
+                a[j + 1] = a[j];
+                j = j - 1;
+            }
+
+            a[j + 1] = temp;
+        }
+    }
+
+    void printArr(int a[])
+    {
+        int n = a.length;
+
+        for (int i = 0; i < n; i++)
+        {
+            System.out.print(a[i] + " ");
+        }
+    }
+
+    public static void main(String[] args)
+    {
+        int a[] = {92, 50, 5, 20, 11, 22};
+
+        Insert i1 = new Insert();
+
+        System.out.println("\nBefore sorting array elements are - ");
+        i1.printArr(a);
+
+        i1.insert(a);
+
+        System.out.println("\nAfter sorting array elements are - ");
+        i1.printArr(a);
+
+        System.out.println();
+    }
+}
+
+Program 5 – Stack Implementation
+
+class StackDemo
+{
+    public static void main(String[] args)
+    {
+        Stack<Integer> stack = new Stack<Integer>(5);
+
+        System.out.print("Elements pushed in the Stack: ");
+
+        for (int i = 0; i < 5; i++)
+        {
+            stack.push(i);
+            System.out.print(i + " ");
+        }
+
+        System.out.println("\nIs Stack full? \n" + stack.isFull());
+
+        System.out.print("Elements popped from the Stack: ");
+
+        for (int i = 0; i < 5; i++)
+        {
+            System.out.print(stack.pop() + " ");
+        }
+
+        System.out.println("\nIs Stack empty? \n" + stack.isEmpty());
+    }
+}
+
+
+Stack.java
+
+
+public class Stack<V>
+{
+    private int maxSize;
+    private int top;
+    private V array[];
+
+    @SuppressWarnings("unchecked")
+    public Stack(int max_size)
+    {
+        this.maxSize = max_size;
+        this.top = -1;
+        array = (V[]) new Object[max_size];
+    }
+
+    public int getMaxSize()
+    {
+        return maxSize;
+    }
+
+    public boolean isEmpty()
+    {
+        return top == -1;
+    }
+
+    public boolean isFull()
+    {
+        return top == maxSize - 1;
+    }
+
+    public V top()
+    {
+        if (isEmpty())
+            return null;
+
+        return array[top];
+    }
+
+    public void push(V value)
+    {
+        if (isFull())
+        {
+            System.err.println("Stack is Full!");
+            return;
+        }
+
+        array[++top] = value;
+    }
+
+    public V pop()
+    {
+        if (isEmpty())
+            return null;
+
+        return array[top--];
+    }
+}
+
+
+Program 6 – Queue Implementation
+
+
+
+
+class QueueDemo
+{
+    public static void main(String[] args)
+    {
+        Queue<Integer> queue = new Queue<Integer>(5);
+
+        queue.enqueue(2);
+        queue.enqueue(4);
+        queue.enqueue(6);
+        queue.enqueue(8);
+        queue.enqueue(10);
+
+        queue.dequeue();
+        queue.dequeue();
+
+        queue.enqueue(12);
+        queue.enqueue(14);
+
+        System.out.println("Queue:");
+
+        while (!queue.isEmpty())
+        {
+            System.out.print(queue.dequeue() + " ");
+        }
+    }
+}
+
+
+Queue.java
+
+public class Queue<V>
+{
+    private int maxSize;
+    private V[] array;
+    private int front;
+    private int back;
+    private int currentSize;
+
+    @SuppressWarnings("unchecked")
+    public Queue(int maxSize)
+    {
+        this.maxSize = maxSize;
+        array = (V[]) new Object[maxSize];
+        front = 0;
+        back = -1;
+        currentSize = 0;
+    }
+
+    public int getMaxSize()
+    {
+        return maxSize;
+    }
+
+    public int getCurrentSize()
+    {
+        return currentSize;
+    }
+
+    public boolean isEmpty()
+    {
+        return currentSize == 0;
+    }
+
+    public boolean isFull()
+    {
+        return currentSize == maxSize;
+    }
+
+    public V top()
+    {
+        return array[front];
+    }
+
+    public void enqueue(V value)
+    {
+        if (isFull())
+            return;
+
+        back = (back + 1) % maxSize;
+        array[back] = value;
+        currentSize++;
+    }
+
+    public V dequeue()
+    {
+        if (isEmpty())
+            return null;
+
+        V temp = array[front];
+        front = (front + 1) % maxSize;
+        currentSize--;
+
+        return temp;
+    }
+}
+
+
+
+Program 7 – Pay Slip using Inheritance
+
+
+
+import java.util.*;
+
+class employee
+{
+    int empid;
+    long mobile;
+    String name, address, mailid;
+
+    Scanner get = new Scanner(System.in);
+
+    void getdata()
+    {
+        System.out.println("Enter Name of the Employee");
+        name = get.nextLine();
+
+        System.out.println("Enter Mail id");
+        mailid = get.nextLine();
+
+        System.out.println("Enter Address of the Employee:");
+        address = get.nextLine();
+
+        System.out.println("Enter employee id");
+        empid = get.nextInt();
+
+        System.out.println("Enter Mobile Number");
+        mobile = get.nextLong();
+    }
+
+    void display()
+    {
+        System.out.println("Employee Name: " + name);
+        System.out.println("Employee id : " + empid);
+        System.out.println("Mail id : " + mailid);
+        System.out.println("Address: " + address);
+        System.out.println("Mobile Number: " + mobile);
+    }
+}
+
+class programmer extends employee
+{
+    double salary, bp, da, hra, pf, club, net, gross;
+
+    void getprogrammer()
+    {
+        System.out.println("Enter basic pay");
+        bp = get.nextDouble();
+    }
+
+    void calculateprog()
+    {
+        da = (0.97 * bp);
+        hra = (0.10 * bp);
+        pf = (0.12 * bp);
+        club = (0.1 * bp);
+
+        gross = (bp + da + hra);
+        net = (gross - pf - club);
+
+        System.out.println("************************************************");
+        System.out.println("PAY SLIP FOR PROGRAMMER");
+        System.out.println("************************************************");
+        System.out.println("Basic Pay: Rs " + bp);
+        System.out.println("DA: Rs " + da);
+        System.out.println("PF: Rs " + pf);
+        System.out.println("HRA: Rs " + hra);
+        System.out.println("CLUB: Rs " + club);
+        System.out.println("GROSS PAY: Rs " + gross);
+        System.out.println("NET PAY: Rs " + net);
+    }
+}
+
+
+Program 7 – Pay Slip using Inheritance (Part 7.2).
+
+class asstprofessor extends employee
+{
+    double salary, bp, da, hra, pf, club, net, gross;
+
+    void getasst()
+    {
+        System.out.println("Enter basic pay");
+        bp = get.nextDouble();
+    }
+
+    void calculateasst()
+    {
+        da = (0.97 * bp);
+        hra = (0.10 * bp);
+        pf = (0.12 * bp);
+        club = (0.1 * bp);
+
+        gross = (bp + da + hra);
+        net = (gross - pf - club);
+
+        System.out.println("************************************************");
+        System.out.println("PAY SLIP FOR ASSISTANT PROFESSOR");
+        System.out.println("************************************************");
+        System.out.println("Basic Pay: Rs " + bp);
+        System.out.println("DA: Rs " + da);
+        System.out.println("HRA: Rs " + hra);
+        System.out.println("PF: Rs " + pf);
+        System.out.println("CLUB: Rs " + club);
+        System.out.println("GROSS PAY: Rs " + gross);
+        System.out.println("NET PAY: Rs " + net);
+    }
+}
+
+class associateprofessor extends employee
+{
+    double salary, bp, da, hra, pf, club, net, gross;
+
+    void getassociate()
+    {
+        System.out.println("Enter basic pay");
+        bp = get.nextDouble();
+    }
+
+    void calculateassociate()
+    {
+        da = (0.97 * bp);
+        hra = (0.10 * bp);
+        pf = (0.12 * bp);
+        club = (0.1 * bp);
+
+        gross = (bp + da + hra);
+        net = (gross - pf - club);
+
+        System.out.println("************************************************");
+        System.out.println("PAY SLIP FOR ASSOCIATE PROFESSOR");
+        System.out.println("************************************************");
+        System.out.println("Basic Pay: Rs " + bp);
+        System.out.println("DA: Rs " + da);
+        System.out.println("HRA: Rs " + hra);
+        System.out.println("PF: Rs " + pf);
+        System.out.println("CLUB: Rs " + club);
+        System.out.println("GROSS PAY: Rs " + gross);
+        System.out.println("NET PAY: Rs " + net);
+    }
+}
+
+
+
+Program 7 – Pay Slip using Inheritance (Part 7.2).
+
+
+
+class asstprofessor extends employee
+{
+    double salary, bp, da, hra, pf, club, net, gross;
+
+    void getprofessor()
+    {
+        System.out.println("Enter basic pay");
+        bp = get.nextDouble();
+    }
+
+    void calculateprofessor()
+    {
+        da = (0.97 * bp);
+        hra = (0.10 * bp);
+        pf = (0.12 * bp);
+        club = (0.1 * bp);
+
+        gross = (bp + da + hra);
+        net = (gross - pf - club);
+
+        System.out.println("************************************************");
+        System.out.println("PAY SLIP FOR PROFESSOR");
+        System.out.println("************************************************");
+        System.out.println("Basic Pay: Rs " + bp);
+        System.out.println("DA: Rs " + da);
+        System.out.println("HRA: Rs " + hra);
+        System.out.println("PF: Rs " + pf);
+        System.out.println("CLUB: Rs " + club);
+        System.out.println("GROSS PAY: Rs " + gross);
+        System.out.println("NET PAY: Rs " + net);
+    }
+}
+
+Program 7 – Pay Slip using Inheritance (Part 7.3)
+
+
+
+class salary
+{
+    public static void main(String args[])
+    {
+        int choice, cont;
+        Scanner c = new Scanner(System.in);
+
+        do
+        {
+            System.out.println("PAYROLL");
+            System.out.println("1. PROGRAMMER");
+            System.out.println("2. ASSISTANT PROFESSOR");
+            System.out.println("3. ASSOCIATE PROFESSOR");
+            System.out.println("4. PROFESSOR");
+
+            choice = c.nextInt();
+
+            switch(choice)
+            {
+                case 1:
+                {
+                    programmer p = new programmer();
+                    p.getdata();
+                    p.getprogrammer();
+                    p.display();
+                    p.calculateprog();
+                    break;
+                }
+
+                case 2:
+                {
+                    asstprofessor asst = new asstprofessor();
+                    asst.getdata();
+                    asst.getasst();
+                    asst.display();
+                    asst.calculateasst();
+                    break;
+                }
+
+                case 3:
+                {
+                    associateprofessor asso = new associateprofessor();
+                    asso.getdata();
+                    asso.getassociate();
+                    asso.display();
+                    asso.calculateassociate();
+                    break;
+                }
+
+                case 4:
+                {
+                    professor prof = new professor();
+                    prof.getdata();
+                    prof.getprofessor();
+                    prof.display();
+                    prof.calculateprofessor();
+                    break;
+                }
+
+                default:
+                {
+                    System.out.println("Invalid Choice");
+                }
+            }
+
+            System.out.println("Do you want to continue?");
+            System.out.println("Press 1 to Continue and 0 to Exit");
+            cont = c.nextInt();
+
+        } while (cont == 1);
+    }
+}
+
+
+
+Program 8 – Area using Abstract Class
+
+
+
+import java.util.*;
+
+abstract class shape
+{
+    int a, b;
+
+    abstract public void printarea();
+}
+
+class rectangle extends shape
+{
+    public int area_rect;
+
+    public void printarea()
+    {
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Enter the length and breadth of rectangle");
+        a = s.nextInt();
+        b = s.nextInt();
+
+        area_rect = a * b;
+
+        System.out.println("Length of rectangle : " + a);
+        System.out.println("Breadth of rectangle : " + b);
+        System.out.println("The area of rectangle is : " + area_rect);
+    }
+}
+
+class triangle extends shape
+{
+    double area_tri;
+
+    public void printarea()
+    {
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Enter the base and height of triangle");
+        a = s.nextInt();
+        b = s.nextInt();
+
+        System.out.println("Base of triangle : " + a);
+        System.out.println("Height of triangle : " + b);
+
+        area_tri = (0.5 * a * b);
+
+        System.out.println("The area of triangle is : " + area_tri);
+    }
+}
+
+class circle extends shape
+{
+    double area_circle;
+
+    public void printarea()
+    {
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Enter the radius of circle");
+        a = s.nextInt();
+
+        area_circle = 3.14 * a * a;
+
+        System.out.println("Radius of circle : " + a);
+        System.out.println("The area of circle is : " + area_circle);
+    }
+}
+
+public class shapeclass
+{
+    public static void main(String[] args)
+    {
+        rectangle r = new rectangle();
+        r.printarea();
+
+        triangle t = new triangle();
+        t.printarea();
+
+        circle c = new circle();
+        c.printarea();
+    }
+}
+
+
+
+Program 9 – Area using Interface
+
+
+
+
+interface Shape
+{
+    void input();
+    void printarea();
+}
+
+class Circle implements Shape
+{
+    int r = 0;
+    double pi = 3.14, ar = 0;
+
+    @Override
+    public void input()
+    {
+        r = 5;
+    }
+
+    @Override
+    public void printarea()
+    {
+        ar = pi * r * r;
+        System.out.println("Area of circle: " + ar);
+    }
+}
+
+class Rectangle extends Circle
+{
+    int l = 0, b = 0;
+    double ar;
+
+    @Override
+    public void input()
+    {
+        super.input();
+        l = 6;
+        b = 4;
+    }
+
+    @Override
+    public void printarea()
+    {
+        super.printarea();
+        ar = l * b;
+        System.out.println("Area of rectangle: " + ar);
+    }
+}
+
+public class Demo
+{
+    public static void main(String[] args)
+    {
+        Rectangle obj = new Rectangle();
+        obj.input();
+        obj.printarea();
+    }
+}
+
+
+
+
+
+Program 10 – User Defined Exception Handling
+
+
+Program A – Negative Amount Exception
+
+
+import java.util.Scanner;
+
+class NegativeAmtException extends Exception
+{
+    String msg;
+
+    NegativeAmtException(String msg)
+    {
+        this.msg = msg;
+    }
+
+    public String toString()
+    {
+        return msg;
+    }
+}
+
+public class userdefined
+{
+    public static void main(String[] args)
+    {
+        Scanner s = new Scanner(System.in);
+
+        System.out.print("Enter Amount: ");
+        int a = s.nextInt();
+
+        try
+        {
+            if (a < 0)
+            {
+                throw new NegativeAmtException("Invalid Amount");
+            }
+
+            System.out.println("Amount Deposited");
+        }
+        catch (NegativeAmtException e)
+        {
+            System.out.println(e);
+        }
+    }
+}
+
+Program B – MyException
+
+class MyException extends Exception
+{
+    String str1;
+
+    MyException(String str2)
+    {
+        str1 = str2;
+    }
+
+    public String toString()
+    {
+        return ("MyException Occurred: " + str1);
+    }
+}
+
+class example
+{
+    public static void main(String args[])
+    {
+        try
+        {
+            System.out.println("Starting of try block");
+            throw new MyException("This is My error Message");
+        }
+        catch (MyException exp)
+        {
+            System.out.println("Catch Block");
+            System.out.println(exp);
+        }
+    }
+}
+
+
+
+
+
+ Program 11 – Multithreaded Application (Text Format).
+
+import java.util.*;
+
+class even implements Runnable
+{
+    public int x;
+
+    public even(int x)
+    {
+        this.x = x;
+    }
+
+    public void run()
+    {
+        System.out.println("New Thread " + x + " is EVEN and Square of " + x + " is: " + x * x);
+    }
+}
+
+class odd implements Runnable
+{
+    public int x;
+
+    public odd(int x)
+    {
+        this.x = x;
+    }
+
+    public void run()
+    {
+        System.out.println("New Thread " + x + " is ODD and Cube of " + x + " is: " + x * x * x);
+    }
+}
+
+class A extends Thread
+{
+    public void run()
+    {
+        int num = 0;
+        Random r = new Random();
+
+        try
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                num = r.nextInt(100);
+
+                System.out.println("Main Thread and Generated Number is " + num);
+
+                if (num % 2 == 0)
+                {
+                    Thread t1 = new Thread(new even(num));
+                    t1.start();
+                }
+                else
+                {
+                    Thread t2 = new Thread(new odd(num));
+                    t2.start();
+                }
+
+                Thread.sleep(1000);
+                System.out.println("--------------------------------------");
+            }
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+    }
+}
+
+public class multithreadprog
+{
+    public static void main(String[] args)
+    {
+        A a = new A();
+        a.start();
+    }
+}
+
+
+
+
+
+ Program 12 – File Operations (File Information) (Text Format).
+
+import java.io.*;
+import java.util.*;
+
+class filedemo
+{
+    public static void main(String args[])
+    {
+        String filename;
+        Scanner s = new Scanner(System.in);
+
+        System.out.println("Enter the file name");
+        filename = s.nextLine();
+
+        File f1 = new File(filename);
+
+        System.out.println("*****************");
+        System.out.println("FILE INFORMATION");
+        System.out.println("*****************");
+
+        System.out.println("NAME OF THE FILE : " + f1.getName());
+        System.out.println("PATH OF THE FILE : " + f1.getPath());
+        System.out.println("PARENT : " + f1.getParent());
+
+        if (f1.exists())
+            System.out.println("THE FILE EXISTS");
+        else
+            System.out.println("THE FILE DOES NOT EXIST");
+
+        if (f1.canRead())
+            System.out.println("THE FILE CAN BE READ");
+        else
+            System.out.println("THE FILE CANNOT BE READ");
+
+        if (f1.canWrite())
+            System.out.println("WRITE OPERATION IS PERMITTED");
+        else
+            System.out.println("WRITE OPERATION IS NOT PERMITTED");
+
+        if (f1.isDirectory())
+            System.out.println("IT IS A DIRECTORY");
+        else
+            System.out.println("NOT A DIRECTORY");
+
+        if (f1.isFile())
+            System.out.println("IT IS A FILE");
+        else
+            System.out.println("NOT A FILE");
+
+        System.out.println("File last modified : " + f1.lastModified());
+        System.out.println("LENGTH OF THE FILE : " + f1.length());
+        System.out.println("FILE DELETED : " + f1.delete());
+    }
+}
+
+ Program 13 – Generic Class (Text Format).
+
+class GenericClass<T>
+{
+    T obj;
+
+    GenericClass(T obj)
+    {
+        this.obj = obj;
+    }
+
+    public T getObject()
+    {
+        return this.obj;
+    }
+}
+
+public class GenericDemo
+{
+    public static void main(String[] args)
+    {
+        GenericClass<Integer> iObj =
+                new GenericClass<Integer>(100);
+
+        System.out.println("Integer Value : " + iObj.getObject());
+
+        GenericClass<String> sObj =
+                new GenericClass<String>("Java Programming");
+
+        System.out.println("String Value : " + sObj.getObject());
+
+        GenericClass<Double> dObj =
+                new GenericClass<Double>(99.99);
+
+        System.out.println("Double Value : " + dObj.getObject());
+
+        GenericClass<Character> cObj =
+                new GenericClass<Character>('A');
+
+        System.out.println("Character Value : " + cObj.getObject());
+    }
+}
+
+Program 14 – JavaFX Registration Form (Text Format).
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class RegistrationForm extends Application
+{
+    @Override
+    public void start(Stage primaryStage)
+    {
+        primaryStage.setTitle("Registration Form");
+
+        GridPane grid = new GridPane();
+        grid.setPadding(new Insets(20, 20, 20, 20));
+        grid.setVgap(10);
+        grid.setHgap(10);
+
+        Label nameLabel = new Label("Name:");
+        TextField nameField = new TextField();
+
+        Label emailLabel = new Label("Email:");
+        TextField emailField = new TextField();
+
+        Label passwordLabel = new Label("Password:");
+        PasswordField passwordField = new PasswordField();
+
+        Label genderLabel = new Label("Gender:");
+
+        RadioButton male = new RadioButton("Male");
+        RadioButton female = new RadioButton("Female");
+
+        ToggleGroup genderGroup = new ToggleGroup();
+        male.setToggleGroup(genderGroup);
+        female.setToggleGroup(genderGroup);
+
+        Label courseLabel = new Label("Course:");
+
+        ComboBox<String> courseBox = new ComboBox<>();
+        courseBox.getItems().addAll(
+                "B.Sc",
+                "BCA",
+                "B.E",
+                "MCA",
+                "M.Sc"
+        );
+
+        Button registerButton = new Button("Register");
+
+        grid.add(nameLabel, 0, 0);
+        grid.add(nameField, 1, 0);
+
+        grid.add(emailLabel, 0, 1);
+        grid.add(emailField, 1, 1);
+
+        grid.add(passwordLabel, 0, 2);
+        grid.add(passwordField, 1, 2);
+
+        grid.add(genderLabel, 0, 3);
+        grid.add(male, 1, 3);
+        grid.add(female, 2, 3);
+
+        grid.add(courseLabel, 0, 4);
+        grid.add(courseBox, 1, 4);
+
+        grid.add(registerButton, 1, 5);
+
+        registerButton.setOnAction(e ->
+        {
+            System.out.println("Registration Details");
+            System.out.println("Name : " + nameField.getText());
+            System.out.println("Email : " + emailField.getText());
+            System.out.println("Password : " + passwordField.getText());
+
+            RadioButton selected =
+                    (RadioButton) genderGroup.getSelectedToggle();
+
+            if (selected != null)
+            {
+                System.out.println("Gender : " + selected.getText());
+            }
+
+            System.out.println("Course : " + courseBox.getValue());
+        });
+
+        Scene scene = new Scene(grid, 450, 300);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args)
+    {
+        launch(args);
+    }
+}
+
+Program 15 – Mini Project (Broadcast Chat Server) (Text Format).
+
+ChatServer.java
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class ChatServer
+{
+    static Vector<ClientHandler> clients = new Vector<>();
+
+    public static void main(String[] args) throws IOException
+    {
+        ServerSocket serverSocket = new ServerSocket(5000);
+
+        System.out.println("Chat Server Started...");
+
+        while (true)
+        {
+            Socket socket = serverSocket.accept();
+
+            System.out.println("New client connected : " + socket);
+
+            DataInputStream dis = new DataInputStream(socket.getInputStream());
+            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+
+            ClientHandler client = new ClientHandler(socket, dis, dos);
+
+            Thread t = new Thread(client);
+
+            clients.add(client);
+
+            t.start();
+        }
+    }
+}
+
+class ClientHandler implements Runnable
+{
+    Scanner sc = new Scanner(System.in);
+
+    private Socket socket;
+    private DataInputStream dis;
+    private DataOutputStream dos;
+
+    public ClientHandler(Socket socket,
+                         DataInputStream dis,
+                         DataOutputStream dos)
+    {
+        this.socket = socket;
+        this.dis = dis;
+        this.dos = dos;
+    }
+
+    @Override
+    public void run()
+    {
+        String received;
+
+        while (true)
+        {
+            try
+            {
+                received = dis.readUTF();
+
+                if (received.equals("exit"))
+                {
+                    socket.close();
+                    break;
+                }
+
+                System.out.println("Client : " + received);
+
+                System.out.print("Server : ");
+                String msg = sc.nextLine();
+
+                for (ClientHandler mc : ChatServer.clients)
+                {
+                    mc.dos.writeUTF(msg);
+                }
+            }
+            catch (Exception e)
+            {
+                break;
+            }
+        }
+
+        try
+        {
+            dis.close();
+            dos.close();
+        }
+        catch (Exception e)
+        {
+        }
+    }
+}
+
+
+
+
+ChatClient.java
+
+
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+public class ChatClient
+{
+    public static void main(String[] args) throws Exception
+    {
+        Scanner sc = new Scanner(System.in);
+
+        Socket socket = new Socket("localhost", 5000);
+
+        DataInputStream dis = new DataInputStream(socket.getInputStream());
+        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+
+        while (true)
+        {
+            System.out.print("You : ");
+            String msg = sc.nextLine();
+
+            dos.writeUTF(msg);
+
+            if (msg.equals("exit"))
+            {
+                break;
+            }
+
+            String reply = dis.readUTF();
+
+            System.out.println("Server : " + reply);
+        }
+
+        sc.close();
+        dis.close();
+        dos.close();
+        socket.close();
+    }
+}
+
+
+
+
 
 </textarea>
 <h1>Hello World Program</h1>
