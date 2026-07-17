@@ -1,3 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>C Program</title>
+
+<style>
+body{
+    background:#111827;
+    color:white;
+    font-family:Arial;
+    padding:30px;
+}
+
+pre{
+    background:#1f2937;
+    padding:20px;
+    border-radius:10px;
+    overflow:auto;
+}
+
+button{
+    padding:10px 20px;
+    background:#3b82f6;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    margin-bottom:15px;
+}
+</style>
+
+</head>
+
+<body>
+<h2>Singly Linked List Program</h2>
+
+<textarea>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -82,3 +120,105 @@ int main()
 
     return 0;
 }
+</textarea>
+<h1>Hello World Program</h1>
+
+<button onclick="copyCode()">📋 Copy Code</button>
+
+<pre id="code">
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX 5
+
+int stack[MAX], top = -1;
+
+void push(int x)
+{
+    if (top == MAX - 1)
+        printf("\nStack Overflow");
+    else
+    {
+        top++;
+        stack[top] = x;
+    }
+}
+
+int pop()
+{
+    return stack[top--];
+}
+
+void display()
+{
+    int i;
+
+    if (top == -1)
+        printf("\nStack Empty");
+    else
+    {
+        printf("\nStack Elements:\n");
+        for (i = top; i >= 0; i--)
+            printf("%d\n", stack[i]);
+    }
+}
+
+int main()
+{
+    int ch, val;
+
+    while (1)
+    {
+        printf("\n1.Push\n2.Pop\n3.Display\n4.Exit");
+        printf("\nEnter Choice: ");
+        scanf("%d", &ch);
+
+        switch (ch)
+        {
+            case 1:
+                if (top == MAX - 1)
+                    printf("\nStack Overflow");
+                else
+                {
+                    printf("Enter Element: ");
+                    scanf("%d", &val);
+                    push(val);
+                }
+                break;
+
+            case 2:
+                if (top == -1)
+                    printf("\nStack Underflow");
+                else
+                {
+                    val = pop();
+                    printf("\nDeleted Element = %d", val);
+                }
+                break;
+
+            case 3:
+                display();
+                break;
+
+            case 4:
+                exit(0);
+
+            default:
+                printf("\nInvalid Choice");
+        }
+    }
+
+    return 0;
+}
+</pre>
+
+<script>
+function copyCode(){
+    let text=document.getElementById("code").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Code Copied!");
+}
+</script>
+
+</body>
+</html>
