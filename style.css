@@ -39,8 +39,8 @@ input{
     text-align:center;
     font-size:22px;
     transition:.3s;
-    width:100%;
-    max-width:700px;
+    width:700px;
+    max-width:90%;
     box-sizing:border-box;
 }
 
