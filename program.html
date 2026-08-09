@@ -1,51 +1,263 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>C Program</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Programs</title>
 
 <style>
-body{
-    background:#111827;
-    color:white;
-    font-family:Arial;
-    padding:30px;
+* {
+    box-sizing: border-box;
 }
 
-pre{
-    background:#1f2937;
-    padding:20px;
-    border-radius:10px;
-    overflow:auto;
+html {
+    scroll-behavior: smooth;
 }
 
-button{
-    padding:10px 20px;
-    background:#3b82f6;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    margin-bottom:15px;
+body {
+    margin: 0;
+    background: #0f172a;
+    color: #f8fafc;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    padding: 42px 20px 28px;
+    text-align: center;
+    border-bottom: 1px solid #334155;
+}
+
+.logo-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 42px;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    margin: 10px 0 22px;
+    color: #94a3b8;
+    font-size: 16px;
+}
+
+.search-wrap {
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+#search {
+    width: 100%;
+    padding: 16px 18px;
+    border: 0;
+    outline: none;
+    border-radius: 14px;
+    font-size: 17px;
+    background: #ffffff;
+    color: #111827;
+}
+
+.info {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 26px 18px 10px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    color: #93c5fd;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 18px 50px;
+}
+
+.card {
+    margin: 0 0 26px;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #1e293b;
+    box-shadow: 0 8px 25px rgba(0,0,0,.18);
+}
+
+.card-head {
+    min-height: 90px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    border-bottom: 1px solid #475569;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #1d4ed8;
+    color: #dbeafe;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.card h2 {
+    margin: 8px 0 0;
+    font-size: 21px;
+}
+
+.copy-btn {
+    flex-shrink: 0;
+    padding: 11px 18px;
+    border: 0;
+    border-radius: 10px;
+    background: #60a5fa;
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.copy-btn:hover {
+    background: #93c5fd;
+    transform: translateY(-1px);
+}
+
+.copy-btn.copied {
+    background: #22c55e;
+    color: white;
+}
+
+.code {
+    margin: 0;
+    padding: 22px;
+    min-height: 180px;
+    max-height: 600px;
+    overflow: auto;
+    background: #172033;
+    color: #f8fafc;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.65;
+    white-space: pre;
+    tab-size: 4;
+}
+
+.code::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+.code::-webkit-scrollbar-track {
+    background: #111827;
+}
+
+.code::-webkit-scrollbar-thumb {
+    background: #64748b;
+    border-radius: 10px;
+}
+
+.empty {
+    display: none;
+    text-align: center;
+    padding: 50px 20px;
+    color: #94a3b8;
+}
+
+.footer {
+    text-align: center;
+    padding: 25px;
+    color: #64748b;
+    border-top: 1px solid #334155;
+}
+
+@media (max-width: 700px) {
+    .header {
+        padding-top: 28px;
+    }
+
+    .logo {
+        font-size: 32px;
+    }
+
+    .card-head {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .copy-btn {
+        width: 100%;
+    }
+
+    .info {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .code {
+        font-size: 12px;
+        max-height: 500px;
+    }
 }
 </style>
-
 </head>
 
 <body>
-<h2>Singly Linked List Program</h2>
 
-<textarea>
-Program 1 – Binary Search
+<header class="header">
+    <div class="logo-title">
+        <span class="logo">📚</span>
+        <h1>JAVA PROGRAMS</h1>
+    </div>
 
+    <p class="subtitle">All Java Programs • Search • Copy Code</p>
 
-class BinarySearch
+    <div class="search-wrap">
+        <input
+            id="search"
+            type="text"
+            placeholder="Search programs... (e.g. Stack, Queue, Exception)"
+            oninput="searchPrograms()"
+        >
+    </div>
+</header>
+
+<div class="info">
+    <span id="count">15 programs loaded</span>
+    <span>Click <b>Copy Code</b> to copy any program.</span>
+</div>
+
+<main class="container">
+    <div id="programs">
+        
+    <section class="card" data-title="ex.no: 1 binary search">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 1</span>
+                <h2>Binary Search</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>class BinarySearch
 {
     static int binarySearch(int a[], int beg, int end, int val)
     {
         int mid;
 
-        if (end >= beg)
+        if (end &gt;= beg)
         {
             mid = (beg + end) / 2;
 
@@ -53,7 +265,7 @@ class BinarySearch
             {
                 return mid + 1;
             }
-            else if (a[mid] < val)
+            else if (a[mid] &lt; val)
             {
                 return binarySearch(a, mid + 1, end, val);
             }
@@ -74,36 +286,36 @@ class BinarySearch
 
         int res = binarySearch(a, 0, n - 1, val);
 
-        System.out.print("The elements of the array are: ");
-        for (int i = 0; i < n; i++)
+        System.out.print(&quot;The elements of the array are: &quot;);
+        for (int i = 0; i &lt; n; i++)
         {
-            System.out.print(a[i] + " ");
+            System.out.print(a[i] + &quot; &quot;);
         }
 
         System.out.println();
-        System.out.println("Element to be searched is: " + val);
+        System.out.println(&quot;Element to be searched is: &quot; + val);
 
         if (res == -1)
-        {
-            System.out.println("Element is not present in the array");
-        }
+            System.out.println(&quot;Element is not present in the array&quot;);
         else
-        {
-            System.out.println("Element is present at " + res + " position of array");
-        }
+            System.out.println(&quot;Element is present at &quot; + res + &quot; position of array&quot;);
     }
-}
-
-
-
-Program 2 – Linear Search
-
-
-class LinearSearch
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 2 linear search">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 2</span>
+                <h2>Linear Search</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>class LinearSearch
 {
     static int linearSearch(int a[], int n, int val)
     {
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i &lt; n; i++)
         {
             if (a[i] == val)
                 return i + 1;
@@ -120,37 +332,44 @@ class LinearSearch
         int res = linearSearch(a, n, val);
 
         System.out.println();
-        System.out.print("The elements of the array are - ");
+        System.out.print(&quot;The elements of the array are - &quot;);
 
-        for (int i = 0; i < n; i++)
-            System.out.print(a[i] + " ");
+        for (int i = 0; i &lt; n; i++)
+            System.out.print(a[i] + &quot; &quot;);
 
         System.out.println();
-        System.out.println("Element to be searched is - " + val);
+        System.out.println(&quot;Element to be searched is - &quot; + val);
 
         if (res == -1)
-            System.out.println("Element is not present in the array");
+            System.out.println(&quot;Element is not present in the array&quot;);
         else
-            System.out.println("Element is present at " + res + " position of array");
+            System.out.println(&quot;Element is present at &quot; + res + &quot; position of array&quot;);
     }
-}  
-
-
-
-public class Selection
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 3 selection sort">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 3</span>
+                <h2>Selection Sort</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>public class Selection
 {
     void selection(int a[])
     {
         int i, j, small;
         int n = a.length;
 
-        for (i = 0; i < n - 1; i++)
+        for (i = 0; i &lt; n - 1; i++)
         {
             small = i;
 
-            for (j = i + 1; j < n; j++)
+            for (j = i + 1; j &lt; n; j++)
             {
-                if (a[j] < a[small])
+                if (a[j] &lt; a[small])
                     small = j;
             }
 
@@ -164,10 +383,8 @@ public class Selection
     {
         int n = a.length;
 
-        for (int i = 0; i < n; i++)
-        {
-            System.out.print(a[i] + " ");
-        }
+        for (int i = 0; i &lt; n; i++)
+            System.out.print(a[i] + &quot; &quot;);
     }
 
     public static void main(String[] args)
@@ -176,90 +393,40 @@ public class Selection
 
         Selection s = new Selection();
 
-        System.out.println("\nBefore sorting array elements are - ");
+        System.out.println(&quot;\nBefore sorting array elements are - &quot;);
         s.printArr(a);
 
         s.selection(a);
 
-        System.out.println("\nAfter sorting array elements are - ");
+        System.out.println(&quot;\nAfter sorting array elements are - &quot;);
         s.printArr(a);
 
         System.out.println();
     }
-}
-
-
-
-Program 3 – Selection Sort
-
-
-public class Selection
-{
-    void selection(int a[])
-    {
-        int i, j, small;
-        int n = a.length;
-
-        for (i = 0; i < n - 1; i++)
-        {
-            small = i;
-
-            for (j = i + 1; j < n; j++)
-            {
-                if (a[j] < a[small])
-                    small = j;
-            }
-
-            int temp = a[small];
-            a[small] = a[i];
-            a[i] = temp;
-        }
-    }
-
-    void printArr(int a[])
-    {
-        int n = a.length;
-
-        for (int i = 0; i < n; i++)
-        {
-            System.out.print(a[i] + " ");
-        }
-    }
-
-    public static void main(String[] args)
-    {
-        int a[] = {91, 49, 4, 19, 10, 21};
-
-        Selection s = new Selection();
-
-        System.out.println("\nBefore sorting array elements are - ");
-        s.printArr(a);
-
-        s.selection(a);
-
-        System.out.println("\nAfter sorting array elements are - ");
-        s.printArr(a);
-
-        System.out.println();
-    }
-}
-
-
-Program 4 – Insertion Sort
-
-public class Insert
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 4 insertion sort">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 4</span>
+                <h2>Insertion Sort</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>public class Insert
 {
     void insert(int a[])
     {
         int i, j, temp;
         int n = a.length;
 
-        for (i = 1; i < n; i++)
+        for (i = 1; i &lt; n; i++)
         {
             temp = a[i];
             j = i - 1;
 
-            while (j >= 0 && temp <= a[j])
+            while (j &gt;= 0 &amp;&amp; temp &lt;= a[j])
             {
                 a[j + 1] = a[j];
                 j = j - 1;
@@ -273,10 +440,8 @@ public class Insert
     {
         int n = a.length;
 
-        for (int i = 0; i < n; i++)
-        {
-            System.out.print(a[i] + " ");
-        }
+        for (int i = 0; i &lt; n; i++)
+            System.out.print(a[i] + &quot; &quot;);
     }
 
     public static void main(String[] args)
@@ -285,58 +450,61 @@ public class Insert
 
         Insert i1 = new Insert();
 
-        System.out.println("\nBefore sorting array elements are - ");
+        System.out.println(&quot;\nBefore sorting array elements are - &quot;);
         i1.printArr(a);
 
         i1.insert(a);
 
-        System.out.println("\nAfter sorting array elements are - ");
+        System.out.println(&quot;\nAfter sorting array elements are - &quot;);
         i1.printArr(a);
 
         System.out.println();
     }
-}
-
-Program 5 – Stack Implementation
-
-class StackDemo
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 5 stack implementation">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 5</span>
+                <h2>Stack Implementation</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>class StackDemo
 {
     public static void main(String[] args)
     {
-        Stack<Integer> stack = new Stack<Integer>(5);
+        Stack&lt;Integer&gt; stack = new Stack&lt;Integer&gt;(5);
 
-        System.out.print("Elements pushed in the Stack: ");
+        System.out.print(&quot;Elements pushed in the Stack: &quot;);
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i &lt; 5; i++)
         {
             stack.push(i);
-            System.out.print(i + " ");
+            System.out.print(i + &quot; &quot;);
         }
 
-        System.out.println("\nIs Stack full? \n" + stack.isFull());
+        System.out.println(&quot;\nIs Stack full? \n&quot; + stack.isFull());
 
-        System.out.print("Elements popped from the Stack: ");
+        System.out.print(&quot;Elements popped from the Stack: &quot;);
 
-        for (int i = 0; i < 5; i++)
-        {
-            System.out.print(stack.pop() + " ");
-        }
+        for (int i = 0; i &lt; 5; i++)
+            System.out.print(stack.pop() + &quot; &quot;);
 
-        System.out.println("\nIs Stack empty? \n" + stack.isEmpty());
+        System.out.println(&quot;\nIs Stack empty? \n&quot; + stack.isEmpty());
     }
 }
 
+/* Stack.java */
 
-Stack.java
-
-
-public class Stack<V>
+public class Stack&lt;V&gt;
 {
     private int maxSize;
     private int top;
     private V array[];
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings(&quot;unchecked&quot;)
     public Stack(int max_size)
     {
         this.maxSize = max_size;
@@ -371,7 +539,7 @@ public class Stack<V>
     {
         if (isFull())
         {
-            System.err.println("Stack is Full!");
+            System.err.println(&quot;Stack is Full!&quot;);
             return;
         }
 
@@ -385,19 +553,22 @@ public class Stack<V>
 
         return array[top--];
     }
-}
-
-
-Program 6 – Queue Implementation
-
-
-
-
-class QueueDemo
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 6 queue implementation">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 6</span>
+                <h2>Queue Implementation</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>class QueueDemo
 {
     public static void main(String[] args)
     {
-        Queue<Integer> queue = new Queue<Integer>(5);
+        Queue&lt;Integer&gt; queue = new Queue&lt;Integer&gt;(5);
 
         queue.enqueue(2);
         queue.enqueue(4);
@@ -411,19 +582,16 @@ class QueueDemo
         queue.enqueue(12);
         queue.enqueue(14);
 
-        System.out.println("Queue:");
+        System.out.println(&quot;Queue:&quot;);
 
         while (!queue.isEmpty())
-        {
-            System.out.print(queue.dequeue() + " ");
-        }
+            System.out.print(queue.dequeue() + &quot; &quot;);
     }
 }
 
+/* Queue.java */
 
-Queue.java
-
-public class Queue<V>
+public class Queue&lt;V&gt;
 {
     private int maxSize;
     private V[] array;
@@ -431,7 +599,7 @@ public class Queue<V>
     private int back;
     private int currentSize;
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings(&quot;unchecked&quot;)
     public Queue(int maxSize)
     {
         this.maxSize = maxSize;
@@ -487,15 +655,18 @@ public class Queue<V>
 
         return temp;
     }
-}
-
-
-
-Program 7 – Pay Slip using Inheritance
-
-
-
-import java.util.*;
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 7 pay slip using inheritance">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 7</span>
+                <h2>Pay Slip using Inheritance</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>import java.util.*;
 
 class employee
 {
@@ -507,29 +678,29 @@ class employee
 
     void getdata()
     {
-        System.out.println("Enter Name of the Employee");
+        System.out.println(&quot;Enter Name of the Employee&quot;);
         name = get.nextLine();
 
-        System.out.println("Enter Mail id");
+        System.out.println(&quot;Enter Mail id&quot;);
         mailid = get.nextLine();
 
-        System.out.println("Enter Address of the Employee:");
+        System.out.println(&quot;Enter Address of the Employee:&quot;);
         address = get.nextLine();
 
-        System.out.println("Enter employee id");
+        System.out.println(&quot;Enter employee id&quot;);
         empid = get.nextInt();
 
-        System.out.println("Enter Mobile Number");
+        System.out.println(&quot;Enter Mobile Number&quot;);
         mobile = get.nextLong();
     }
 
     void display()
     {
-        System.out.println("Employee Name: " + name);
-        System.out.println("Employee id : " + empid);
-        System.out.println("Mail id : " + mailid);
-        System.out.println("Address: " + address);
-        System.out.println("Mobile Number: " + mobile);
+        System.out.println(&quot;Employee Name: &quot; + name);
+        System.out.println(&quot;Employee id : &quot; + empid);
+        System.out.println(&quot;Mail id : &quot; + mailid);
+        System.out.println(&quot;Address: &quot; + address);
+        System.out.println(&quot;Mobile Number: &quot; + mobile);
     }
 }
 
@@ -539,7 +710,7 @@ class programmer extends employee
 
     void getprogrammer()
     {
-        System.out.println("Enter basic pay");
+        System.out.println(&quot;Enter basic pay&quot;);
         bp = get.nextDouble();
     }
 
@@ -553,21 +724,18 @@ class programmer extends employee
         gross = (bp + da + hra);
         net = (gross - pf - club);
 
-        System.out.println("************************************************");
-        System.out.println("PAY SLIP FOR PROGRAMMER");
-        System.out.println("************************************************");
-        System.out.println("Basic Pay: Rs " + bp);
-        System.out.println("DA: Rs " + da);
-        System.out.println("PF: Rs " + pf);
-        System.out.println("HRA: Rs " + hra);
-        System.out.println("CLUB: Rs " + club);
-        System.out.println("GROSS PAY: Rs " + gross);
-        System.out.println("NET PAY: Rs " + net);
+        System.out.println(&quot;************************************************&quot;);
+        System.out.println(&quot;PAY SLIP FOR PROGRAMMER&quot;);
+        System.out.println(&quot;************************************************&quot;);
+        System.out.println(&quot;Basic Pay: Rs &quot; + bp);
+        System.out.println(&quot;DA: Rs &quot; + da);
+        System.out.println(&quot;PF: Rs &quot; + pf);
+        System.out.println(&quot;HRA: Rs &quot; + hra);
+        System.out.println(&quot;CLUB: Rs &quot; + club);
+        System.out.println(&quot;GROSS PAY: Rs &quot; + gross);
+        System.out.println(&quot;NET PAY: Rs &quot; + net);
     }
 }
-
-
-Program 7 – Pay Slip using Inheritance (Part 7.2).
 
 class asstprofessor extends employee
 {
@@ -575,7 +743,7 @@ class asstprofessor extends employee
 
     void getasst()
     {
-        System.out.println("Enter basic pay");
+        System.out.println(&quot;Enter basic pay&quot;);
         bp = get.nextDouble();
     }
 
@@ -589,16 +757,16 @@ class asstprofessor extends employee
         gross = (bp + da + hra);
         net = (gross - pf - club);
 
-        System.out.println("************************************************");
-        System.out.println("PAY SLIP FOR ASSISTANT PROFESSOR");
-        System.out.println("************************************************");
-        System.out.println("Basic Pay: Rs " + bp);
-        System.out.println("DA: Rs " + da);
-        System.out.println("HRA: Rs " + hra);
-        System.out.println("PF: Rs " + pf);
-        System.out.println("CLUB: Rs " + club);
-        System.out.println("GROSS PAY: Rs " + gross);
-        System.out.println("NET PAY: Rs " + net);
+        System.out.println(&quot;************************************************&quot;);
+        System.out.println(&quot;PAY SLIP FOR ASSISTANT PROFESSOR&quot;);
+        System.out.println(&quot;************************************************&quot;);
+        System.out.println(&quot;Basic Pay: Rs &quot; + bp);
+        System.out.println(&quot;DA: Rs &quot; + da);
+        System.out.println(&quot;HRA: Rs &quot; + hra);
+        System.out.println(&quot;PF: Rs &quot; + pf);
+        System.out.println(&quot;CLUB: Rs &quot; + club);
+        System.out.println(&quot;GROSS PAY: Rs &quot; + gross);
+        System.out.println(&quot;NET PAY: Rs &quot; + net);
     }
 }
 
@@ -608,7 +776,7 @@ class associateprofessor extends employee
 
     void getassociate()
     {
-        System.out.println("Enter basic pay");
+        System.out.println(&quot;Enter basic pay&quot;);
         bp = get.nextDouble();
     }
 
@@ -622,32 +790,26 @@ class associateprofessor extends employee
         gross = (bp + da + hra);
         net = (gross - pf - club);
 
-        System.out.println("************************************************");
-        System.out.println("PAY SLIP FOR ASSOCIATE PROFESSOR");
-        System.out.println("************************************************");
-        System.out.println("Basic Pay: Rs " + bp);
-        System.out.println("DA: Rs " + da);
-        System.out.println("HRA: Rs " + hra);
-        System.out.println("PF: Rs " + pf);
-        System.out.println("CLUB: Rs " + club);
-        System.out.println("GROSS PAY: Rs " + gross);
-        System.out.println("NET PAY: Rs " + net);
+        System.out.println(&quot;************************************************&quot;);
+        System.out.println(&quot;PAY SLIP FOR ASSOCIATE PROFESSOR&quot;);
+        System.out.println(&quot;************************************************&quot;);
+        System.out.println(&quot;Basic Pay: Rs &quot; + bp);
+        System.out.println(&quot;DA: Rs &quot; + da);
+        System.out.println(&quot;HRA: Rs &quot; + hra);
+        System.out.println(&quot;PF: Rs &quot; + pf);
+        System.out.println(&quot;CLUB: Rs &quot; + club);
+        System.out.println(&quot;GROSS PAY: Rs &quot; + gross);
+        System.out.println(&quot;NET PAY: Rs &quot; + net);
     }
 }
 
-
-
-Program 7 – Pay Slip using Inheritance (Part 7.2).
-
-
-
-class asstprofessor extends employee
+class professor extends employee
 {
     double salary, bp, da, hra, pf, club, net, gross;
 
     void getprofessor()
     {
-        System.out.println("Enter basic pay");
+        System.out.println(&quot;Enter basic pay&quot;);
         bp = get.nextDouble();
     }
 
@@ -661,22 +823,18 @@ class asstprofessor extends employee
         gross = (bp + da + hra);
         net = (gross - pf - club);
 
-        System.out.println("************************************************");
-        System.out.println("PAY SLIP FOR PROFESSOR");
-        System.out.println("************************************************");
-        System.out.println("Basic Pay: Rs " + bp);
-        System.out.println("DA: Rs " + da);
-        System.out.println("HRA: Rs " + hra);
-        System.out.println("PF: Rs " + pf);
-        System.out.println("CLUB: Rs " + club);
-        System.out.println("GROSS PAY: Rs " + gross);
-        System.out.println("NET PAY: Rs " + net);
+        System.out.println(&quot;************************************************&quot;);
+        System.out.println(&quot;PAY SLIP FOR PROFESSOR&quot;);
+        System.out.println(&quot;************************************************&quot;);
+        System.out.println(&quot;Basic Pay: Rs &quot; + bp);
+        System.out.println(&quot;DA: Rs &quot; + da);
+        System.out.println(&quot;HRA: Rs &quot; + hra);
+        System.out.println(&quot;PF: Rs &quot; + pf);
+        System.out.println(&quot;CLUB: Rs &quot; + club);
+        System.out.println(&quot;GROSS PAY: Rs &quot; + gross);
+        System.out.println(&quot;NET PAY: Rs &quot; + net);
     }
 }
-
-Program 7 – Pay Slip using Inheritance (Part 7.3)
-
-
 
 class salary
 {
@@ -687,11 +845,11 @@ class salary
 
         do
         {
-            System.out.println("PAYROLL");
-            System.out.println("1. PROGRAMMER");
-            System.out.println("2. ASSISTANT PROFESSOR");
-            System.out.println("3. ASSOCIATE PROFESSOR");
-            System.out.println("4. PROFESSOR");
+            System.out.println(&quot;PAYROLL&quot;);
+            System.out.println(&quot;1. PROGRAMMER&quot;);
+            System.out.println(&quot;2. ASSISTANT PROFESSOR&quot;);
+            System.out.println(&quot;3. ASSOCIATE PROFESSOR&quot;);
+            System.out.println(&quot;4. PROFESSOR&quot;);
 
             choice = c.nextInt();
 
@@ -738,26 +896,27 @@ class salary
                 }
 
                 default:
-                {
-                    System.out.println("Invalid Choice");
-                }
+                    System.out.println(&quot;Invalid Choice&quot;);
             }
 
-            System.out.println("Do you want to continue?");
-            System.out.println("Press 1 to Continue and 0 to Exit");
+            System.out.println(&quot;Do you want to continue?&quot;);
+            System.out.println(&quot;Press 1 to Continue and 0 to Exit&quot;);
             cont = c.nextInt();
 
         } while (cont == 1);
     }
-}
-
-
-
-Program 8 – Area using Abstract Class
-
-
-
-import java.util.*;
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 8 area using abstract class">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 8</span>
+                <h2>Area using Abstract Class</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>import java.util.*;
 
 abstract class shape
 {
@@ -774,15 +933,15 @@ class rectangle extends shape
     {
         Scanner s = new Scanner(System.in);
 
-        System.out.println("Enter the length and breadth of rectangle");
+        System.out.println(&quot;Enter the length and breadth of rectangle&quot;);
         a = s.nextInt();
         b = s.nextInt();
 
         area_rect = a * b;
 
-        System.out.println("Length of rectangle : " + a);
-        System.out.println("Breadth of rectangle : " + b);
-        System.out.println("The area of rectangle is : " + area_rect);
+        System.out.println(&quot;Length of rectangle : &quot; + a);
+        System.out.println(&quot;Breadth of rectangle : &quot; + b);
+        System.out.println(&quot;The area of rectangle is : &quot; + area_rect);
     }
 }
 
@@ -794,16 +953,16 @@ class triangle extends shape
     {
         Scanner s = new Scanner(System.in);
 
-        System.out.println("Enter the base and height of triangle");
+        System.out.println(&quot;Enter the base and height of triangle&quot;);
         a = s.nextInt();
         b = s.nextInt();
 
-        System.out.println("Base of triangle : " + a);
-        System.out.println("Height of triangle : " + b);
+        System.out.println(&quot;Base of triangle : &quot; + a);
+        System.out.println(&quot;Height of triangle : &quot; + b);
 
         area_tri = (0.5 * a * b);
 
-        System.out.println("The area of triangle is : " + area_tri);
+        System.out.println(&quot;The area of triangle is : &quot; + area_tri);
     }
 }
 
@@ -815,13 +974,13 @@ class circle extends shape
     {
         Scanner s = new Scanner(System.in);
 
-        System.out.println("Enter the radius of circle");
+        System.out.println(&quot;Enter the radius of circle&quot;);
         a = s.nextInt();
 
         area_circle = 3.14 * a * a;
 
-        System.out.println("Radius of circle : " + a);
-        System.out.println("The area of circle is : " + area_circle);
+        System.out.println(&quot;Radius of circle : &quot; + a);
+        System.out.println(&quot;The area of circle is : &quot; + area_circle);
     }
 }
 
@@ -838,16 +997,18 @@ public class shapeclass
         circle c = new circle();
         c.printarea();
     }
-}
-
-
-
-Program 9 – Area using Interface
-
-
-
-
-interface Shape
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 9 area using interface">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 9</span>
+                <h2>Area using Interface</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>interface Shape
 {
     void input();
     void printarea();
@@ -868,7 +1029,7 @@ class Circle implements Shape
     public void printarea()
     {
         ar = pi * r * r;
-        System.out.println("Area of circle: " + ar);
+        System.out.println(&quot;Area of circle: &quot; + ar);
     }
 }
 
@@ -890,7 +1051,7 @@ class Rectangle extends Circle
     {
         super.printarea();
         ar = l * b;
-        System.out.println("Area of rectangle: " + ar);
+        System.out.println(&quot;Area of rectangle: &quot; + ar);
     }
 }
 
@@ -902,17 +1063,18 @@ public class Demo
         obj.input();
         obj.printarea();
     }
-}
-
-
-
-
-
-Program 10 – User Defined Exception Handling
-
-
-Program A – Negative Amount Exception
-
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 10 user defined exception handling">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 10</span>
+                <h2>User Defined Exception Handling</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>/* Program A - Negative Amount Exception */
 
 import java.util.Scanner;
 
@@ -937,17 +1099,15 @@ public class userdefined
     {
         Scanner s = new Scanner(System.in);
 
-        System.out.print("Enter Amount: ");
+        System.out.print(&quot;Enter Amount: &quot;);
         int a = s.nextInt();
 
         try
         {
-            if (a < 0)
-            {
-                throw new NegativeAmtException("Invalid Amount");
-            }
+            if (a &lt; 0)
+                throw new NegativeAmtException(&quot;Invalid Amount&quot;);
 
-            System.out.println("Amount Deposited");
+            System.out.println(&quot;Amount Deposited&quot;);
         }
         catch (NegativeAmtException e)
         {
@@ -956,7 +1116,7 @@ public class userdefined
     }
 }
 
-Program B – MyException
+/* Program B - MyException */
 
 class MyException extends Exception
 {
@@ -969,7 +1129,7 @@ class MyException extends Exception
 
     public String toString()
     {
-        return ("MyException Occurred: " + str1);
+        return (&quot;MyException Occurred: &quot; + str1);
     }
 }
 
@@ -979,24 +1139,27 @@ class example
     {
         try
         {
-            System.out.println("Starting of try block");
-            throw new MyException("This is My error Message");
+            System.out.println(&quot;Starting of try block&quot;);
+            throw new MyException(&quot;This is My error Message&quot;);
         }
         catch (MyException exp)
         {
-            System.out.println("Catch Block");
+            System.out.println(&quot;Catch Block&quot;);
             System.out.println(exp);
         }
     }
-}
-
-
-
-
-
- Program 11 – Multithreaded Application (Text Format).
-
-import java.util.*;
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 11 multithreaded application">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 11</span>
+                <h2>Multithreaded Application</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>import java.util.*;
 
 class even implements Runnable
 {
@@ -1009,7 +1172,7 @@ class even implements Runnable
 
     public void run()
     {
-        System.out.println("New Thread " + x + " is EVEN and Square of " + x + " is: " + x * x);
+        System.out.println(&quot;New Thread &quot; + x + &quot; is EVEN and Square of &quot; + x + &quot; is: &quot; + x * x);
     }
 }
 
@@ -1024,7 +1187,7 @@ class odd implements Runnable
 
     public void run()
     {
-        System.out.println("New Thread " + x + " is ODD and Cube of " + x + " is: " + x * x * x);
+        System.out.println(&quot;New Thread &quot; + x + &quot; is ODD and Cube of &quot; + x + &quot; is: &quot; + x * x * x);
     }
 }
 
@@ -1037,11 +1200,11 @@ class A extends Thread
 
         try
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i &lt; 5; i++)
             {
                 num = r.nextInt(100);
 
-                System.out.println("Main Thread and Generated Number is " + num);
+                System.out.println(&quot;Main Thread and Generated Number is &quot; + num);
 
                 if (num % 2 == 0)
                 {
@@ -1055,7 +1218,7 @@ class A extends Thread
                 }
 
                 Thread.sleep(1000);
-                System.out.println("--------------------------------------");
+                System.out.println(&quot;--------------------------------------&quot;);
             }
         }
         catch (Exception ex)
@@ -1072,15 +1235,18 @@ public class multithreadprog
         A a = new A();
         a.start();
     }
-}
-
-
-
-
-
- Program 12 – File Operations (File Information) (Text Format).
-
-import java.io.*;
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 12 file operations - file information">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 12</span>
+                <h2>File Operations - File Information</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>import java.io.*;
 import java.util.*;
 
 class filedemo
@@ -1090,53 +1256,60 @@ class filedemo
         String filename;
         Scanner s = new Scanner(System.in);
 
-        System.out.println("Enter the file name");
+        System.out.println(&quot;Enter the file name&quot;);
         filename = s.nextLine();
 
         File f1 = new File(filename);
 
-        System.out.println("*****************");
-        System.out.println("FILE INFORMATION");
-        System.out.println("*****************");
+        System.out.println(&quot;*****************&quot;);
+        System.out.println(&quot;FILE INFORMATION&quot;);
+        System.out.println(&quot;*****************&quot;);
 
-        System.out.println("NAME OF THE FILE : " + f1.getName());
-        System.out.println("PATH OF THE FILE : " + f1.getPath());
-        System.out.println("PARENT : " + f1.getParent());
+        System.out.println(&quot;NAME OF THE FILE : &quot; + f1.getName());
+        System.out.println(&quot;PATH OF THE FILE : &quot; + f1.getPath());
+        System.out.println(&quot;PARENT : &quot; + f1.getParent());
 
         if (f1.exists())
-            System.out.println("THE FILE EXISTS");
+            System.out.println(&quot;THE FILE EXISTS&quot;);
         else
-            System.out.println("THE FILE DOES NOT EXIST");
+            System.out.println(&quot;THE FILE DOES NOT EXIST&quot;);
 
         if (f1.canRead())
-            System.out.println("THE FILE CAN BE READ");
+            System.out.println(&quot;THE FILE CAN BE READ&quot;);
         else
-            System.out.println("THE FILE CANNOT BE READ");
+            System.out.println(&quot;THE FILE CANNOT BE READ&quot;);
 
         if (f1.canWrite())
-            System.out.println("WRITE OPERATION IS PERMITTED");
+            System.out.println(&quot;WRITE OPERATION IS PERMITTED&quot;);
         else
-            System.out.println("WRITE OPERATION IS NOT PERMITTED");
+            System.out.println(&quot;WRITE OPERATION IS NOT PERMITTED&quot;);
 
         if (f1.isDirectory())
-            System.out.println("IT IS A DIRECTORY");
+            System.out.println(&quot;IT IS A DIRECTORY&quot;);
         else
-            System.out.println("NOT A DIRECTORY");
+            System.out.println(&quot;NOT A DIRECTORY&quot;);
 
         if (f1.isFile())
-            System.out.println("IT IS A FILE");
+            System.out.println(&quot;IT IS A FILE&quot;);
         else
-            System.out.println("NOT A FILE");
+            System.out.println(&quot;NOT A FILE&quot;);
 
-        System.out.println("File last modified : " + f1.lastModified());
-        System.out.println("LENGTH OF THE FILE : " + f1.length());
-        System.out.println("FILE DELETED : " + f1.delete());
+        System.out.println(&quot;File last modified : &quot; + f1.lastModified());
+        System.out.println(&quot;LENGTH OF THE FILE : &quot; + f1.length());
+        System.out.println(&quot;FILE DELETED : &quot; + f1.delete());
     }
-}
-
- Program 13 – Generic Class (Text Format).
-
-class GenericClass<T>
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 13 generic class">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 13</span>
+                <h2>Generic Class</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>class GenericClass&lt;T&gt;
 {
     T obj;
 
@@ -1155,31 +1328,38 @@ public class GenericDemo
 {
     public static void main(String[] args)
     {
-        GenericClass<Integer> iObj =
-                new GenericClass<Integer>(100);
+        GenericClass&lt;Integer&gt; iObj =
+                new GenericClass&lt;Integer&gt;(100);
 
-        System.out.println("Integer Value : " + iObj.getObject());
+        System.out.println(&quot;Integer Value : &quot; + iObj.getObject());
 
-        GenericClass<String> sObj =
-                new GenericClass<String>("Java Programming");
+        GenericClass&lt;String&gt; sObj =
+                new GenericClass&lt;String&gt;(&quot;Java Programming&quot;);
 
-        System.out.println("String Value : " + sObj.getObject());
+        System.out.println(&quot;String Value : &quot; + sObj.getObject());
 
-        GenericClass<Double> dObj =
-                new GenericClass<Double>(99.99);
+        GenericClass&lt;Double&gt; dObj =
+                new GenericClass&lt;Double&gt;(99.99);
 
-        System.out.println("Double Value : " + dObj.getObject());
+        System.out.println(&quot;Double Value : &quot; + dObj.getObject());
 
-        GenericClass<Character> cObj =
-                new GenericClass<Character>('A');
+        GenericClass&lt;Character&gt; cObj =
+                new GenericClass&lt;Character&gt;(&#x27;A&#x27;);
 
-        System.out.println("Character Value : " + cObj.getObject());
+        System.out.println(&quot;Character Value : &quot; + cObj.getObject());
     }
-}
-
-Program 14 – JavaFX Registration Form (Text Format).
-
-import javafx.application.Application;
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 14 javafx registration form">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 14</span>
+                <h2>JavaFX Registration Form</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -1191,43 +1371,43 @@ public class RegistrationForm extends Application
     @Override
     public void start(Stage primaryStage)
     {
-        primaryStage.setTitle("Registration Form");
+        primaryStage.setTitle(&quot;Registration Form&quot;);
 
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(20, 20, 20, 20));
         grid.setVgap(10);
         grid.setHgap(10);
 
-        Label nameLabel = new Label("Name:");
+        Label nameLabel = new Label(&quot;Name:&quot;);
         TextField nameField = new TextField();
 
-        Label emailLabel = new Label("Email:");
+        Label emailLabel = new Label(&quot;Email:&quot;);
         TextField emailField = new TextField();
 
-        Label passwordLabel = new Label("Password:");
+        Label passwordLabel = new Label(&quot;Password:&quot;);
         PasswordField passwordField = new PasswordField();
 
-        Label genderLabel = new Label("Gender:");
+        Label genderLabel = new Label(&quot;Gender:&quot;);
 
-        RadioButton male = new RadioButton("Male");
-        RadioButton female = new RadioButton("Female");
+        RadioButton male = new RadioButton(&quot;Male&quot;);
+        RadioButton female = new RadioButton(&quot;Female&quot;);
 
         ToggleGroup genderGroup = new ToggleGroup();
         male.setToggleGroup(genderGroup);
         female.setToggleGroup(genderGroup);
 
-        Label courseLabel = new Label("Course:");
+        Label courseLabel = new Label(&quot;Course:&quot;);
 
-        ComboBox<String> courseBox = new ComboBox<>();
+        ComboBox&lt;String&gt; courseBox = new ComboBox&lt;&gt;();
         courseBox.getItems().addAll(
-                "B.Sc",
-                "BCA",
-                "B.E",
-                "MCA",
-                "M.Sc"
+                &quot;B.Sc&quot;,
+                &quot;BCA&quot;,
+                &quot;B.E&quot;,
+                &quot;MCA&quot;,
+                &quot;M.Sc&quot;
         );
 
-        Button registerButton = new Button("Register");
+        Button registerButton = new Button(&quot;Register&quot;);
 
         grid.add(nameLabel, 0, 0);
         grid.add(nameField, 1, 0);
@@ -1247,22 +1427,20 @@ public class RegistrationForm extends Application
 
         grid.add(registerButton, 1, 5);
 
-        registerButton.setOnAction(e ->
+        registerButton.setOnAction(e -&gt;
         {
-            System.out.println("Registration Details");
-            System.out.println("Name : " + nameField.getText());
-            System.out.println("Email : " + emailField.getText());
-            System.out.println("Password : " + passwordField.getText());
+            System.out.println(&quot;Registration Details&quot;);
+            System.out.println(&quot;Name : &quot; + nameField.getText());
+            System.out.println(&quot;Email : &quot; + emailField.getText());
+            System.out.println(&quot;Password : &quot; + passwordField.getText());
 
             RadioButton selected =
                     (RadioButton) genderGroup.getSelectedToggle();
 
             if (selected != null)
-            {
-                System.out.println("Gender : " + selected.getText());
-            }
+                System.out.println(&quot;Gender : &quot; + selected.getText());
 
-            System.out.println("Course : " + courseBox.getValue());
+            System.out.println(&quot;Course : &quot; + courseBox.getValue());
         });
 
         Scene scene = new Scene(grid, 450, 300);
@@ -1274,35 +1452,47 @@ public class RegistrationForm extends Application
     {
         launch(args);
     }
-}
+}</code></pre>
+    </section>
+    
+    <section class="card" data-title="ex.no: 15 mini project - broadcast chat server">
+        <div class="card-head">
+            <div>
+                <span class="badge">EX.NO: 15</span>
+                <h2>Mini Project - Broadcast Chat Server</h2>
+            </div>
+            <button class="copy-btn" onclick="copyProgram(this)">📋 Copy Code</button>
+        </div>
+        <pre class="code"><code>/* ChatServer.java */
 
-Program 15 – Mini Project (Broadcast Chat Server) (Text Format).
-
-ChatServer.java
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
 public class ChatServer
 {
-    static Vector<ClientHandler> clients = new Vector<>();
+    static Vector&lt;ClientHandler&gt; clients = new Vector&lt;&gt;();
 
     public static void main(String[] args) throws IOException
     {
         ServerSocket serverSocket = new ServerSocket(5000);
 
-        System.out.println("Chat Server Started...");
+        System.out.println(&quot;Chat Server Started...&quot;);
 
         while (true)
         {
             Socket socket = serverSocket.accept();
 
-            System.out.println("New client connected : " + socket);
+            System.out.println(&quot;New client connected : &quot; + socket);
 
-            DataInputStream dis = new DataInputStream(socket.getInputStream());
-            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+            DataInputStream dis =
+                    new DataInputStream(socket.getInputStream());
 
-            ClientHandler client = new ClientHandler(socket, dis, dos);
+            DataOutputStream dos =
+                    new DataOutputStream(socket.getOutputStream());
+
+            ClientHandler client =
+                    new ClientHandler(socket, dis, dos);
 
             Thread t = new Thread(client);
 
@@ -1341,21 +1531,19 @@ class ClientHandler implements Runnable
             {
                 received = dis.readUTF();
 
-                if (received.equals("exit"))
+                if (received.equals(&quot;exit&quot;))
                 {
                     socket.close();
                     break;
                 }
 
-                System.out.println("Client : " + received);
+                System.out.println(&quot;Client : &quot; + received);
 
-                System.out.print("Server : ");
+                System.out.print(&quot;Server : &quot;);
                 String msg = sc.nextLine();
 
                 for (ClientHandler mc : ChatServer.clients)
-                {
                     mc.dos.writeUTF(msg);
-                }
             }
             catch (Exception e)
             {
@@ -1375,15 +1563,7 @@ class ClientHandler implements Runnable
 }
 
 
-
-
-ChatClient.java
-
-
-
-import java.io.*;
-import java.net.*;
-import java.util.*;
+/* ChatClient.java */
 
 public class ChatClient
 {
@@ -1391,26 +1571,27 @@ public class ChatClient
     {
         Scanner sc = new Scanner(System.in);
 
-        Socket socket = new Socket("localhost", 5000);
+        Socket socket = new Socket(&quot;localhost&quot;, 5000);
 
-        DataInputStream dis = new DataInputStream(socket.getInputStream());
-        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+        DataInputStream dis =
+                new DataInputStream(socket.getInputStream());
+
+        DataOutputStream dos =
+                new DataOutputStream(socket.getOutputStream());
 
         while (true)
         {
-            System.out.print("You : ");
+            System.out.print(&quot;You : &quot;);
             String msg = sc.nextLine();
 
             dos.writeUTF(msg);
 
-            if (msg.equals("exit"))
-            {
+            if (msg.equals(&quot;exit&quot;))
                 break;
-            }
 
             String reply = dis.readUTF();
 
-            System.out.println("Server : " + reply);
+            System.out.println(&quot;Server : &quot; + reply);
         }
 
         sc.close();
@@ -1418,1413 +1599,62 @@ public class ChatClient
         dos.close();
         socket.close();
     }
-}
-
-
-
-
-
-</textarea>
-<h1>Hello World Program</h1>
-
-<button onclick="copyCode()">📋 Copy Code</button>
-
-<pre id="code">
-Program 1 – Binary Search
-
-
-class BinarySearch
-{
-    static int binarySearch(int a[], int beg, int end, int val)
-    {
-        int mid;
-
-        if (end >= beg)
-        {
-            mid = (beg + end) / 2;
-
-            if (a[mid] == val)
-            {
-                return mid + 1;
-            }
-            else if (a[mid] < val)
-            {
-                return binarySearch(a, mid + 1, end, val);
-            }
-            else
-            {
-                return binarySearch(a, beg, mid - 1, val);
-            }
-        }
-
-        return -1;
-    }
-
-    public static void main(String args[])
-    {
-        int a[] = {8, 10, 22, 27, 37, 44, 49, 55, 69};
-        int val = 37;
-        int n = a.length;
-
-        int res = binarySearch(a, 0, n - 1, val);
-
-        System.out.print("The elements of the array are: ");
-        for (int i = 0; i < n; i++)
-        {
-            System.out.print(a[i] + " ");
-        }
-
-        System.out.println();
-        System.out.println("Element to be searched is: " + val);
-
-        if (res == -1)
-        {
-            System.out.println("Element is not present in the array");
-        }
-        else
-        {
-            System.out.println("Element is present at " + res + " position of array");
-        }
-    }
-}
-
-
-
-Program 2 – Linear Search
-
-
-class LinearSearch
-{
-    static int linearSearch(int a[], int n, int val)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            if (a[i] == val)
-                return i + 1;
-        }
-        return -1;
-    }
-
-    public static void main(String args[])
-    {
-        int a[] = {55, 29, 10, 40, 57, 41, 20, 24, 45};
-        int val = 10;
-        int n = a.length;
-
-        int res = linearSearch(a, n, val);
-
-        System.out.println();
-        System.out.print("The elements of the array are - ");
-
-        for (int i = 0; i < n; i++)
-            System.out.print(a[i] + " ");
-
-        System.out.println();
-        System.out.println("Element to be searched is - " + val);
-
-        if (res == -1)
-            System.out.println("Element is not present in the array");
-        else
-            System.out.println("Element is present at " + res + " position of array");
-    }
-}  
-
-
-
-public class Selection
-{
-    void selection(int a[])
-    {
-        int i, j, small;
-        int n = a.length;
-
-        for (i = 0; i < n - 1; i++)
-        {
-            small = i;
-
-            for (j = i + 1; j < n; j++)
-            {
-                if (a[j] < a[small])
-                    small = j;
-            }
-
-            int temp = a[small];
-            a[small] = a[i];
-            a[i] = temp;
-        }
-    }
-
-    void printArr(int a[])
-    {
-        int n = a.length;
-
-        for (int i = 0; i < n; i++)
-        {
-            System.out.print(a[i] + " ");
-        }
-    }
-
-    public static void main(String[] args)
-    {
-        int a[] = {91, 49, 4, 19, 10, 21};
-
-        Selection s = new Selection();
-
-        System.out.println("\nBefore sorting array elements are - ");
-        s.printArr(a);
-
-        s.selection(a);
-
-        System.out.println("\nAfter sorting array elements are - ");
-        s.printArr(a);
-
-        System.out.println();
-    }
-}
-
-
-
-Program 3 – Selection Sort
-
-
-public class Selection
-{
-    void selection(int a[])
-    {
-        int i, j, small;
-        int n = a.length;
-
-        for (i = 0; i < n - 1; i++)
-        {
-            small = i;
-
-            for (j = i + 1; j < n; j++)
-            {
-                if (a[j] < a[small])
-                    small = j;
-            }
-
-            int temp = a[small];
-            a[small] = a[i];
-            a[i] = temp;
-        }
-    }
-
-    void printArr(int a[])
-    {
-        int n = a.length;
-
-        for (int i = 0; i < n; i++)
-        {
-            System.out.print(a[i] + " ");
-        }
-    }
-
-    public static void main(String[] args)
-    {
-        int a[] = {91, 49, 4, 19, 10, 21};
-
-        Selection s = new Selection();
-
-        System.out.println("\nBefore sorting array elements are - ");
-        s.printArr(a);
-
-        s.selection(a);
-
-        System.out.println("\nAfter sorting array elements are - ");
-        s.printArr(a);
-
-        System.out.println();
-    }
-}
-
-
-Program 4 – Insertion Sort
-
-public class Insert
-{
-    void insert(int a[])
-    {
-        int i, j, temp;
-        int n = a.length;
-
-        for (i = 1; i < n; i++)
-        {
-            temp = a[i];
-            j = i - 1;
-
-            while (j >= 0 && temp <= a[j])
-            {
-                a[j + 1] = a[j];
-                j = j - 1;
-            }
-
-            a[j + 1] = temp;
-        }
-    }
-
-    void printArr(int a[])
-    {
-        int n = a.length;
-
-        for (int i = 0; i < n; i++)
-        {
-            System.out.print(a[i] + " ");
-        }
-    }
-
-    public static void main(String[] args)
-    {
-        int a[] = {92, 50, 5, 20, 11, 22};
-
-        Insert i1 = new Insert();
-
-        System.out.println("\nBefore sorting array elements are - ");
-        i1.printArr(a);
-
-        i1.insert(a);
-
-        System.out.println("\nAfter sorting array elements are - ");
-        i1.printArr(a);
-
-        System.out.println();
-    }
-}
-
-Program 5 – Stack Implementation
-
-class StackDemo
-{
-    public static void main(String[] args)
-    {
-        Stack<Integer> stack = new Stack<Integer>(5);
-
-        System.out.print("Elements pushed in the Stack: ");
-
-        for (int i = 0; i < 5; i++)
-        {
-            stack.push(i);
-            System.out.print(i + " ");
-        }
-
-        System.out.println("\nIs Stack full? \n" + stack.isFull());
-
-        System.out.print("Elements popped from the Stack: ");
-
-        for (int i = 0; i < 5; i++)
-        {
-            System.out.print(stack.pop() + " ");
-        }
-
-        System.out.println("\nIs Stack empty? \n" + stack.isEmpty());
-    }
-}
-
-
-Stack.java
-
-
-public class Stack<V>
-{
-    private int maxSize;
-    private int top;
-    private V array[];
-
-    @SuppressWarnings("unchecked")
-    public Stack(int max_size)
-    {
-        this.maxSize = max_size;
-        this.top = -1;
-        array = (V[]) new Object[max_size];
-    }
-
-    public int getMaxSize()
-    {
-        return maxSize;
-    }
-
-    public boolean isEmpty()
-    {
-        return top == -1;
-    }
-
-    public boolean isFull()
-    {
-        return top == maxSize - 1;
-    }
-
-    public V top()
-    {
-        if (isEmpty())
-            return null;
-
-        return array[top];
-    }
-
-    public void push(V value)
-    {
-        if (isFull())
-        {
-            System.err.println("Stack is Full!");
-            return;
-        }
-
-        array[++top] = value;
-    }
-
-    public V pop()
-    {
-        if (isEmpty())
-            return null;
-
-        return array[top--];
-    }
-}
-
-
-Program 6 – Queue Implementation
-
-
-
-
-class QueueDemo
-{
-    public static void main(String[] args)
-    {
-        Queue<Integer> queue = new Queue<Integer>(5);
-
-        queue.enqueue(2);
-        queue.enqueue(4);
-        queue.enqueue(6);
-        queue.enqueue(8);
-        queue.enqueue(10);
-
-        queue.dequeue();
-        queue.dequeue();
-
-        queue.enqueue(12);
-        queue.enqueue(14);
-
-        System.out.println("Queue:");
-
-        while (!queue.isEmpty())
-        {
-            System.out.print(queue.dequeue() + " ");
-        }
-    }
-}
-
-
-Queue.java
-
-public class Queue<V>
-{
-    private int maxSize;
-    private V[] array;
-    private int front;
-    private int back;
-    private int currentSize;
-
-    @SuppressWarnings("unchecked")
-    public Queue(int maxSize)
-    {
-        this.maxSize = maxSize;
-        array = (V[]) new Object[maxSize];
-        front = 0;
-        back = -1;
-        currentSize = 0;
-    }
-
-    public int getMaxSize()
-    {
-        return maxSize;
-    }
-
-    public int getCurrentSize()
-    {
-        return currentSize;
-    }
-
-    public boolean isEmpty()
-    {
-        return currentSize == 0;
-    }
-
-    public boolean isFull()
-    {
-        return currentSize == maxSize;
-    }
-
-    public V top()
-    {
-        return array[front];
-    }
-
-    public void enqueue(V value)
-    {
-        if (isFull())
-            return;
-
-        back = (back + 1) % maxSize;
-        array[back] = value;
-        currentSize++;
-    }
-
-    public V dequeue()
-    {
-        if (isEmpty())
-            return null;
-
-        V temp = array[front];
-        front = (front + 1) % maxSize;
-        currentSize--;
-
-        return temp;
-    }
-}
-
-
-
-Program 7 – Pay Slip using Inheritance
-
-
-
-import java.util.*;
-
-class employee
-{
-    int empid;
-    long mobile;
-    String name, address, mailid;
-
-    Scanner get = new Scanner(System.in);
-
-    void getdata()
-    {
-        System.out.println("Enter Name of the Employee");
-        name = get.nextLine();
-
-        System.out.println("Enter Mail id");
-        mailid = get.nextLine();
-
-        System.out.println("Enter Address of the Employee:");
-        address = get.nextLine();
-
-        System.out.println("Enter employee id");
-        empid = get.nextInt();
-
-        System.out.println("Enter Mobile Number");
-        mobile = get.nextLong();
-    }
-
-    void display()
-    {
-        System.out.println("Employee Name: " + name);
-        System.out.println("Employee id : " + empid);
-        System.out.println("Mail id : " + mailid);
-        System.out.println("Address: " + address);
-        System.out.println("Mobile Number: " + mobile);
-    }
-}
-
-class programmer extends employee
-{
-    double salary, bp, da, hra, pf, club, net, gross;
-
-    void getprogrammer()
-    {
-        System.out.println("Enter basic pay");
-        bp = get.nextDouble();
-    }
-
-    void calculateprog()
-    {
-        da = (0.97 * bp);
-        hra = (0.10 * bp);
-        pf = (0.12 * bp);
-        club = (0.1 * bp);
-
-        gross = (bp + da + hra);
-        net = (gross - pf - club);
-
-        System.out.println("************************************************");
-        System.out.println("PAY SLIP FOR PROGRAMMER");
-        System.out.println("************************************************");
-        System.out.println("Basic Pay: Rs " + bp);
-        System.out.println("DA: Rs " + da);
-        System.out.println("PF: Rs " + pf);
-        System.out.println("HRA: Rs " + hra);
-        System.out.println("CLUB: Rs " + club);
-        System.out.println("GROSS PAY: Rs " + gross);
-        System.out.println("NET PAY: Rs " + net);
-    }
-}
-
-
-Program 7 – Pay Slip using Inheritance (Part 7.2).
-
-class asstprofessor extends employee
-{
-    double salary, bp, da, hra, pf, club, net, gross;
-
-    void getasst()
-    {
-        System.out.println("Enter basic pay");
-        bp = get.nextDouble();
-    }
-
-    void calculateasst()
-    {
-        da = (0.97 * bp);
-        hra = (0.10 * bp);
-        pf = (0.12 * bp);
-        club = (0.1 * bp);
-
-        gross = (bp + da + hra);
-        net = (gross - pf - club);
-
-        System.out.println("************************************************");
-        System.out.println("PAY SLIP FOR ASSISTANT PROFESSOR");
-        System.out.println("************************************************");
-        System.out.println("Basic Pay: Rs " + bp);
-        System.out.println("DA: Rs " + da);
-        System.out.println("HRA: Rs " + hra);
-        System.out.println("PF: Rs " + pf);
-        System.out.println("CLUB: Rs " + club);
-        System.out.println("GROSS PAY: Rs " + gross);
-        System.out.println("NET PAY: Rs " + net);
-    }
-}
-
-class associateprofessor extends employee
-{
-    double salary, bp, da, hra, pf, club, net, gross;
-
-    void getassociate()
-    {
-        System.out.println("Enter basic pay");
-        bp = get.nextDouble();
-    }
-
-    void calculateassociate()
-    {
-        da = (0.97 * bp);
-        hra = (0.10 * bp);
-        pf = (0.12 * bp);
-        club = (0.1 * bp);
-
-        gross = (bp + da + hra);
-        net = (gross - pf - club);
-
-        System.out.println("************************************************");
-        System.out.println("PAY SLIP FOR ASSOCIATE PROFESSOR");
-        System.out.println("************************************************");
-        System.out.println("Basic Pay: Rs " + bp);
-        System.out.println("DA: Rs " + da);
-        System.out.println("HRA: Rs " + hra);
-        System.out.println("PF: Rs " + pf);
-        System.out.println("CLUB: Rs " + club);
-        System.out.println("GROSS PAY: Rs " + gross);
-        System.out.println("NET PAY: Rs " + net);
-    }
-}
-
-
-
-Program 7 – Pay Slip using Inheritance (Part 7.2).
-
-
-
-class asstprofessor extends employee
-{
-    double salary, bp, da, hra, pf, club, net, gross;
-
-    void getprofessor()
-    {
-        System.out.println("Enter basic pay");
-        bp = get.nextDouble();
-    }
-
-    void calculateprofessor()
-    {
-        da = (0.97 * bp);
-        hra = (0.10 * bp);
-        pf = (0.12 * bp);
-        club = (0.1 * bp);
-
-        gross = (bp + da + hra);
-        net = (gross - pf - club);
-
-        System.out.println("************************************************");
-        System.out.println("PAY SLIP FOR PROFESSOR");
-        System.out.println("************************************************");
-        System.out.println("Basic Pay: Rs " + bp);
-        System.out.println("DA: Rs " + da);
-        System.out.println("HRA: Rs " + hra);
-        System.out.println("PF: Rs " + pf);
-        System.out.println("CLUB: Rs " + club);
-        System.out.println("GROSS PAY: Rs " + gross);
-        System.out.println("NET PAY: Rs " + net);
-    }
-}
-
-Program 7 – Pay Slip using Inheritance (Part 7.3)
-
-
-
-class salary
-{
-    public static void main(String args[])
-    {
-        int choice, cont;
-        Scanner c = new Scanner(System.in);
-
-        do
-        {
-            System.out.println("PAYROLL");
-            System.out.println("1. PROGRAMMER");
-            System.out.println("2. ASSISTANT PROFESSOR");
-            System.out.println("3. ASSOCIATE PROFESSOR");
-            System.out.println("4. PROFESSOR");
-
-            choice = c.nextInt();
-
-            switch(choice)
-            {
-                case 1:
-                {
-                    programmer p = new programmer();
-                    p.getdata();
-                    p.getprogrammer();
-                    p.display();
-                    p.calculateprog();
-                    break;
-                }
-
-                case 2:
-                {
-                    asstprofessor asst = new asstprofessor();
-                    asst.getdata();
-                    asst.getasst();
-                    asst.display();
-                    asst.calculateasst();
-                    break;
-                }
-
-                case 3:
-                {
-                    associateprofessor asso = new associateprofessor();
-                    asso.getdata();
-                    asso.getassociate();
-                    asso.display();
-                    asso.calculateassociate();
-                    break;
-                }
-
-                case 4:
-                {
-                    professor prof = new professor();
-                    prof.getdata();
-                    prof.getprofessor();
-                    prof.display();
-                    prof.calculateprofessor();
-                    break;
-                }
-
-                default:
-                {
-                    System.out.println("Invalid Choice");
-                }
-            }
-
-            System.out.println("Do you want to continue?");
-            System.out.println("Press 1 to Continue and 0 to Exit");
-            cont = c.nextInt();
-
-        } while (cont == 1);
-    }
-}
-
-
-
-Program 8 – Area using Abstract Class
-
-
-
-import java.util.*;
-
-abstract class shape
-{
-    int a, b;
-
-    abstract public void printarea();
-}
-
-class rectangle extends shape
-{
-    public int area_rect;
-
-    public void printarea()
-    {
-        Scanner s = new Scanner(System.in);
-
-        System.out.println("Enter the length and breadth of rectangle");
-        a = s.nextInt();
-        b = s.nextInt();
-
-        area_rect = a * b;
-
-        System.out.println("Length of rectangle : " + a);
-        System.out.println("Breadth of rectangle : " + b);
-        System.out.println("The area of rectangle is : " + area_rect);
-    }
-}
-
-class triangle extends shape
-{
-    double area_tri;
-
-    public void printarea()
-    {
-        Scanner s = new Scanner(System.in);
-
-        System.out.println("Enter the base and height of triangle");
-        a = s.nextInt();
-        b = s.nextInt();
-
-        System.out.println("Base of triangle : " + a);
-        System.out.println("Height of triangle : " + b);
-
-        area_tri = (0.5 * a * b);
-
-        System.out.println("The area of triangle is : " + area_tri);
-    }
-}
-
-class circle extends shape
-{
-    double area_circle;
-
-    public void printarea()
-    {
-        Scanner s = new Scanner(System.in);
-
-        System.out.println("Enter the radius of circle");
-        a = s.nextInt();
-
-        area_circle = 3.14 * a * a;
-
-        System.out.println("Radius of circle : " + a);
-        System.out.println("The area of circle is : " + area_circle);
-    }
-}
-
-public class shapeclass
-{
-    public static void main(String[] args)
-    {
-        rectangle r = new rectangle();
-        r.printarea();
-
-        triangle t = new triangle();
-        t.printarea();
-
-        circle c = new circle();
-        c.printarea();
-    }
-}
-
-
-
-Program 9 – Area using Interface
-
-
-
-
-interface Shape
-{
-    void input();
-    void printarea();
-}
-
-class Circle implements Shape
-{
-    int r = 0;
-    double pi = 3.14, ar = 0;
-
-    @Override
-    public void input()
-    {
-        r = 5;
-    }
-
-    @Override
-    public void printarea()
-    {
-        ar = pi * r * r;
-        System.out.println("Area of circle: " + ar);
-    }
-}
-
-class Rectangle extends Circle
-{
-    int l = 0, b = 0;
-    double ar;
-
-    @Override
-    public void input()
-    {
-        super.input();
-        l = 6;
-        b = 4;
-    }
-
-    @Override
-    public void printarea()
-    {
-        super.printarea();
-        ar = l * b;
-        System.out.println("Area of rectangle: " + ar);
-    }
-}
-
-public class Demo
-{
-    public static void main(String[] args)
-    {
-        Rectangle obj = new Rectangle();
-        obj.input();
-        obj.printarea();
-    }
-}
-
-
-
-
-
-Program 10 – User Defined Exception Handling
-
-
-Program A – Negative Amount Exception
-
-
-import java.util.Scanner;
-
-class NegativeAmtException extends Exception
-{
-    String msg;
-
-    NegativeAmtException(String msg)
-    {
-        this.msg = msg;
-    }
-
-    public String toString()
-    {
-        return msg;
-    }
-}
-
-public class userdefined
-{
-    public static void main(String[] args)
-    {
-        Scanner s = new Scanner(System.in);
-
-        System.out.print("Enter Amount: ");
-        int a = s.nextInt();
-
-        try
-        {
-            if (a < 0)
-            {
-                throw new NegativeAmtException("Invalid Amount");
-            }
-
-            System.out.println("Amount Deposited");
-        }
-        catch (NegativeAmtException e)
-        {
-            System.out.println(e);
-        }
-    }
-}
-
-Program B – MyException
-
-class MyException extends Exception
-{
-    String str1;
-
-    MyException(String str2)
-    {
-        str1 = str2;
-    }
-
-    public String toString()
-    {
-        return ("MyException Occurred: " + str1);
-    }
-}
-
-class example
-{
-    public static void main(String args[])
-    {
-        try
-        {
-            System.out.println("Starting of try block");
-            throw new MyException("This is My error Message");
-        }
-        catch (MyException exp)
-        {
-            System.out.println("Catch Block");
-            System.out.println(exp);
-        }
-    }
-}
-
-
-
-
-
- Program 11 – Multithreaded Application (Text Format).
-
-import java.util.*;
-
-class even implements Runnable
-{
-    public int x;
-
-    public even(int x)
-    {
-        this.x = x;
-    }
-
-    public void run()
-    {
-        System.out.println("New Thread " + x + " is EVEN and Square of " + x + " is: " + x * x);
-    }
-}
-
-class odd implements Runnable
-{
-    public int x;
-
-    public odd(int x)
-    {
-        this.x = x;
-    }
-
-    public void run()
-    {
-        System.out.println("New Thread " + x + " is ODD and Cube of " + x + " is: " + x * x * x);
-    }
-}
-
-class A extends Thread
-{
-    public void run()
-    {
-        int num = 0;
-        Random r = new Random();
-
-        try
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                num = r.nextInt(100);
-
-                System.out.println("Main Thread and Generated Number is " + num);
-
-                if (num % 2 == 0)
-                {
-                    Thread t1 = new Thread(new even(num));
-                    t1.start();
-                }
-                else
-                {
-                    Thread t2 = new Thread(new odd(num));
-                    t2.start();
-                }
-
-                Thread.sleep(1000);
-                System.out.println("--------------------------------------");
-            }
-        }
-        catch (Exception ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-    }
-}
-
-public class multithreadprog
-{
-    public static void main(String[] args)
-    {
-        A a = new A();
-        a.start();
-    }
-}
-
-
-
-
-
- Program 12 – File Operations (File Information) (Text Format).
-
-import java.io.*;
-import java.util.*;
-
-class filedemo
-{
-    public static void main(String args[])
-    {
-        String filename;
-        Scanner s = new Scanner(System.in);
-
-        System.out.println("Enter the file name");
-        filename = s.nextLine();
-
-        File f1 = new File(filename);
-
-        System.out.println("*****************");
-        System.out.println("FILE INFORMATION");
-        System.out.println("*****************");
-
-        System.out.println("NAME OF THE FILE : " + f1.getName());
-        System.out.println("PATH OF THE FILE : " + f1.getPath());
-        System.out.println("PARENT : " + f1.getParent());
-
-        if (f1.exists())
-            System.out.println("THE FILE EXISTS");
-        else
-            System.out.println("THE FILE DOES NOT EXIST");
-
-        if (f1.canRead())
-            System.out.println("THE FILE CAN BE READ");
-        else
-            System.out.println("THE FILE CANNOT BE READ");
-
-        if (f1.canWrite())
-            System.out.println("WRITE OPERATION IS PERMITTED");
-        else
-            System.out.println("WRITE OPERATION IS NOT PERMITTED");
-
-        if (f1.isDirectory())
-            System.out.println("IT IS A DIRECTORY");
-        else
-            System.out.println("NOT A DIRECTORY");
-
-        if (f1.isFile())
-            System.out.println("IT IS A FILE");
-        else
-            System.out.println("NOT A FILE");
-
-        System.out.println("File last modified : " + f1.lastModified());
-        System.out.println("LENGTH OF THE FILE : " + f1.length());
-        System.out.println("FILE DELETED : " + f1.delete());
-    }
-}
-
- Program 13 – Generic Class (Text Format).
-
-class GenericClass<T>
-{
-    T obj;
-
-    GenericClass(T obj)
-    {
-        this.obj = obj;
-    }
-
-    public T getObject()
-    {
-        return this.obj;
-    }
-}
-
-public class GenericDemo
-{
-    public static void main(String[] args)
-    {
-        GenericClass<Integer> iObj =
-                new GenericClass<Integer>(100);
-
-        System.out.println("Integer Value : " + iObj.getObject());
-
-        GenericClass<String> sObj =
-                new GenericClass<String>("Java Programming");
-
-        System.out.println("String Value : " + sObj.getObject());
-
-        GenericClass<Double> dObj =
-                new GenericClass<Double>(99.99);
-
-        System.out.println("Double Value : " + dObj.getObject());
-
-        GenericClass<Character> cObj =
-                new GenericClass<Character>('A');
-
-        System.out.println("Character Value : " + cObj.getObject());
-    }
-}
-
-Program 14 – JavaFX Registration Form (Text Format).
-
-import javafx.application.Application;
-import javafx.geometry.Insets;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-
-public class RegistrationForm extends Application
-{
-    @Override
-    public void start(Stage primaryStage)
-    {
-        primaryStage.setTitle("Registration Form");
-
-        GridPane grid = new GridPane();
-        grid.setPadding(new Insets(20, 20, 20, 20));
-        grid.setVgap(10);
-        grid.setHgap(10);
-
-        Label nameLabel = new Label("Name:");
-        TextField nameField = new TextField();
-
-        Label emailLabel = new Label("Email:");
-        TextField emailField = new TextField();
-
-        Label passwordLabel = new Label("Password:");
-        PasswordField passwordField = new PasswordField();
-
-        Label genderLabel = new Label("Gender:");
-
-        RadioButton male = new RadioButton("Male");
-        RadioButton female = new RadioButton("Female");
-
-        ToggleGroup genderGroup = new ToggleGroup();
-        male.setToggleGroup(genderGroup);
-        female.setToggleGroup(genderGroup);
-
-        Label courseLabel = new Label("Course:");
-
-        ComboBox<String> courseBox = new ComboBox<>();
-        courseBox.getItems().addAll(
-                "B.Sc",
-                "BCA",
-                "B.E",
-                "MCA",
-                "M.Sc"
-        );
-
-        Button registerButton = new Button("Register");
-
-        grid.add(nameLabel, 0, 0);
-        grid.add(nameField, 1, 0);
-
-        grid.add(emailLabel, 0, 1);
-        grid.add(emailField, 1, 1);
-
-        grid.add(passwordLabel, 0, 2);
-        grid.add(passwordField, 1, 2);
-
-        grid.add(genderLabel, 0, 3);
-        grid.add(male, 1, 3);
-        grid.add(female, 2, 3);
-
-        grid.add(courseLabel, 0, 4);
-        grid.add(courseBox, 1, 4);
-
-        grid.add(registerButton, 1, 5);
-
-        registerButton.setOnAction(e ->
-        {
-            System.out.println("Registration Details");
-            System.out.println("Name : " + nameField.getText());
-            System.out.println("Email : " + emailField.getText());
-            System.out.println("Password : " + passwordField.getText());
-
-            RadioButton selected =
-                    (RadioButton) genderGroup.getSelectedToggle();
-
-            if (selected != null)
-            {
-                System.out.println("Gender : " + selected.getText());
-            }
-
-            System.out.println("Course : " + courseBox.getValue());
-        });
-
-        Scene scene = new Scene(grid, 450, 300);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void main(String[] args)
-    {
-        launch(args);
-    }
-}
-
-Program 15 – Mini Project (Broadcast Chat Server) (Text Format).
-
-ChatServer.java
-import java.io.*;
-import java.net.*;
-import java.util.*;
-
-public class ChatServer
-{
-    static Vector<ClientHandler> clients = new Vector<>();
-
-    public static void main(String[] args) throws IOException
-    {
-        ServerSocket serverSocket = new ServerSocket(5000);
-
-        System.out.println("Chat Server Started...");
-
-        while (true)
-        {
-            Socket socket = serverSocket.accept();
-
-            System.out.println("New client connected : " + socket);
-
-            DataInputStream dis = new DataInputStream(socket.getInputStream());
-            DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-
-            ClientHandler client = new ClientHandler(socket, dis, dos);
-
-            Thread t = new Thread(client);
-
-            clients.add(client);
-
-            t.start();
-        }
-    }
-}
-
-class ClientHandler implements Runnable
-{
-    Scanner sc = new Scanner(System.in);
-
-    private Socket socket;
-    private DataInputStream dis;
-    private DataOutputStream dos;
-
-    public ClientHandler(Socket socket,
-                         DataInputStream dis,
-                         DataOutputStream dos)
-    {
-        this.socket = socket;
-        this.dis = dis;
-        this.dos = dos;
-    }
-
-    @Override
-    public void run()
-    {
-        String received;
-
-        while (true)
-        {
-            try
-            {
-                received = dis.readUTF();
-
-                if (received.equals("exit"))
-                {
-                    socket.close();
-                    break;
-                }
-
-                System.out.println("Client : " + received);
-
-                System.out.print("Server : ");
-                String msg = sc.nextLine();
-
-                for (ClientHandler mc : ChatServer.clients)
-                {
-                    mc.dos.writeUTF(msg);
-                }
-            }
-            catch (Exception e)
-            {
-                break;
-            }
-        }
-
-        try
-        {
-            dis.close();
-            dos.close();
-        }
-        catch (Exception e)
-        {
-        }
-    }
-}
-
-
-
-
-ChatClient.java
-
-
-
-import java.io.*;
-import java.net.*;
-import java.util.*;
-
-public class ChatClient
-{
-    public static void main(String[] args) throws Exception
-    {
-        Scanner sc = new Scanner(System.in);
-
-        Socket socket = new Socket("localhost", 5000);
-
-        DataInputStream dis = new DataInputStream(socket.getInputStream());
-        DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-
-        while (true)
-        {
-            System.out.print("You : ");
-            String msg = sc.nextLine();
-
-            dos.writeUTF(msg);
-
-            if (msg.equals("exit"))
-            {
-                break;
-            }
-
-            String reply = dis.readUTF();
-
-            System.out.println("Server : " + reply);
-        }
-
-        sc.close();
-        dis.close();
-        dos.close();
-        socket.close();
-    }
-}
-
-
-
-
-
-</pre>
+}</code></pre>
+    </section>
+    
+    </div>
+
+    <div id="empty" class="empty">
+        <h2>No program found</h2>
+        <p>Try another search keyword.</p>
+    </div>
+</main>
+
+<footer class="footer">
+    Java Programs Collection
+</footer>
 
 <script>
-function copyCode(){
-    let text=document.getElementById("code").innerText;
-    navigator.clipboard.writeText(text);
-    alert("Code Copied!");
+function copyProgram(button) {
+    const card = button.closest(".card");
+    const code = card.querySelector(".code code").innerText;
+
+    navigator.clipboard.writeText(code).then(() => {
+        const oldText = button.innerText;
+        button.innerText = "✅ Copied!";
+        button.classList.add("copied");
+
+        setTimeout(() => {
+            button.innerText = oldText;
+            button.classList.remove("copied");
+        }, 1500);
+    }).catch(() => {
+        alert("Copy failed. Please copy the code manually.");
+    });
+}
+
+function searchPrograms() {
+    const query = document.getElementById("search").value.toLowerCase().trim();
+    const cards = document.querySelectorAll(".card");
+    let visible = 0;
+
+    cards.forEach(card => {
+        const title = card.dataset.title;
+        const code = card.querySelector(".code").innerText.toLowerCase();
+
+        if (title.includes(query) || code.includes(query)) {
+            card.style.display = "";
+            visible++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    document.getElementById("count").innerText =
+        visible + (visible === 1 ? " program loaded" : " programs loaded");
+
+    document.getElementById("empty").style.display =
+        visible === 0 ? "block" : "none";
 }
 </script>
 
