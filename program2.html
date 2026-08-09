@@ -1,48 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>C Program</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Structures Programs</title>
 <style>
-body{
-    background:#111827;
-    color:white;
-    font-family:Arial;
-    padding:30px;
+:root {
+  --bg:#0f172a; --panel:#1e293b; --text:#f8fafc; --muted:#94a3b8;
+  --accent:#60a5fa; --border:#334155; --success:#22c55e;
 }
-
-pre{
-    background:#1f2937;
-    padding:20px;
-    border-radius:10px;
-    overflow:auto;
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0; background:linear-gradient(180deg,#0f172a 0%,#111827 100%);
+  color:var(--text); font-family:Arial,Helvetica,sans-serif;
 }
-
-button{
-    padding:10px 20px;
-    background:#3b82f6;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    margin-bottom:15px;
+.header {
+  padding:34px 20px 28px; text-align:center; position:sticky; top:0; z-index:10;
+  background:rgba(15,23,42,.96); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.header h1 { margin:0 0 8px; font-size:clamp(26px,4vw,40px); }
+.header p { margin:0 0 20px; color:var(--muted); }
+.search {
+  width:min(940px,94vw); padding:15px 18px; border:0; outline:0;
+  border-radius:12px; font-size:17px; background:#fff; color:#111827;
+}
+.container { width:min(1200px,94vw); margin:28px auto 60px; }
+.summary {
+  display:flex; justify-content:space-between; align-items:center; gap:12px;
+  margin-bottom:18px; color:var(--muted); flex-wrap:wrap;
+}
+.program-card {
+  background:rgba(30,41,59,.96); border:1px solid var(--border);
+  border-radius:16px; margin:18px 0; overflow:hidden;
+  box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+.card-head {
+  padding:18px 20px; display:flex; justify-content:space-between; align-items:center;
+  gap:15px; border-bottom:1px solid var(--border);
+}
+.badge {
+  display:inline-block; padding:5px 9px; border-radius:999px;
+  background:#172554; color:#bfdbfe; font-size:12px; font-weight:700;
+}
+h2 { margin:8px 0 0; font-size:20px; }
+.copy-btn,.top-btn {
+  border:0; border-radius:9px; padding:10px 14px; cursor:pointer; font-weight:700;
+}
+.copy-btn { background:var(--accent); color:#0b1220; white-space:nowrap; }
+.copy-btn.copied { background:var(--success); color:#052e16; }
+.top-btn { background:#334155; color:#e2e8f0; }
+pre {
+  margin:0; padding:20px; background:#0b1220; color:#e2e8f0;
+  overflow:auto; max-height:650px; line-height:1.5;
+  font:14px/1.55 Consolas,"Courier New",monospace; tab-size:4;
+}
+.card-foot {
+  padding:10px 20px; display:flex; justify-content:space-between; align-items:center;
+  color:var(--muted); font-size:13px;
+}
+.empty {
+  display:none; text-align:center; padding:50px 20px; color:var(--muted);
+  background:var(--panel); border-radius:14px;
+}
+@media(max-width:650px) {
+  .card-head { align-items:flex-start; flex-direction:column; }
+  .copy-btn { width:100%; }
+  pre { font-size:12px; }
 }
 </style>
-
 </head>
-
 <body>
-<h2>Singly Linked List Program</h2>
+<header class="header">
+  <h1>📚 DATA STRUCTURES PROGRAMS</h1>
+  <p>All Data Structures C programs • Search • Copy Code</p>
+  <input id="search" class="search" type="search"
+         placeholder="Search programs... (e.g. Stack, Queue, AVL, Dijkstra)">
+</header>
 
-<textarea>
-cat > /home/claude/Data_Structures_All_Programs.c << 'ENDOFFILE'
-/* ==================================================
-   EX.NO: 1(a)
-   ARRAY IMPLEMENTATION OF STACK ADT
+<main class="container">
+  <div class="summary">
+    <span id="count">22 programs loaded</span>
+    <span>Click <b>Copy Code</b> to copy any program.</span>
+  </div>
+  <div id="programs">
+    
+    <article class="program-card" data-search="ex.no: 1(a) array implementation of stack adt /* ==================================================
+   ex.no: 1(a)
+   array implementation of stack adt
    ================================================== */
-#include <stdio.h>
-#include <conio.h>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
 #define max 5
 static int stack[max];
 int top = -1;
@@ -57,16 +106,16 @@ return (stack[top--]);
 void view()
 {
 int i;
-if (top < 0)
-printf("\n Stack Empty \n");
+if (top &lt; 0)
+printf(&quot;\n stack empty \n&quot;);
 else
 {
-printf("\n Top-->");
-for(i=top; i>=0; i--)
+printf(&quot;\n top--&gt;&quot;);
+for(i=top; i&gt;=0; i--)
 {
-printf("%4d", stack[i]);
+printf(&quot;%4d&quot;, stack[i]);
 }
-printf("\n");
+printf(&quot;\n&quot;);
 }
 }
 main()
@@ -75,32 +124,32 @@ int ch=0, val;
 clrscr();
 while(ch != 4)
 {
-printf("\n STACK OPERATION \n");
-printf("1.PUSH ");
-printf("2.POP ");
-printf("3.VIEW ");
-printf("4.QUIT \n");
-printf("Enter Choice : ");
-scanf("%d", &ch);
+printf(&quot;\n stack operation \n&quot;);
+printf(&quot;1.push &quot;);
+printf(&quot;2.pop &quot;);
+printf(&quot;3.view &quot;);
+printf(&quot;4.quit \n&quot;);
+printf(&quot;enter choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
 switch(ch)
 {
 case 1:
-if(top < max-1)
+if(top &lt; max-1)
 {
-printf("\nEnter Stack element : ");
-scanf("%d", &val);
+printf(&quot;\nenter stack element : &quot;);
+scanf(&quot;%d&quot;, &amp;val);
 push(val);
 }
 else
-printf("\n Stack Overflow \n");
+printf(&quot;\n stack overflow \n&quot;);
 break;
 case 2:
-if(top < 0)
-printf("\n Stack Underflow \n");
+if(top &lt; 0)
+printf(&quot;\n stack underflow \n&quot;);
 else
 {
 val = pop();
-printf("\n Popped element is %d\n", val);
+printf(&quot;\n popped element is %d\n&quot;, val);
 }
 break;
 case 3:
@@ -109,18 +158,105 @@ break;
 case 4:
 exit(0);
 default:
-printf("\n Invalid Choice \n");
+printf(&quot;\n invalid choice \n&quot;);
 }
 }
-}
-
-
-/* ==================================================
-   EX.NO: 1(b)
-   ARRAY IMPLEMENTATION OF QUEUE ADT
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 1(a)</span>
+          <h2>Array Implementation Of Stack Adt</h2>
+        </div>
+        <button class="copy-btn" data-index="1">📋 Copy Code</button>
+      </div>
+      <pre id="code-1"><code>/* ==================================================
+   EX.NO: 1(a)
+   ARRAY IMPLEMENTATION OF STACK ADT
    ================================================== */
-#include <stdio.h>
-#include <conio.h>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#define max 5
+static int stack[max];
+int top = -1;
+void push(int x)
+{
+stack[++top] = x;
+}
+int pop()
+{
+return (stack[top--]);
+}
+void view()
+{
+int i;
+if (top &lt; 0)
+printf(&quot;\n Stack Empty \n&quot;);
+else
+{
+printf(&quot;\n Top--&gt;&quot;);
+for(i=top; i&gt;=0; i--)
+{
+printf(&quot;%4d&quot;, stack[i]);
+}
+printf(&quot;\n&quot;);
+}
+}
+main()
+{
+int ch=0, val;
+clrscr();
+while(ch != 4)
+{
+printf(&quot;\n STACK OPERATION \n&quot;);
+printf(&quot;1.PUSH &quot;);
+printf(&quot;2.POP &quot;);
+printf(&quot;3.VIEW &quot;);
+printf(&quot;4.QUIT \n&quot;);
+printf(&quot;Enter Choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
+switch(ch)
+{
+case 1:
+if(top &lt; max-1)
+{
+printf(&quot;\nEnter Stack element : &quot;);
+scanf(&quot;%d&quot;, &amp;val);
+push(val);
+}
+else
+printf(&quot;\n Stack Overflow \n&quot;);
+break;
+case 2:
+if(top &lt; 0)
+printf(&quot;\n Stack Underflow \n&quot;);
+else
+{
+val = pop();
+printf(&quot;\n Popped element is %d\n&quot;, val);
+}
+break;
+case 3:
+view();
+break;
+case 4:
+exit(0);
+default:
+printf(&quot;\n Invalid Choice \n&quot;);
+}
+}
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 1 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 1(b) array implementation of queue adt /* ==================================================
+   ex.no: 1(b)
+   array implementation of queue adt
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
 #define max 5
 static int queue[max];
 int front = -1;
@@ -135,7 +271,7 @@ int remove()
 {
 int val;
 val = queue[front];
-if (front==rear && rear==max-1)
+if (front==rear &amp;&amp; rear==max-1)
 front = rear = -1;
 else
 front ++;
@@ -145,13 +281,13 @@ void view()
 {
 int i;
 if (front == -1)
-printf("\n Queue Empty \n");
+printf(&quot;\n queue empty \n&quot;);
 else
 {
-printf("\n Front-->");
-for(i=front; i<=rear; i++)
-printf("%4d", queue[i]);
-printf(" <--Rear\n");
+printf(&quot;\n front--&gt;&quot;);
+for(i=front; i&lt;=rear; i++)
+printf(&quot;%4d&quot;, queue[i]);
+printf(&quot; &lt;--rear\n&quot;);
 }
 }
 main()
@@ -160,32 +296,32 @@ int ch= 0,val;
 clrscr();
 while(ch != 4)
 {
-printf("\n QUEUE OPERATION \n");
-printf("1.INSERT ");
-printf("2.DELETE ");
-printf("3.VIEW ");
-printf("4.QUIT\n");
-printf("Enter Choice : ");
-scanf("%d", &ch);
+printf(&quot;\n queue operation \n&quot;);
+printf(&quot;1.insert &quot;);
+printf(&quot;2.delete &quot;);
+printf(&quot;3.view &quot;);
+printf(&quot;4.quit\n&quot;);
+printf(&quot;enter choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
 switch(ch)
 {
 case 1:
-if(rear < max-1)
+if(rear &lt; max-1)
 {
-printf("\n Enter element to be inserted : ");
-scanf("%d", &val);
+printf(&quot;\n enter element to be inserted : &quot;);
+scanf(&quot;%d&quot;, &amp;val);
 insert(val);
 }
 else
-printf("\n Queue Full \n");
+printf(&quot;\n queue full \n&quot;);
 break;
 case 2:
 if(front == -1)
-printf("\n Queue Empty \n");
+printf(&quot;\n queue empty \n&quot;);
 else
 {
 val = remove();
-printf("\n Element deleted : %d \n", val);
+printf(&quot;\n element deleted : %d \n&quot;, val);
 }
 break;
 case 3:
@@ -194,31 +330,212 @@ break;
 case 4:
 exit(0);
 default:
-printf("\n Invalid Choice \n");
+printf(&quot;\n invalid choice \n&quot;);
 }
 }
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 1(b)</span>
+          <h2>Array Implementation Of Queue Adt</h2>
+        </div>
+        <button class="copy-btn" data-index="2">📋 Copy Code</button>
+      </div>
+      <pre id="code-2"><code>/* ==================================================
+   EX.NO: 1(b)
+   ARRAY IMPLEMENTATION OF QUEUE ADT
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#define max 5
+static int queue[max];
+int front = -1;
+int rear = -1;
+void insert(int x)
+{
+queue[++rear] = x;
+if (front == -1)
+front = 0;
 }
-
-
-/* ==================================================
+int remove()
+{
+int val;
+val = queue[front];
+if (front==rear &amp;&amp; rear==max-1)
+front = rear = -1;
+else
+front ++;
+return (val);
+}
+void view()
+{
+int i;
+if (front == -1)
+printf(&quot;\n Queue Empty \n&quot;);
+else
+{
+printf(&quot;\n Front--&gt;&quot;);
+for(i=front; i&lt;=rear; i++)
+printf(&quot;%4d&quot;, queue[i]);
+printf(&quot; &lt;--Rear\n&quot;);
+}
+}
+main()
+{
+int ch= 0,val;
+clrscr();
+while(ch != 4)
+{
+printf(&quot;\n QUEUE OPERATION \n&quot;);
+printf(&quot;1.INSERT &quot;);
+printf(&quot;2.DELETE &quot;);
+printf(&quot;3.VIEW &quot;);
+printf(&quot;4.QUIT\n&quot;);
+printf(&quot;Enter Choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
+switch(ch)
+{
+case 1:
+if(rear &lt; max-1)
+{
+printf(&quot;\n Enter element to be inserted : &quot;);
+scanf(&quot;%d&quot;, &amp;val);
+insert(val);
+}
+else
+printf(&quot;\n Queue Full \n&quot;);
+break;
+case 2:
+if(front == -1)
+printf(&quot;\n Queue Empty \n&quot;);
+else
+{
+val = remove();
+printf(&quot;\n Element deleted : %d \n&quot;, val);
+}
+break;
+case 3:
+view();
+break;
+case 4:
+exit(0);
+default:
+printf(&quot;\n Invalid Choice \n&quot;);
+}
+}
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 2 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 1(c) array implementation of circular queue /* ==================================================
+   ex.no: 1(c)
+   array implementation of circular queue
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
+#define max_size 5
+int a[max_size];
+int front = -1;
+int rear = -1;
+void enqueue(int x)
+{
+if (front == -1 &amp;&amp; rear == -1)
+{
+front = rear = 0;
+}
+else if ((rear + 1) % max_size == front)
+{
+printf(&quot;queue is full\n&quot;);
+return;
+}
+else
+rear = (rear + 1) % max_size;
+a[rear] = x;
+}
+void dequeue()
+{
+if (front == -1 &amp;&amp; rear == -1)
+{
+printf(&quot;queue is empty \n&quot;);
+return;
+}
+else if (front == rear)
+{
+front = rear = -1;
+}
+else
+front = (front + 1) % max_size;
+}
+int peek()
+{
+if (a[front] == -1)
+return -1;
+return a[front];
+}
+void print()
+{
+int count = ((rear + max_size - front) % max_size)+1;
+int i;
+for (i = 0; i &lt; count; i++)
+{
+printf(&quot;%d &quot;, a[(front+i)%max_size]);
+}
+printf(&quot;\n&quot;);
+}
+int main(void)
+{
+enqueue(5);
+printf(&quot;\nfirst insertion in circular queue\n&quot;);
+print();
+printf(&quot;\n second insertion in circular queue\n&quot;);
+enqueue(7);
+print();
+printf(&quot;\n third insertion in circular queue\n&quot;);
+enqueue(-3);
+print();
+printf(&quot;\n fourth insertion in circular queue\n&quot;);
+enqueue(9);
+print();
+printf(&quot;\n circular queue after first deletion\n&quot;);
+dequeue();
+print();
+printf(&quot;\n circular queue after 2nd deletion\n&quot;);
+dequeue();
+print();
+printf(&quot;\n insertion in circular queue\n&quot;);
+enqueue(14);
+system(&quot;pause&quot;);
+return 0;
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 1(C)</span>
+          <h2>Array Implementation Of Circular Queue</h2>
+        </div>
+        <button class="copy-btn" data-index="3">📋 Copy Code</button>
+      </div>
+      <pre id="code-3"><code>/* ==================================================
    EX.NO: 1(C)
    ARRAY IMPLEMENTATION OF CIRCULAR QUEUE
    ================================================== */
-#include <stdio.h>
-#include <Windows.h>
+#include &lt;stdio.h&gt;
+#include &lt;Windows.h&gt;
 #define MAX_SIZE 5
 int a[MAX_SIZE];
 int front = -1;
 int rear = -1;
 void enqueue(int x)
 {
-if (front == -1 && rear == -1)
+if (front == -1 &amp;&amp; rear == -1)
 {
 front = rear = 0;
 }
 else if ((rear + 1) % MAX_SIZE == front)
 {
-printf("queue is full\n");
+printf(&quot;queue is full\n&quot;);
 return;
 }
 else
@@ -227,9 +544,9 @@ a[rear] = x;
 }
 void dequeue()
 {
-if (front == -1 && rear == -1)
+if (front == -1 &amp;&amp; rear == -1)
 {
-printf("queue is empty \n");
+printf(&quot;queue is empty \n&quot;);
 return;
 }
 else if (front == rear)
@@ -249,48 +566,165 @@ void Print()
 {
 int count = ((rear + MAX_SIZE - front) % MAX_SIZE)+1;
 int i;
-for (i = 0; i < count; i++)
+for (i = 0; i &lt; count; i++)
 {
-printf("%d ", a[(front+i)%MAX_SIZE]);
+printf(&quot;%d &quot;, a[(front+i)%MAX_SIZE]);
 }
-printf("\n");
+printf(&quot;\n&quot;);
 }
 int main(void)
 {
 enqueue(5);
-printf("\nFirst insertion in circular Queue\n");
+printf(&quot;\nFirst insertion in circular Queue\n&quot;);
 Print();
-printf("\n Second insertion in circular Queue\n");
+printf(&quot;\n Second insertion in circular Queue\n&quot;);
 enqueue(7);
 Print();
-printf("\n Third insertion in circular Queue\n");
+printf(&quot;\n Third insertion in circular Queue\n&quot;);
 enqueue(-3);
 Print();
-printf("\n Fourth insertion in circular Queue\n");
+printf(&quot;\n Fourth insertion in circular Queue\n&quot;);
 enqueue(9);
 Print();
-printf("\n Circular Queue after first deletion\n");
+printf(&quot;\n Circular Queue after first deletion\n&quot;);
 dequeue();
 Print();
-printf("\n Circular Queue after 2nd deletion\n");
+printf(&quot;\n Circular Queue after 2nd deletion\n&quot;);
 dequeue();
 Print();
-printf("\n Insertion in circular Queue\n");
+printf(&quot;\n Insertion in circular Queue\n&quot;);
 enqueue(14);
-system("pause");
+system(&quot;pause&quot;);
 return 0;
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 3 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 2 implementation of singly linked list /* ==================================================
+   ex.no: 2
+   implementation of singly linked list
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;process.h&gt;
+#include &lt;alloc.h&gt;
+#include &lt;string.h&gt;
+struct node
+{
+int label;
+struct node *next;
+};
+main()
+{
+int ch, fell=0;
+int k;
+struct node *h, *temp, *head, *h1;
+/* head node construction */
+head = (struct node*) malloc(sizeof(struct node));
+head-&gt;label = -1;
+head-&gt;next = null;
+while(-1)
+{
+clrscr();
+printf(&quot;\n\n singly linked list operations \n&quot;);
+printf(&quot;1-&gt;add &quot;);
+printf(&quot;2-&gt;delete &quot;);
+printf(&quot;3-&gt;view &quot;);
+printf(&quot;4-&gt;exit \n&quot;);
+printf(&quot;enter your choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
+switch(ch)
+{
+/* add a node at any intermediate location */
+case 1:
+printf(&quot;\n enter label after which to add : &quot;);
+scanf(&quot;%d&quot;, &amp;k);
+h = head;
+fell = 0;
+if (h-&gt;label == k)
+fell = 1;
+while(h-&gt;next != null)
+{
+if (h-&gt;label == k)
+{
+fell=1;
+break;
 }
-
-
-/* ==================================================
+h = h-&gt;next;
+}
+if (h-&gt;label == k)
+fell = 1;
+if (fell != 1)
+printf(&quot;node not found\n&quot;);
+else
+{
+temp=(struct node *)(malloc(sizeof(struct node)));
+printf(&quot;enter label for new node : &quot;);
+scanf(&quot;%d&quot;, &amp;temp-&gt;label);
+temp-&gt;next = h-&gt;next;
+h-&gt;next = temp;
+}
+break;
+/* delete any intermediate node */
+case 2:
+printf(&quot;enter label of node to be deleted\n&quot;);
+scanf(&quot;%d&quot;, &amp;k);
+fell = 0;
+h = h1 = head;
+while (h-&gt;next != null)
+{
+h = h-&gt;next;
+if (h-&gt;label == k)
+{
+fell = 1;
+break;
+}
+}
+if (fell == 0)
+printf(&quot;sorry node not found\n&quot;);
+else
+{
+while (h1-&gt;next != h)
+h1 = h1-&gt;next;
+h1-&gt;next = h-&gt;next;
+free(h);
+printf(&quot;node deleted successfully \n&quot;);
+}
+break;
+case 3:
+printf(&quot;\n\n head -&gt; &quot;);
+h=head;
+while (h-&gt;next != null)
+{
+h = h-&gt;next;
+printf(&quot;%d -&gt; &quot;,h-&gt;label);
+}
+printf(&quot;null&quot;);
+break;
+case 4:
+exit(0);
+}
+}
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 2</span>
+          <h2>Implementation Of Singly Linked List</h2>
+        </div>
+        <button class="copy-btn" data-index="4">📋 Copy Code</button>
+      </div>
+      <pre id="code-4"><code>/* ==================================================
    EX.NO: 2
    IMPLEMENTATION OF SINGLY LINKED LIST
    ================================================== */
-#include <stdio.h>
-#include <conio.h>
-#include <process.h>
-#include <alloc.h>
-#include <string.h>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;process.h&gt;
+#include &lt;alloc.h&gt;
+#include &lt;string.h&gt;
 struct node
 {
 int label;
@@ -303,101 +737,176 @@ int k;
 struct node *h, *temp, *head, *h1;
 /* Head node construction */
 head = (struct node*) malloc(sizeof(struct node));
-head->label = -1;
-head->next = NULL;
+head-&gt;label = -1;
+head-&gt;next = NULL;
 while(-1)
 {
 clrscr();
-printf("\n\n SINGLY LINKED LIST OPERATIONS \n");
-printf("1->Add ");
-printf("2->Delete ");
-printf("3->View ");
-printf("4->Exit \n");
-printf("Enter your choice : ");
-scanf("%d", &ch);
+printf(&quot;\n\n SINGLY LINKED LIST OPERATIONS \n&quot;);
+printf(&quot;1-&gt;Add &quot;);
+printf(&quot;2-&gt;Delete &quot;);
+printf(&quot;3-&gt;View &quot;);
+printf(&quot;4-&gt;Exit \n&quot;);
+printf(&quot;Enter your choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
 switch(ch)
 {
 /* Add a node at any intermediate location */
 case 1:
-printf("\n Enter label after which to add : ");
-scanf("%d", &k);
+printf(&quot;\n Enter label after which to add : &quot;);
+scanf(&quot;%d&quot;, &amp;k);
 h = head;
 fell = 0;
-if (h->label == k)
+if (h-&gt;label == k)
 fell = 1;
-while(h->next != NULL)
+while(h-&gt;next != NULL)
 {
-if (h->label == k)
+if (h-&gt;label == k)
 {
 fell=1;
 break;
 }
-h = h->next;
+h = h-&gt;next;
 }
-if (h->label == k)
+if (h-&gt;label == k)
 fell = 1;
 if (fell != 1)
-printf("Node not found\n");
+printf(&quot;Node not found\n&quot;);
 else
 {
 temp=(struct node *)(malloc(sizeof(struct node)));
-printf("Enter label for new node : ");
-scanf("%d", &temp->label);
-temp->next = h->next;
-h->next = temp;
+printf(&quot;Enter label for new node : &quot;);
+scanf(&quot;%d&quot;, &amp;temp-&gt;label);
+temp-&gt;next = h-&gt;next;
+h-&gt;next = temp;
 }
 break;
 /* Delete any intermediate node */
 case 2:
-printf("Enter label of node to be deleted\n");
-scanf("%d", &k);
+printf(&quot;Enter label of node to be deleted\n&quot;);
+scanf(&quot;%d&quot;, &amp;k);
 fell = 0;
 h = h1 = head;
-while (h->next != NULL)
+while (h-&gt;next != NULL)
 {
-h = h->next;
-if (h->label == k)
+h = h-&gt;next;
+if (h-&gt;label == k)
 {
 fell = 1;
 break;
 }
 }
 if (fell == 0)
-printf("Sorry Node not found\n");
+printf(&quot;Sorry Node not found\n&quot;);
 else
 {
-while (h1->next != h)
-h1 = h1->next;
-h1->next = h->next;
+while (h1-&gt;next != h)
+h1 = h1-&gt;next;
+h1-&gt;next = h-&gt;next;
 free(h);
-printf("Node deleted successfully \n");
+printf(&quot;Node deleted successfully \n&quot;);
 }
 break;
 case 3:
-printf("\n\n HEAD -> ");
+printf(&quot;\n\n HEAD -&gt; &quot;);
 h=head;
-while (h->next != NULL)
+while (h-&gt;next != NULL)
 {
-h = h->next;
-printf("%d -> ",h->label);
+h = h-&gt;next;
+printf(&quot;%d -&gt; &quot;,h-&gt;label);
 }
-printf("NULL");
+printf(&quot;NULL&quot;);
 break;
 case 4:
 exit(0);
 }
 }
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 4 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 3(a) linked list implementation of stack adt /* ==================================================
+   ex.no: 3(a)
+   linked list implementation of stack adt
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;process.h&gt;
+#include &lt;alloc.h&gt;
+struct node
+{
+int label;
+struct node *next;
+};
+main()
+{
+int ch = 0;
+int k;
+struct node *h, *temp, *head;
+/* head node construction */
+head = (struct node*) malloc(sizeof(struct node));
+head-&gt;next = null;
+while(1)
+{
+printf(&quot;\n stack using linked list \n&quot;);
+printf(&quot;1-&gt;push &quot;);
+printf(&quot;2-&gt;pop &quot;);
+printf(&quot;3-&gt;view &quot;);
+printf(&quot;4-&gt;exit \n&quot;);
+printf(&quot;enter your choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
+switch(ch)
+{
+case 1:
+/* create a new node */
+temp=(struct node *)(malloc(sizeof(struct node)));
+printf(&quot;enter label for new node : &quot;);
+scanf(&quot;%d&quot;, &amp;temp-&gt;label);
+h = head;
+temp-&gt;next = h-&gt;next;
+h-&gt;next = temp;
+break;
+case 2:
+/* delink the first node */
+h = head-&gt;next;
+head-&gt;next = h-&gt;next;
+printf(&quot;node %s deleted\n&quot;, h-&gt;label);
+free(h);
+break;
+case 3:
+printf(&quot;\n head -&gt; &quot;);
+h = head;
+/* loop till last node */
+while(h-&gt;next != null)
+{
+h = h-&gt;next;
+printf(&quot;%d -&gt; &quot;,h-&gt;label);
 }
-
-
-/* ==================================================
+printf(&quot;null \n&quot;);
+break;
+case 4:
+exit(0);
+}
+}
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 3(a)</span>
+          <h2>Linked List Implementation Of Stack Adt</h2>
+        </div>
+        <button class="copy-btn" data-index="5">📋 Copy Code</button>
+      </div>
+      <pre id="code-5"><code>/* ==================================================
    EX.NO: 3(a)
    LINKED LIST IMPLEMENTATION OF STACK ADT
    ================================================== */
-#include <stdio.h>
-#include <conio.h>
-#include <process.h>
-#include <alloc.h>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;process.h&gt;
+#include &lt;alloc.h&gt;
 struct node
 {
 int label;
@@ -410,59 +919,63 @@ int k;
 struct node *h, *temp, *head;
 /* Head node construction */
 head = (struct node*) malloc(sizeof(struct node));
-head->next = NULL;
+head-&gt;next = NULL;
 while(1)
 {
-printf("\n Stack using Linked List \n");
-printf("1->Push ");
-printf("2->Pop ");
-printf("3->View ");
-printf("4->Exit \n");
-printf("Enter your choice : ");
-scanf("%d", &ch);
+printf(&quot;\n Stack using Linked List \n&quot;);
+printf(&quot;1-&gt;Push &quot;);
+printf(&quot;2-&gt;Pop &quot;);
+printf(&quot;3-&gt;View &quot;);
+printf(&quot;4-&gt;Exit \n&quot;);
+printf(&quot;Enter your choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
 switch(ch)
 {
 case 1:
 /* Create a new node */
 temp=(struct node *)(malloc(sizeof(struct node)));
-printf("Enter label for new node : ");
-scanf("%d", &temp->label);
+printf(&quot;Enter label for new node : &quot;);
+scanf(&quot;%d&quot;, &amp;temp-&gt;label);
 h = head;
-temp->next = h->next;
-h->next = temp;
+temp-&gt;next = h-&gt;next;
+h-&gt;next = temp;
 break;
 case 2:
 /* Delink the first node */
-h = head->next;
-head->next = h->next;
-printf("Node %s deleted\n", h->label);
+h = head-&gt;next;
+head-&gt;next = h-&gt;next;
+printf(&quot;Node %s deleted\n&quot;, h-&gt;label);
 free(h);
 break;
 case 3:
-printf("\n HEAD -> ");
+printf(&quot;\n HEAD -&gt; &quot;);
 h = head;
 /* Loop till last node */
-while(h->next != NULL)
+while(h-&gt;next != NULL)
 {
-h = h->next;
-printf("%d -> ",h->label);
+h = h-&gt;next;
+printf(&quot;%d -&gt; &quot;,h-&gt;label);
 }
-printf("NULL \n");
+printf(&quot;NULL \n&quot;);
 break;
 case 4:
 exit(0);
 }
 }
-}
-
-
-/* ==================================================
-   EX.NO: 3(b)
-   LINKED LIST IMPLEMENTATION OF QUEUE ADT
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 5 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 3(b) linked list implementation of queue adt /* ==================================================
+   ex.no: 3(b)
+   linked list implementation of queue adt
    ================================================== */
-#include <conio.h>
-#include <process.h>
-#include <alloc.h>
+#include &lt;conio.h&gt;
+#include &lt;process.h&gt;
+#include &lt;alloc.h&gt;
 struct node
 {
 int label;
@@ -474,136 +987,208 @@ int ch=0;
 int k;
 struct node *h, *temp, *head;
 head = (struct node*) malloc(sizeof(struct node));
-head->next = NULL;
+head-&gt;next = null;
 while(1)
 {
-printf("\n Queue using Linked List \n");
-printf("1->Insert ");
-printf("2->Delete ");
-printf("3->View ");
-printf("4->Exit \n");
-printf("Enter your choice : ");
-scanf("%d", &ch);
+printf(&quot;\n queue using linked list \n&quot;);
+printf(&quot;1-&gt;insert &quot;);
+printf(&quot;2-&gt;delete &quot;);
+printf(&quot;3-&gt;view &quot;);
+printf(&quot;4-&gt;exit \n&quot;);
+printf(&quot;enter your choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
 switch(ch)
 {
 case 1:
 temp=(struct node *)(malloc(sizeof(struct node)));
-printf("Enter label for new node : ");
-scanf("%d", &temp->label);
+printf(&quot;enter label for new node : &quot;);
+scanf(&quot;%d&quot;, &amp;temp-&gt;label);
 h = head;
-while (h->next != NULL)
-h = h->next;
-h->next = temp;
-temp->next = NULL;
+while (h-&gt;next != null)
+h = h-&gt;next;
+h-&gt;next = temp;
+temp-&gt;next = null;
 break;
 case 2:
-h = head->next;
-head->next = h->next;
-printf("Node deleted \n");
+h = head-&gt;next;
+head-&gt;next = h-&gt;next;
+printf(&quot;node deleted \n&quot;);
 free(h);
 break;
 case 3:
-printf("\n\nHEAD -> ");
+printf(&quot;\n\nhead -&gt; &quot;);
 h=head;
-while (h->next!=NULL)
+while (h-&gt;next!=null)
 {
-h = h->next;
-printf("%d -> ",h->label);
+h = h-&gt;next;
+printf(&quot;%d -&gt; &quot;,h-&gt;label);
 }
-printf("NULL \n");
+printf(&quot;null \n&quot;);
 break;
 case 4:
 exit(0);
 }
 }
-}
-
-
-/* ==================================================
-   EX.NO: 4(a)
-   POLYNOMIAL ADDITION
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 3(b)</span>
+          <h2>Linked List Implementation Of Queue Adt</h2>
+        </div>
+        <button class="copy-btn" data-index="6">📋 Copy Code</button>
+      </div>
+      <pre id="code-6"><code>/* ==================================================
+   EX.NO: 3(b)
+   LINKED LIST IMPLEMENTATION OF QUEUE ADT
    ================================================== */
-#include <stdio.h>
-#include <malloc.h>
-#include <conio.h>
+#include &lt;conio.h&gt;
+#include &lt;process.h&gt;
+#include &lt;alloc.h&gt;
+struct node
+{
+int label;
+struct node *next;
+};
+main()
+{
+int ch=0;
+int k;
+struct node *h, *temp, *head;
+head = (struct node*) malloc(sizeof(struct node));
+head-&gt;next = NULL;
+while(1)
+{
+printf(&quot;\n Queue using Linked List \n&quot;);
+printf(&quot;1-&gt;Insert &quot;);
+printf(&quot;2-&gt;Delete &quot;);
+printf(&quot;3-&gt;View &quot;);
+printf(&quot;4-&gt;Exit \n&quot;);
+printf(&quot;Enter your choice : &quot;);
+scanf(&quot;%d&quot;, &amp;ch);
+switch(ch)
+{
+case 1:
+temp=(struct node *)(malloc(sizeof(struct node)));
+printf(&quot;Enter label for new node : &quot;);
+scanf(&quot;%d&quot;, &amp;temp-&gt;label);
+h = head;
+while (h-&gt;next != NULL)
+h = h-&gt;next;
+h-&gt;next = temp;
+temp-&gt;next = NULL;
+break;
+case 2:
+h = head-&gt;next;
+head-&gt;next = h-&gt;next;
+printf(&quot;Node deleted \n&quot;);
+free(h);
+break;
+case 3:
+printf(&quot;\n\nHEAD -&gt; &quot;);
+h=head;
+while (h-&gt;next!=NULL)
+{
+h = h-&gt;next;
+printf(&quot;%d -&gt; &quot;,h-&gt;label);
+}
+printf(&quot;NULL \n&quot;);
+break;
+case 4:
+exit(0);
+}
+}
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 6 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 4(a) polynomial addition /* ==================================================
+   ex.no: 4(a)
+   polynomial addition
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;malloc.h&gt;
+#include &lt;conio.h&gt;
 struct link
 {
 int coeff;
 int pow;
 struct link *next;
 };
-struct link *poly1=NULL,*poly2=NULL,*poly=NULL;
+struct link *poly1=null,*poly2=null,*poly=null;
 void create(struct link *node)
 {
 char ch;
 do
 {
-printf("\nEnter coefficient: ");
-scanf("%d", &node->coeff);
-printf("Enter exponent: ");
-scanf("%d", &node->pow);
-node->next = (struct link*)malloc(sizeof(struct link));
-node = node->next;
-node->next = NULL;
-printf("\n continue(y/n): ");
+printf(&quot;\nenter coefficient: &quot;);
+scanf(&quot;%d&quot;, &amp;node-&gt;coeff);
+printf(&quot;enter exponent: &quot;);
+scanf(&quot;%d&quot;, &amp;node-&gt;pow);
+node-&gt;next = (struct link*)malloc(sizeof(struct link));
+node = node-&gt;next;
+node-&gt;next = null;
+printf(&quot;\n continue(y/n): &quot;);
 fflush(stdin);
 ch=getch();
-} while(ch=='y' || ch=='Y');
+} while(ch==&#x27;y&#x27; || ch==&#x27;y&#x27;);
 }
 void show(struct link *node)
 {
-while(node->next!=NULL)
+while(node-&gt;next!=null)
 {
-printf("%dx^%d", node->coeff, node->pow);
-node=node->next;
-if(node->next!=NULL)
-printf(" + ");
+printf(&quot;%dx^%d&quot;, node-&gt;coeff, node-&gt;pow);
+node=node-&gt;next;
+if(node-&gt;next!=null)
+printf(&quot; + &quot;);
 }
 }
 void polyadd(struct link *poly1, struct link *poly2, struct link *poly)
 {
-while(poly1->next && poly2->next)
+while(poly1-&gt;next &amp;&amp; poly2-&gt;next)
 {
-if(poly1->pow > poly2->pow)
+if(poly1-&gt;pow &gt; poly2-&gt;pow)
 {
-poly->pow = poly1->pow;
-poly->coeff = poly1->coeff;
-poly1 = poly1->next;
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff;
+poly1 = poly1-&gt;next;
 }
-else if(poly1->pow < poly2->pow)
+else if(poly1-&gt;pow &lt; poly2-&gt;pow)
 {
-poly->pow = poly2->pow;
-poly->coeff = poly2->coeff;
-poly2 = poly2->next;
+poly-&gt;pow = poly2-&gt;pow;
+poly-&gt;coeff = poly2-&gt;coeff;
+poly2 = poly2-&gt;next;
 }
 else
 {
-poly->pow = poly1->pow;
-poly->coeff = poly1->coeff + poly2->coeff;
-poly1 = poly1->next;
-poly2 = poly2->next;
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff + poly2-&gt;coeff;
+poly1 = poly1-&gt;next;
+poly2 = poly2-&gt;next;
 }
-poly->next=(struct link *)malloc(sizeof(struct link));
-poly=poly->next;
-poly->next=NULL;
+poly-&gt;next=(struct link *)malloc(sizeof(struct link));
+poly=poly-&gt;next;
+poly-&gt;next=null;
 }
-while(poly1->next || poly2->next)
+while(poly1-&gt;next || poly2-&gt;next)
 {
-if(poly1->next)
+if(poly1-&gt;next)
 {
-poly->pow = poly1->pow;
-poly->coeff = poly1->coeff;
-poly1 = poly1->next;
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff;
+poly1 = poly1-&gt;next;
 }
-if(poly2->next)
+if(poly2-&gt;next)
 {
-poly->pow = poly2->pow;
-poly->coeff = poly2->coeff;
-poly2 = poly2->next;
+poly-&gt;pow = poly2-&gt;pow;
+poly-&gt;coeff = poly2-&gt;coeff;
+poly2 = poly2-&gt;next;
 }
-poly->next = (struct link *)malloc(sizeof(struct link));
-poly = poly->next;
-poly->next = NULL;
+poly-&gt;next = (struct link *)malloc(sizeof(struct link));
+poly = poly-&gt;next;
+poly-&gt;next = null;
 }
 }
 main()
@@ -611,27 +1196,32 @@ main()
 poly1 = (struct link *)malloc(sizeof(struct link));
 poly2 = (struct link *)malloc(sizeof(struct link));
 poly = (struct link *)malloc(sizeof(struct link));
-printf("Enter 1st Polynomial:");
+printf(&quot;enter 1st polynomial:&quot;);
 create(poly1);
-printf("\nEnter 2nd Polynomial:");
+printf(&quot;\nenter 2nd polynomial:&quot;);
 create(poly2);
-printf("\nPoly1: ");
+printf(&quot;\npoly1: &quot;);
 show(poly1);
-printf("\nPoly2: ");
+printf(&quot;\npoly2: &quot;);
 show(poly2);
 polyadd(poly1, poly2, poly);
-printf("\nAdded Polynomial: ");
+printf(&quot;\nadded polynomial: &quot;);
 show(poly);
-}
-
-
-/* ==================================================
-   EX.NO: 4(b)
-   POLYNOMIAL SUBTRACTION
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 4(a)</span>
+          <h2>Polynomial Addition</h2>
+        </div>
+        <button class="copy-btn" data-index="7">📋 Copy Code</button>
+      </div>
+      <pre id="code-7"><code>/* ==================================================
+   EX.NO: 4(a)
+   POLYNOMIAL ADDITION
    ================================================== */
-#include <stdio.h>
-#include <malloc.h>
-#include <conio.h>
+#include &lt;stdio.h&gt;
+#include &lt;malloc.h&gt;
+#include &lt;conio.h&gt;
 struct link
 {
 int coeff;
@@ -644,72 +1234,72 @@ void create(struct link *node)
 char ch;
 do
 {
-printf("\nEnter coefficient: ");
-scanf("%d", &node->coeff);
-printf("Enter exponent: ");
-scanf("%d", &node->pow);
-node->next = (struct link*)malloc(sizeof(struct link));
-node = node->next;
-node->next = NULL;
-printf("\n continue(y/n): ");
+printf(&quot;\nEnter coefficient: &quot;);
+scanf(&quot;%d&quot;, &amp;node-&gt;coeff);
+printf(&quot;Enter exponent: &quot;);
+scanf(&quot;%d&quot;, &amp;node-&gt;pow);
+node-&gt;next = (struct link*)malloc(sizeof(struct link));
+node = node-&gt;next;
+node-&gt;next = NULL;
+printf(&quot;\n continue(y/n): &quot;);
 fflush(stdin);
 ch=getch();
-} while(ch=='y' || ch=='Y');
+} while(ch==&#x27;y&#x27; || ch==&#x27;Y&#x27;);
 }
 void show(struct link *node)
 {
-while(node->next!=NULL)
+while(node-&gt;next!=NULL)
 {
-printf("%dx^%d", node->coeff, node->pow);
-node=node->next;
-if(node->next!=NULL)
-printf(" + ");
+printf(&quot;%dx^%d&quot;, node-&gt;coeff, node-&gt;pow);
+node=node-&gt;next;
+if(node-&gt;next!=NULL)
+printf(&quot; + &quot;);
 }
 }
-void polysub(struct link *poly1, struct link *poly2, struct link *poly)
+void polyadd(struct link *poly1, struct link *poly2, struct link *poly)
 {
-while(poly1->next && poly2->next)
+while(poly1-&gt;next &amp;&amp; poly2-&gt;next)
 {
-if(poly1->pow > poly2->pow)
+if(poly1-&gt;pow &gt; poly2-&gt;pow)
 {
-poly->pow = poly1->pow;
-poly->coeff = poly1->coeff;
-poly1 = poly1->next;
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff;
+poly1 = poly1-&gt;next;
 }
-else if(poly1->pow < poly2->pow)
+else if(poly1-&gt;pow &lt; poly2-&gt;pow)
 {
-poly->pow = poly2->pow;
-poly->coeff = poly2->coeff;
-poly2 = poly2->next;
+poly-&gt;pow = poly2-&gt;pow;
+poly-&gt;coeff = poly2-&gt;coeff;
+poly2 = poly2-&gt;next;
 }
 else
 {
-poly->pow = poly1->pow;
-poly->coeff = poly1->coeff - poly2->coeff;
-poly1 = poly1->next;
-poly2 = poly2->next;
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff + poly2-&gt;coeff;
+poly1 = poly1-&gt;next;
+poly2 = poly2-&gt;next;
 }
-poly->next=(struct link *)malloc(sizeof(struct link));
-poly=poly->next;
-poly->next=NULL;
+poly-&gt;next=(struct link *)malloc(sizeof(struct link));
+poly=poly-&gt;next;
+poly-&gt;next=NULL;
 }
-while(poly1->next || poly2->next)
+while(poly1-&gt;next || poly2-&gt;next)
 {
-if(poly1->next)
+if(poly1-&gt;next)
 {
-poly->pow = poly1->pow;
-poly->coeff = poly1->coeff;
-poly1 = poly1->next;
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff;
+poly1 = poly1-&gt;next;
 }
-if(poly2->next)
+if(poly2-&gt;next)
 {
-poly->pow = poly2->pow;
-poly->coeff = poly2->coeff;
-poly2 = poly2->next;
+poly-&gt;pow = poly2-&gt;pow;
+poly-&gt;coeff = poly2-&gt;coeff;
+poly2 = poly2-&gt;next;
 }
-poly->next = (struct link *)malloc(sizeof(struct link));
-poly = poly->next;
-poly->next = NULL;
+poly-&gt;next = (struct link *)malloc(sizeof(struct link));
+poly = poly-&gt;next;
+poly-&gt;next = NULL;
 }
 }
 main()
@@ -717,51 +1307,276 @@ main()
 poly1 = (struct link *)malloc(sizeof(struct link));
 poly2 = (struct link *)malloc(sizeof(struct link));
 poly = (struct link *)malloc(sizeof(struct link));
-printf("Enter 1st Polynomial:");
+printf(&quot;Enter 1st Polynomial:&quot;);
 create(poly1);
-printf("\nEnter 2nd Polynomial:");
+printf(&quot;\nEnter 2nd Polynomial:&quot;);
 create(poly2);
-printf("\nPoly1: ");
+printf(&quot;\nPoly1: &quot;);
 show(poly1);
-printf("\nPoly2: ");
+printf(&quot;\nPoly2: &quot;);
+show(poly2);
+polyadd(poly1, poly2, poly);
+printf(&quot;\nAdded Polynomial: &quot;);
+show(poly);
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 7 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 4(b) polynomial subtraction /* ==================================================
+   ex.no: 4(b)
+   polynomial subtraction
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;malloc.h&gt;
+#include &lt;conio.h&gt;
+struct link
+{
+int coeff;
+int pow;
+struct link *next;
+};
+struct link *poly1=null,*poly2=null,*poly=null;
+void create(struct link *node)
+{
+char ch;
+do
+{
+printf(&quot;\nenter coefficient: &quot;);
+scanf(&quot;%d&quot;, &amp;node-&gt;coeff);
+printf(&quot;enter exponent: &quot;);
+scanf(&quot;%d&quot;, &amp;node-&gt;pow);
+node-&gt;next = (struct link*)malloc(sizeof(struct link));
+node = node-&gt;next;
+node-&gt;next = null;
+printf(&quot;\n continue(y/n): &quot;);
+fflush(stdin);
+ch=getch();
+} while(ch==&#x27;y&#x27; || ch==&#x27;y&#x27;);
+}
+void show(struct link *node)
+{
+while(node-&gt;next!=null)
+{
+printf(&quot;%dx^%d&quot;, node-&gt;coeff, node-&gt;pow);
+node=node-&gt;next;
+if(node-&gt;next!=null)
+printf(&quot; + &quot;);
+}
+}
+void polysub(struct link *poly1, struct link *poly2, struct link *poly)
+{
+while(poly1-&gt;next &amp;&amp; poly2-&gt;next)
+{
+if(poly1-&gt;pow &gt; poly2-&gt;pow)
+{
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff;
+poly1 = poly1-&gt;next;
+}
+else if(poly1-&gt;pow &lt; poly2-&gt;pow)
+{
+poly-&gt;pow = poly2-&gt;pow;
+poly-&gt;coeff = poly2-&gt;coeff;
+poly2 = poly2-&gt;next;
+}
+else
+{
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff - poly2-&gt;coeff;
+poly1 = poly1-&gt;next;
+poly2 = poly2-&gt;next;
+}
+poly-&gt;next=(struct link *)malloc(sizeof(struct link));
+poly=poly-&gt;next;
+poly-&gt;next=null;
+}
+while(poly1-&gt;next || poly2-&gt;next)
+{
+if(poly1-&gt;next)
+{
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff;
+poly1 = poly1-&gt;next;
+}
+if(poly2-&gt;next)
+{
+poly-&gt;pow = poly2-&gt;pow;
+poly-&gt;coeff = poly2-&gt;coeff;
+poly2 = poly2-&gt;next;
+}
+poly-&gt;next = (struct link *)malloc(sizeof(struct link));
+poly = poly-&gt;next;
+poly-&gt;next = null;
+}
+}
+main()
+{
+poly1 = (struct link *)malloc(sizeof(struct link));
+poly2 = (struct link *)malloc(sizeof(struct link));
+poly = (struct link *)malloc(sizeof(struct link));
+printf(&quot;enter 1st polynomial:&quot;);
+create(poly1);
+printf(&quot;\nenter 2nd polynomial:&quot;);
+create(poly2);
+printf(&quot;\npoly1: &quot;);
+show(poly1);
+printf(&quot;\npoly2: &quot;);
 show(poly2);
 polysub(poly1, poly2, poly);
-printf("\nSubtracted Polynomial: ");
+printf(&quot;\nsubtracted polynomial: &quot;);
 show(poly);
-}
-
-
-/* ==================================================
-   EX.NO: 5(a)
-   INFIX TO POSTFIX CONVERSION
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 4(b)</span>
+          <h2>Polynomial Subtraction</h2>
+        </div>
+        <button class="copy-btn" data-index="8">📋 Copy Code</button>
+      </div>
+      <pre id="code-8"><code>/* ==================================================
+   EX.NO: 4(b)
+   POLYNOMIAL SUBTRACTION
    ================================================== */
-#include <stdio.h>
-#include <conio.h>
-#include <string.h>
-#define MAX 20
+#include &lt;stdio.h&gt;
+#include &lt;malloc.h&gt;
+#include &lt;conio.h&gt;
+struct link
+{
+int coeff;
+int pow;
+struct link *next;
+};
+struct link *poly1=NULL,*poly2=NULL,*poly=NULL;
+void create(struct link *node)
+{
+char ch;
+do
+{
+printf(&quot;\nEnter coefficient: &quot;);
+scanf(&quot;%d&quot;, &amp;node-&gt;coeff);
+printf(&quot;Enter exponent: &quot;);
+scanf(&quot;%d&quot;, &amp;node-&gt;pow);
+node-&gt;next = (struct link*)malloc(sizeof(struct link));
+node = node-&gt;next;
+node-&gt;next = NULL;
+printf(&quot;\n continue(y/n): &quot;);
+fflush(stdin);
+ch=getch();
+} while(ch==&#x27;y&#x27; || ch==&#x27;Y&#x27;);
+}
+void show(struct link *node)
+{
+while(node-&gt;next!=NULL)
+{
+printf(&quot;%dx^%d&quot;, node-&gt;coeff, node-&gt;pow);
+node=node-&gt;next;
+if(node-&gt;next!=NULL)
+printf(&quot; + &quot;);
+}
+}
+void polysub(struct link *poly1, struct link *poly2, struct link *poly)
+{
+while(poly1-&gt;next &amp;&amp; poly2-&gt;next)
+{
+if(poly1-&gt;pow &gt; poly2-&gt;pow)
+{
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff;
+poly1 = poly1-&gt;next;
+}
+else if(poly1-&gt;pow &lt; poly2-&gt;pow)
+{
+poly-&gt;pow = poly2-&gt;pow;
+poly-&gt;coeff = poly2-&gt;coeff;
+poly2 = poly2-&gt;next;
+}
+else
+{
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff - poly2-&gt;coeff;
+poly1 = poly1-&gt;next;
+poly2 = poly2-&gt;next;
+}
+poly-&gt;next=(struct link *)malloc(sizeof(struct link));
+poly=poly-&gt;next;
+poly-&gt;next=NULL;
+}
+while(poly1-&gt;next || poly2-&gt;next)
+{
+if(poly1-&gt;next)
+{
+poly-&gt;pow = poly1-&gt;pow;
+poly-&gt;coeff = poly1-&gt;coeff;
+poly1 = poly1-&gt;next;
+}
+if(poly2-&gt;next)
+{
+poly-&gt;pow = poly2-&gt;pow;
+poly-&gt;coeff = poly2-&gt;coeff;
+poly2 = poly2-&gt;next;
+}
+poly-&gt;next = (struct link *)malloc(sizeof(struct link));
+poly = poly-&gt;next;
+poly-&gt;next = NULL;
+}
+}
+main()
+{
+poly1 = (struct link *)malloc(sizeof(struct link));
+poly2 = (struct link *)malloc(sizeof(struct link));
+poly = (struct link *)malloc(sizeof(struct link));
+printf(&quot;Enter 1st Polynomial:&quot;);
+create(poly1);
+printf(&quot;\nEnter 2nd Polynomial:&quot;);
+create(poly2);
+printf(&quot;\nPoly1: &quot;);
+show(poly1);
+printf(&quot;\nPoly2: &quot;);
+show(poly2);
+polysub(poly1, poly2, poly);
+printf(&quot;\nSubtracted Polynomial: &quot;);
+show(poly);
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 8 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 5(a) infix to postfix conversion /* ==================================================
+   ex.no: 5(a)
+   infix to postfix conversion
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;string.h&gt;
+#define max 20
 int top = -1;
-char stack[MAX];
+char stack[max];
 char pop();
 void push(char item);
 int prcd(char symbol)
 {
 switch(symbol)
 {
-case '+':
-case '-':
+case &#x27;+&#x27;:
+case &#x27;-&#x27;:
 return 2;
 break;
-case '*':
-case '/':
+case &#x27;*&#x27;:
+case &#x27;/&#x27;:
 return 4;
 break;
-case '^':
-case '$':
+case &#x27;^&#x27;:
+case &#x27;$&#x27;:
 return 6;
 break;
-case '(':
-case ')':
-case '#':
+case &#x27;(&#x27;:
+case &#x27;)&#x27;:
+case &#x27;#&#x27;:
 return 1;
 break;
 }
@@ -770,14 +1585,14 @@ int isoperator(char symbol)
 {
 switch(symbol)
 {
-case '+':
-case '-':
-case '*':
-case '/':
-case '^':
-case '$':
-case '(':
-case ')':
+case &#x27;+&#x27;:
+case &#x27;-&#x27;:
+case &#x27;*&#x27;:
+case &#x27;/&#x27;:
+case &#x27;^&#x27;:
+case &#x27;$&#x27;:
+case &#x27;(&#x27;:
+case &#x27;)&#x27;:
 return 1;
 break;
 default:
@@ -787,8 +1602,8 @@ return 0;
 void convertip(char infix[],char postfix[])
 {
 int i,symbol,j = 0;
-stack[++top] = '#';
-for(i=0;i<strlen(infix);i++)
+stack[++top] = &#x27;#&#x27;;
+for(i=0;i&lt;strlen(infix);i++)
 {
 symbol = infix[i];
 if(isoperator(symbol) == 0)
@@ -798,11 +1613,11 @@ j++;
 }
 else
 {
-if(symbol == '(')
+if(symbol == &#x27;(&#x27;)
 push(symbol);
-else if(symbol == ')')
+else if(symbol == &#x27;)&#x27;)
 {
-while(stack[top] != '(')
+while(stack[top] != &#x27;(&#x27;)
 {
 postfix[j] = pop();
 j++;
@@ -811,11 +1626,11 @@ pop(); //pop out (.
 }
 else
 {
-if(prcd(symbol) > prcd(stack[top]))
+if(prcd(symbol) &gt; prcd(stack[top]))
 push(symbol);
 else
 {
-while(prcd(symbol) <= prcd(stack[top]))
+while(prcd(symbol) &lt;= prcd(stack[top]))
 {
 postfix[j] = pop();
 j++;
@@ -825,21 +1640,21 @@ push(symbol);
 }
 }
 }
-while(stack[top] != '#')
+while(stack[top] != &#x27;#&#x27;)
 {
 postfix[j] = pop();
 j++;
 }
-postfix[j] = '\0';
+postfix[j] = &#x27;\0&#x27;;
 }
 main()
 {
 char infix[20],postfix[20];
 clrscr();
-printf("Enter the valid infix string: ");
+printf(&quot;enter the valid infix string: &quot;);
 gets(infix);
 convertip(infix, postfix);
-printf("The corresponding postfix string is: ");
+printf(&quot;the corresponding postfix string is: &quot;);
 puts(postfix);
 getch();
 }
@@ -854,15 +1669,150 @@ char a;
 a = stack[top];
 top--;
 return a;
-}
-
-
-/* ==================================================
-   EX.NO: 5(B)
-   EVALUATING POSTFIX EXPRESSIONS
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 5(a)</span>
+          <h2>Infix To Postfix Conversion</h2>
+        </div>
+        <button class="copy-btn" data-index="9">📋 Copy Code</button>
+      </div>
+      <pre id="code-9"><code>/* ==================================================
+   EX.NO: 5(a)
+   INFIX TO POSTFIX CONVERSION
    ================================================== */
-#include <stdio.h>
-#include <conio.h>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;string.h&gt;
+#define MAX 20
+int top = -1;
+char stack[MAX];
+char pop();
+void push(char item);
+int prcd(char symbol)
+{
+switch(symbol)
+{
+case &#x27;+&#x27;:
+case &#x27;-&#x27;:
+return 2;
+break;
+case &#x27;*&#x27;:
+case &#x27;/&#x27;:
+return 4;
+break;
+case &#x27;^&#x27;:
+case &#x27;$&#x27;:
+return 6;
+break;
+case &#x27;(&#x27;:
+case &#x27;)&#x27;:
+case &#x27;#&#x27;:
+return 1;
+break;
+}
+}
+int isoperator(char symbol)
+{
+switch(symbol)
+{
+case &#x27;+&#x27;:
+case &#x27;-&#x27;:
+case &#x27;*&#x27;:
+case &#x27;/&#x27;:
+case &#x27;^&#x27;:
+case &#x27;$&#x27;:
+case &#x27;(&#x27;:
+case &#x27;)&#x27;:
+return 1;
+break;
+default:
+return 0;
+}
+}
+void convertip(char infix[],char postfix[])
+{
+int i,symbol,j = 0;
+stack[++top] = &#x27;#&#x27;;
+for(i=0;i&lt;strlen(infix);i++)
+{
+symbol = infix[i];
+if(isoperator(symbol) == 0)
+{
+postfix[j] = symbol;
+j++;
+}
+else
+{
+if(symbol == &#x27;(&#x27;)
+push(symbol);
+else if(symbol == &#x27;)&#x27;)
+{
+while(stack[top] != &#x27;(&#x27;)
+{
+postfix[j] = pop();
+j++;
+}
+pop(); //pop out (.
+}
+else
+{
+if(prcd(symbol) &gt; prcd(stack[top]))
+push(symbol);
+else
+{
+while(prcd(symbol) &lt;= prcd(stack[top]))
+{
+postfix[j] = pop();
+j++;
+}
+push(symbol);
+}
+}
+}
+}
+while(stack[top] != &#x27;#&#x27;)
+{
+postfix[j] = pop();
+j++;
+}
+postfix[j] = &#x27;\0&#x27;;
+}
+main()
+{
+char infix[20],postfix[20];
+clrscr();
+printf(&quot;Enter the valid infix string: &quot;);
+gets(infix);
+convertip(infix, postfix);
+printf(&quot;The corresponding postfix string is: &quot;);
+puts(postfix);
+getch();
+}
+void push(char item)
+{
+top++;
+stack[top] = item;
+}
+char pop()
+{
+char a;
+a = stack[top];
+top--;
+return a;
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 9 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 5(b) evaluating postfix expressions /* ==================================================
+   ex.no: 5(b)
+   evaluating postfix expressions
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
 struct stack
 {
 int top;
@@ -875,57 +1825,410 @@ float d1,d2,d3;
 int i;
 clrscr();
 s.top = -1;
-printf("\n\n Enter the postfix expression: ");
+printf(&quot;\n\n enter the postfix expression: &quot;);
 gets(pf);
-for(i=0; pf[i]!='\0'; i++)
+for(i=0; pf[i]!=&#x27;\0&#x27;; i++)
 {
 switch(pf[i])
 {
-case '0':
-case '1':
-case '2':
-case '3':
-case '4':
-case '5':
-case '6':
-case '7':
-case '8':
-case '9':
-s.a[++s.top] = pf[i]-'0';
+case &#x27;0&#x27;:
+case &#x27;1&#x27;:
+case &#x27;2&#x27;:
+case &#x27;3&#x27;:
+case &#x27;4&#x27;:
+case &#x27;5&#x27;:
+case &#x27;6&#x27;:
+case &#x27;7&#x27;:
+case &#x27;8&#x27;:
+case &#x27;9&#x27;:
+s.a[++s.top] = pf[i]-&#x27;0&#x27;;
 break;
-case '+':
+case &#x27;+&#x27;:
 d1 = s.a[s.top--];
 d2 = s.a[s.top--];
 s.a[++s.top] = d1 + d2;
 break;
-case '-':
+case &#x27;-&#x27;:
 d2 = s.a[s.top--];
 d1 = s.a[s.top--];
 s.a[++s.top] = d1 - d2;
 break;
-case '*':
+case &#x27;*&#x27;:
 d2 = s.a[s.top--];
 d1 = s.a[s.top--];
 s.a[++s.top] = d1*d2;
 break;
-case '/':
+case &#x27;/&#x27;:
 d2 = s.a[s.top--];
 d1 = s.a[s.top--];
 s.a[++s.top] = d1 / d2;
 break;
 }
 }
-printf("\n Expression value is %5.2f", s.a[s.top]);
+printf(&quot;\n expression value is %5.2f&quot;, s.a[s.top]);
 getch();
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 5(B)</span>
+          <h2>Evaluating Postfix Expressions</h2>
+        </div>
+        <button class="copy-btn" data-index="10">📋 Copy Code</button>
+      </div>
+      <pre id="code-10"><code>/* ==================================================
+   EX.NO: 5(B)
+   EVALUATING POSTFIX EXPRESSIONS
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+struct stack
+{
+int top;
+float a[50];
+}s;
+main()
+{
+char pf[50];
+float d1,d2,d3;
+int i;
+clrscr();
+s.top = -1;
+printf(&quot;\n\n Enter the postfix expression: &quot;);
+gets(pf);
+for(i=0; pf[i]!=&#x27;\0&#x27;; i++)
+{
+switch(pf[i])
+{
+case &#x27;0&#x27;:
+case &#x27;1&#x27;:
+case &#x27;2&#x27;:
+case &#x27;3&#x27;:
+case &#x27;4&#x27;:
+case &#x27;5&#x27;:
+case &#x27;6&#x27;:
+case &#x27;7&#x27;:
+case &#x27;8&#x27;:
+case &#x27;9&#x27;:
+s.a[++s.top] = pf[i]-&#x27;0&#x27;;
+break;
+case &#x27;+&#x27;:
+d1 = s.a[s.top--];
+d2 = s.a[s.top--];
+s.a[++s.top] = d1 + d2;
+break;
+case &#x27;-&#x27;:
+d2 = s.a[s.top--];
+d1 = s.a[s.top--];
+s.a[++s.top] = d1 - d2;
+break;
+case &#x27;*&#x27;:
+d2 = s.a[s.top--];
+d1 = s.a[s.top--];
+s.a[++s.top] = d1*d2;
+break;
+case &#x27;/&#x27;:
+d2 = s.a[s.top--];
+d1 = s.a[s.top--];
+s.a[++s.top] = d1 / d2;
+break;
 }
-
-
-/* ==================================================
+}
+printf(&quot;\n Expression value is %5.2f&quot;, s.a[s.top]);
+getch();
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 10 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 6 implementation of binary search trees /* ==================================================
+   ex.no: 6
+   implementation of binary search trees
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+// structure of a node
+struct node
+{
+     int data;
+     struct node *left;
+     struct node *right;
+};
+struct node *root = null;
+struct node *create_node(int);
+void insert(int);
+struct node *delete (struct node *, int);
+int search(int);
+void inorder(struct node *);
+void postorder();
+void preorder();
+struct node *smallest_node(struct node *);
+struct node *largest_node(struct node *);
+int get_data();
+int main()
+{
+int userchoice;
+int useractive = &#x27;y&#x27;;
+int data;
+struct node* result = null;
+while (useractive == &#x27;y&#x27; || useractive == &#x27;y&#x27;)
+{
+printf(&quot;\n\n------- binary search tree ------ \n&quot;);
+printf(&quot;\n1. insert&quot;);
+printf(&quot;\n2. delete&quot;);
+printf(&quot;\n3. search&quot;);
+printf(&quot;\n4. get larger node data&quot;);
+printf(&quot;\n5. get smaller node data&quot;);
+printf(&quot;\n\n-- traversals --&quot;);
+printf(&quot;\n\n6. inorder &quot;);
+printf(&quot;\n7. post order &quot;);
+printf(&quot;\n8. pre oder &quot;);
+printf(&quot;\n9. exit&quot;);
+printf(&quot;\n\nenter your choice: &quot;);
+scanf(&quot;%d&quot;, &amp;userchoice);
+printf(&quot;\n&quot;);
+switch(userchoice)
+{
+case 1:
+data = get_data();
+insert(data);
+break;
+case 2:
+data = get_data();
+root = delete(root, data);
+break;
+case 3:
+data = get_data();
+if (search(data) == 1)
+{
+printf(&quot;\ndata was found!\n&quot;);
+}
+else
+{
+printf(&quot;\ndata does not found!\n&quot;);
+}
+break;
+case 4:
+result = largest_node(root);
+if (result != null)
+{
+printf(&quot;\nlargest data: %d\n&quot;, result-&gt;data);
+}
+break;
+case 5:
+result = smallest_node(root);
+if (result != null)
+{
+printf(&quot;\nsmallest data: %d\n&quot;, result-&gt;data);
+}
+break;
+case 6:
+inorder(root);
+break;
+case 7:
+postorder(root);
+break;
+case 8:
+preorder(root);
+break;
+case 9:
+printf(&quot;\n\nprogram was terminated\n&quot;);
+break;
+default:
+printf(&quot;\n\tinvalid choice\n&quot;);
+break;
+}
+printf(&quot;\n              \ndo you want to continue? &quot;);
+fflush(stdin);
+scanf(&quot; %c&quot;, &amp;useractive);
+}
+return 0;
+}
+// creates a new node
+struct node *create_node(int data)
+{
+struct node *new_node = (struct node *)malloc(sizeof(struct node));
+if (new_node == null)
+{
+printf(&quot;\nmemory for new node can&#x27;t be allocated&quot;);
+return null;
+}
+new_node-&gt;data = data;
+new_node-&gt;left = null;
+new_node-&gt;right = null;
+return new_node;
+}
+// inserts the data in the bst
+void insert(int data)
+{
+struct node *new_node = create_node(data);
+if (new_node != null)
+{
+// if the root is empty then make a new node as the root node
+if (root == null)
+{
+root = new_node;
+printf(&quot;\n* node having data %d was inserted\n&quot;, data);
+return;
+}
+struct node *temp = root;
+struct node *prev = null;
+// traverse through the bst to get the correct position for insertion
+while (temp != null)
+{
+prev = temp;
+if (data &gt; temp-&gt;data)
+{
+temp = temp-&gt;right;
+}
+else
+{
+temp = temp-&gt;left;
+}
+}
+// found the last node where the new node should insert
+if (data &gt; prev-&gt;data)
+{
+prev-&gt;right = new_node;
+}
+else
+{
+prev-&gt;left = new_node;
+}
+printf(&quot;\n* node having data %d was inserted\n&quot;, data);
+}
+}
+// deletes the given key node from the bst
+struct node *delete (struct node *root, int key)
+{
+if (root == null)
+{
+return root;
+}
+if (key &lt; root-&gt;data)
+{
+root-&gt;left = delete (root-&gt;left, key);
+}
+else if (key &gt; root-&gt;data)
+{
+root-&gt;right = delete (root-&gt;right, key);
+}
+else
+{
+if (root-&gt;left == null)
+{
+struct node *temp = root-&gt;right;
+free(root);
+return temp;
+}
+else if (root-&gt;right == null)
+{
+struct node *temp = root-&gt;left;
+free(root);
+return temp;
+}
+struct node *temp = smallest_node(root-&gt;right);
+root-&gt;data = temp-&gt;data;
+root-&gt;right = delete (root-&gt;right, temp-&gt;data);
+}
+return root;
+}
+// search the given key node in bst
+int search(int key)
+{
+struct node *temp = root;
+while (temp != null)
+{
+if (key == temp-&gt;data)
+{
+return 1;
+}
+else if (key &gt; temp-&gt;data)
+{
+temp = temp-&gt;right;
+}
+else
+{
+temp = temp-&gt;left;
+}
+}
+return 0;
+}
+// finds the node with the smallest value in bst
+struct node *smallest_node(struct node *root)
+{
+struct node *curr = root;
+while (curr != null &amp;&amp; curr-&gt;left != null)
+{
+curr = curr-&gt;left;
+}
+return curr;
+}
+// finds the node with the largest value in bst
+struct node *largest_node(struct node *root)
+{
+struct node *curr = root;
+while (curr != null &amp;&amp; curr-&gt;right != null)
+{
+curr = curr-&gt;right;
+}
+return curr;
+}
+// inorder traversal of the bst
+void inorder(struct node *root)
+{
+if (root == null)
+{
+return;
+}
+inorder(root-&gt;left);
+printf(&quot;%d &quot;, root-&gt;data);
+inorder(root-&gt;right);
+}
+// preorder traversal of the bst
+void preorder(struct node *root)
+{
+if (root == null)
+{
+return;
+}
+printf(&quot;%d &quot;, root-&gt;data);
+preorder(root-&gt;left);
+preorder(root-&gt;right);
+}
+// postorder travsersal of the bst
+void postorder(struct node *root)
+{
+if (root == null)
+{
+return;
+}
+postorder(root-&gt;left);
+postorder(root-&gt;right);
+printf(&quot;%d &quot;, root-&gt;data);
+}
+// getting data from the user
+int get_data()
+{
+int data;
+printf(&quot;\nenter data: &quot;);
+scanf(&quot;%d&quot;, &amp;data);
+return data;
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 6</span>
+          <h2>Implementation Of Binary Search Trees</h2>
+        </div>
+        <button class="copy-btn" data-index="11">📋 Copy Code</button>
+      </div>
+      <pre id="code-11"><code>/* ==================================================
    EX.NO: 6
    IMPLEMENTATION OF BINARY SEARCH TREES
    ================================================== */
-#include <stdio.h>
-#include <stdlib.h>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 // structure of a node
 struct node
 {
@@ -947,25 +2250,25 @@ int get_data();
 int main()
 {
 int userChoice;
-int userActive = 'Y';
+int userActive = &#x27;Y&#x27;;
 int data;
 struct node* result = NULL;
-while (userActive == 'Y' || userActive == 'y')
+while (userActive == &#x27;Y&#x27; || userActive == &#x27;y&#x27;)
 {
-printf("\n\n------- Binary Search Tree ------ \n");
-printf("\n1. Insert");
-printf("\n2. Delete");
-printf("\n3. Search");
-printf("\n4. Get Larger Node Data");
-printf("\n5. Get smaller Node data");
-printf("\n\n-- Traversals --");
-printf("\n\n6. Inorder ");
-printf("\n7. Post Order ");
-printf("\n8. Pre Oder ");
-printf("\n9. Exit");
-printf("\n\nEnter Your Choice: ");
-scanf("%d", &userChoice);
-printf("\n");
+printf(&quot;\n\n------- Binary Search Tree ------ \n&quot;);
+printf(&quot;\n1. Insert&quot;);
+printf(&quot;\n2. Delete&quot;);
+printf(&quot;\n3. Search&quot;);
+printf(&quot;\n4. Get Larger Node Data&quot;);
+printf(&quot;\n5. Get smaller Node data&quot;);
+printf(&quot;\n\n-- Traversals --&quot;);
+printf(&quot;\n\n6. Inorder &quot;);
+printf(&quot;\n7. Post Order &quot;);
+printf(&quot;\n8. Pre Oder &quot;);
+printf(&quot;\n9. Exit&quot;);
+printf(&quot;\n\nEnter Your Choice: &quot;);
+scanf(&quot;%d&quot;, &amp;userChoice);
+printf(&quot;\n&quot;);
 switch(userChoice)
 {
 case 1:
@@ -980,25 +2283,25 @@ case 3:
 data = get_data();
 if (search(data) == 1)
 {
-printf("\nData was found!\n");
+printf(&quot;\nData was found!\n&quot;);
 }
 else
 {
-printf("\nData does not found!\n");
+printf(&quot;\nData does not found!\n&quot;);
 }
 break;
 case 4:
 result = largest_node(root);
 if (result != NULL)
 {
-printf("\nLargest Data: %d\n", result->data);
+printf(&quot;\nLargest Data: %d\n&quot;, result-&gt;data);
 }
 break;
 case 5:
 result = smallest_node(root);
 if (result != NULL)
 {
-printf("\nSmallest Data: %d\n", result->data);
+printf(&quot;\nSmallest Data: %d\n&quot;, result-&gt;data);
 }
 break;
 case 6:
@@ -1011,15 +2314,15 @@ case 8:
 preorder(root);
 break;
 case 9:
-printf("\n\nProgram was terminated\n");
+printf(&quot;\n\nProgram was terminated\n&quot;);
 break;
 default:
-printf("\n\tInvalid Choice\n");
+printf(&quot;\n\tInvalid Choice\n&quot;);
 break;
 }
-printf("\n              \nDo you want to continue? ");
+printf(&quot;\n              \nDo you want to continue? &quot;);
 fflush(stdin);
-scanf(" %c", &userActive);
+scanf(&quot; %c&quot;, &amp;userActive);
 }
 return 0;
 }
@@ -1029,12 +2332,12 @@ struct node *create_node(int data)
 struct node *new_node = (struct node *)malloc(sizeof(struct node));
 if (new_node == NULL)
 {
-printf("\nMemory for new node can't be allocated");
+printf(&quot;\nMemory for new node can&#x27;t be allocated&quot;);
 return NULL;
 }
-new_node->data = data;
-new_node->left = NULL;
-new_node->right = NULL;
+new_node-&gt;data = data;
+new_node-&gt;left = NULL;
+new_node-&gt;right = NULL;
 return new_node;
 }
 // inserts the data in the BST
@@ -1047,7 +2350,7 @@ if (new_node != NULL)
 if (root == NULL)
 {
 root = new_node;
-printf("\n* node having data %d was inserted\n", data);
+printf(&quot;\n* node having data %d was inserted\n&quot;, data);
 return;
 }
 struct node *temp = root;
@@ -1056,25 +2359,25 @@ struct node *prev = NULL;
 while (temp != NULL)
 {
 prev = temp;
-if (data > temp->data)
+if (data &gt; temp-&gt;data)
 {
-temp = temp->right;
+temp = temp-&gt;right;
 }
 else
 {
-temp = temp->left;
+temp = temp-&gt;left;
 }
 }
 // found the last node where the new node should insert
-if (data > prev->data)
+if (data &gt; prev-&gt;data)
 {
-prev->right = new_node;
+prev-&gt;right = new_node;
 }
 else
 {
-prev->left = new_node;
+prev-&gt;left = new_node;
 }
-printf("\n* node having data %d was inserted\n", data);
+printf(&quot;\n* node having data %d was inserted\n&quot;, data);
 }
 }
 // deletes the given key node from the BST
@@ -1084,31 +2387,31 @@ if (root == NULL)
 {
 return root;
 }
-if (key < root->data)
+if (key &lt; root-&gt;data)
 {
-root->left = delete (root->left, key);
+root-&gt;left = delete (root-&gt;left, key);
 }
-else if (key > root->data)
+else if (key &gt; root-&gt;data)
 {
-root->right = delete (root->right, key);
+root-&gt;right = delete (root-&gt;right, key);
 }
 else
 {
-if (root->left == NULL)
+if (root-&gt;left == NULL)
 {
-struct node *temp = root->right;
+struct node *temp = root-&gt;right;
 free(root);
 return temp;
 }
-else if (root->right == NULL)
+else if (root-&gt;right == NULL)
 {
-struct node *temp = root->left;
+struct node *temp = root-&gt;left;
 free(root);
 return temp;
 }
-struct node *temp = smallest_node(root->right);
-root->data = temp->data;
-root->right = delete (root->right, temp->data);
+struct node *temp = smallest_node(root-&gt;right);
+root-&gt;data = temp-&gt;data;
+root-&gt;right = delete (root-&gt;right, temp-&gt;data);
 }
 return root;
 }
@@ -1118,17 +2421,17 @@ int search(int key)
 struct node *temp = root;
 while (temp != NULL)
 {
-if (key == temp->data)
+if (key == temp-&gt;data)
 {
 return 1;
 }
-else if (key > temp->data)
+else if (key &gt; temp-&gt;data)
 {
-temp = temp->right;
+temp = temp-&gt;right;
 }
 else
 {
-temp = temp->left;
+temp = temp-&gt;left;
 }
 }
 return 0;
@@ -1137,9 +2440,9 @@ return 0;
 struct node *smallest_node(struct node *root)
 {
 struct node *curr = root;
-while (curr != NULL && curr->left != NULL)
+while (curr != NULL &amp;&amp; curr-&gt;left != NULL)
 {
-curr = curr->left;
+curr = curr-&gt;left;
 }
 return curr;
 }
@@ -1147,9 +2450,9 @@ return curr;
 struct node *largest_node(struct node *root)
 {
 struct node *curr = root;
-while (curr != NULL && curr->right != NULL)
+while (curr != NULL &amp;&amp; curr-&gt;right != NULL)
 {
-curr = curr->right;
+curr = curr-&gt;right;
 }
 return curr;
 }
@@ -1160,9 +2463,9 @@ if (root == NULL)
 {
 return;
 }
-inorder(root->left);
-printf("%d ", root->data);
-inorder(root->right);
+inorder(root-&gt;left);
+printf(&quot;%d &quot;, root-&gt;data);
+inorder(root-&gt;right);
 }
 // preorder traversal of the BST
 void preorder(struct node *root)
@@ -1171,9 +2474,9 @@ if (root == NULL)
 {
 return;
 }
-printf("%d ", root->data);
-preorder(root->left);
-preorder(root->right);
+printf(&quot;%d &quot;, root-&gt;data);
+preorder(root-&gt;left);
+preorder(root-&gt;right);
 }
 // postorder travsersal of the BST
 void postorder(struct node *root)
@@ -1182,26 +2485,285 @@ if (root == NULL)
 {
 return;
 }
-postorder(root->left);
-postorder(root->right);
-printf("%d ", root->data);
+postorder(root-&gt;left);
+postorder(root-&gt;right);
+printf(&quot;%d &quot;, root-&gt;data);
 }
 // getting data from the user
 int get_data()
 {
 int data;
-printf("\nEnter Data: ");
-scanf("%d", &data);
+printf(&quot;\nEnter Data: &quot;);
+scanf(&quot;%d&quot;, &amp;data);
 return data;
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 11 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 7 implementation of avl trees /* ==================================================
+   ex.no: 7
+   implementation of avl trees
+   ================================================== */
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+typedef struct node
+{
+      int data;
+      struct node *left, *right;
+      int ht;
+}node;
+node*insert(node *,int);
+node*delete(node *,int);
+void preorder(node *);
+void inorder(node *);
+int height( node *);
+node*rotateright(node*);
+node *rotateleft(node *);
+node *rr(node *);
+node *ll(node *);
+node *lr(node *);
+node *rl(node *);
+int bf(node *);
+int main()
+{
+      node *root=null;
+      int x,n,i,op;
+      do
+      {
+                printf(&quot;\n1)create:&quot;);
+                printf(&quot;\n2)insert:&quot;);
+                printf(&quot;\n3)delete:&quot;);
+                printf(&quot;\n4)print:&quot;);
+                printf(&quot;\n5)quit:&quot;);
+                printf(&quot;\n\nenter your choice:&quot;);
+                scanf(&quot;%d&quot;,&amp;op);
+switch(op)
+{
+      case 1:
+             printf(&quot;\nenter no. of elements:&quot;);
+             scanf(&quot;%d&quot;,&amp;n);
+             printf(&quot;\nenter tree data:&quot;);
+             root=null;
+             for(i=0;i&lt;n;i++)
+             {
+                      scanf(&quot;%d&quot;,&amp;x);
+                      root=insert(root,x);
+             }
+             break;
+      case 2:
+             printf(&quot;\nenter a data:&quot;);
+             scanf(&quot;%d&quot;,&amp;x);
+             root= insert(root,x);
+             break;
+      case 3:
+             printf(&quot;\nenter a data:&quot;);
+             scanf(&quot;%d&quot;,&amp;x);
+             root=delete(root,x);
+             break;
+      case 4:
+             printf(&quot;\npreorder sequence:\n&quot;);
+             preorder(root);
+             printf(&quot;\n\ninorder sequence:\n&quot;);
+                          inorder(root);
+                          printf(&quot;\n&quot;);
+                          break;
+             }
+      }while(op!=5);
+      return 0;
 }
-
-
-/* ==================================================
+node * insert(node *t,int x)
+{
+      if(t==null)
+      {
+             t=(node *)malloc(sizeof(node));
+             t-&gt;data=x;
+             t-&gt;left=null;
+             t-&gt;right=null;
+      }
+      else
+             if(x &gt; t-&gt;data)
+             {
+                   // insert in right subtree
+                   t-&gt;right=insert(t-&gt;right,x);
+                   if(bf(t) ==-2)
+                          if(x&gt;t-&gt;right-&gt;data)
+                                   t=rr(t);
+                          else
+                                   t=rl(t);
+             }
+             else
+                    if(x&lt;t-&gt;data)
+                    {
+                           t-&gt;left=insert(t-&gt;left,x);
+                           if(bf(t)==2)
+                                  if(x &lt; t-&gt;left-&gt;data)
+                                         t=ll(t);
+                                  else
+                                         t=lr(t);
+                    }
+      t-&gt;ht=height(t);
+      return(t);
+}
+node * delete(node *t,int x)
+{
+      node *p;
+      if(t==null)
+      {
+             return null;
+      }
+      else
+             if(x &gt; t-&gt;data)
+             {
+                    // insert in right subtree
+                    t-&gt;right-delete(t-&gt;right,x);
+                    if(bf(t)==2)
+                           if(bf(t-&gt;left)&gt;=0)
+                     t=ll(t);
+              else
+                     t=lr(t);
+}
+else
+       if(x&lt;t-&gt;data)
+       {
+              t-&gt;left-delete(t-&gt;left,x);
+              if(bf(t) ==-2) //rebalance during windup
+                     if(bf(t-&gt;right)&lt;=0)
+                            t=rr(t);
+                     else
+                            t=rl(t);
+       }
+       else
+       {
+              //data to be deleted is found
+              if(t-&gt;right!=null)
+              {
+                     //delete its inorder succesor
+                     p=t-&gt;right;
+                     while(p-&gt;left!= null)
+                            p=p-&gt;left;
+                     t-&gt;data=p-&gt;data;
+                     t-&gt;right-delete(t-&gt;right,p-&gt;data);
+                     if(bf(t)==2)
+                            //rebalance during windup
+                                        if(bf(t-&gt;left)&gt;=0)
+                                               t=ll(t);
+                                        else
+                                               t=lr(t);
+                           }
+                           else
+                                  return(t-&gt;left);
+                     }
+      t-&gt;ht=height (t);
+      return(t);
+}
+int height(node *t)
+{
+      int lh,rh;
+      if(t==null)
+             return(0);
+      if(t-&gt;left==null)
+             lh=0;
+      else
+             lh=1+t-&gt;left-&gt;ht;
+      if(t-&gt;right==null)
+             rh=0;
+      else
+             rh=1+t-&gt;right-&gt;ht;
+      if(lh&gt;rh)
+             return(lh);
+      return(rh);
+}
+node* rotateright(node *x)
+{
+      node *y;
+      y=x-&gt;left;
+      x-&gt;left=y-&gt;right;
+      y-&gt;right-x;
+      x-&gt;ht=height(x);
+      y-&gt;ht=height(y);
+      return(y);
+}
+node * rotateleft(node *x)
+{
+      node *y;
+      y=x-&gt;right;
+      x-&gt;right=y-&gt;left;
+      y-&gt;left=x;
+      x-&gt;ht=height(x);
+      y-&gt;ht=height(y);
+      return(y);
+}
+node *rr(node *t)
+{
+      t=rotateleft(t);
+      return(t);
+}
+node *ll(node *t)
+{
+     t= rotateright(t);
+     return(t);
+}
+node *lr(node *t)
+{
+     t-&gt;left=rotateleft(t-&gt;left);
+     t=rotateright(t);
+     return(t);
+}
+node * rl(node *t)
+{
+     t-&gt;right=rotateright(t-&gt;right);
+     t=rotateleft(t);
+     return(t);
+}
+int bf(node *t)
+{
+     int lh,rh;
+     if(t==null)
+            return(0);
+     if(t-&gt;left==null)
+            lh=0;
+     else
+            lh=1+t-&gt;left-&gt;ht;
+     if(t-&gt;right==null)
+            rh=0;
+      else
+             rh=1+t-&gt;right-&gt;ht;
+      return(lh-rh);
+}
+void preorder(node *t)
+{
+      if(t!=null)
+      {
+             printf(&quot;%d(bf-%d)&quot;,t-&gt;data,bf(t));
+             preorder(t-&gt;left);
+             preorder(t-&gt;right);
+      }
+}
+void inorder(node *t)
+{
+      if(t!=null)
+      {
+             inorder(t-&gt;left);
+             printf(&quot;%d(bf=%d)&quot;,t-&gt;data,bf(t));
+             inorder(t-&gt;right);
+      }
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 7</span>
+          <h2>Implementation Of Avl Trees</h2>
+        </div>
+        <button class="copy-btn" data-index="12">📋 Copy Code</button>
+      </div>
+      <pre id="code-12"><code>/* ==================================================
    EX.NO: 7
    IMPLEMENTATION OF AVL TREES
    ================================================== */
-#include<stdio.h>
-#include<stdlib.h>
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
 typedef struct node
 {
       int data;
@@ -1226,42 +2788,42 @@ int main()
       int x,n,i,op;
       do
       {
-                printf("\n1)Create:");
-                printf("\n2)Insert:");
-                printf("\n3)Delete:");
-                printf("\n4)Print:");
-                printf("\n5)Quit:");
-                printf("\n\nEnter Your Choice:");
-                scanf("%d",&op);
+                printf(&quot;\n1)Create:&quot;);
+                printf(&quot;\n2)Insert:&quot;);
+                printf(&quot;\n3)Delete:&quot;);
+                printf(&quot;\n4)Print:&quot;);
+                printf(&quot;\n5)Quit:&quot;);
+                printf(&quot;\n\nEnter Your Choice:&quot;);
+                scanf(&quot;%d&quot;,&amp;op);
 switch(op)
 {
       case 1:
-             printf("\nEnter no. of elements:");
-             scanf("%d",&n);
-             printf("\nEnter tree data:");
+             printf(&quot;\nEnter no. of elements:&quot;);
+             scanf(&quot;%d&quot;,&amp;n);
+             printf(&quot;\nEnter tree data:&quot;);
              root=NULL;
-             for(i=0;i<n;i++)
+             for(i=0;i&lt;n;i++)
              {
-                      scanf("%d",&x);
+                      scanf(&quot;%d&quot;,&amp;x);
                       root=insert(root,x);
              }
              break;
       case 2:
-             printf("\nEnter a data:");
-             scanf("%d",&x);
+             printf(&quot;\nEnter a data:&quot;);
+             scanf(&quot;%d&quot;,&amp;x);
              root= insert(root,x);
              break;
       case 3:
-             printf("\nEnter a data:");
-             scanf("%d",&x);
+             printf(&quot;\nEnter a data:&quot;);
+             scanf(&quot;%d&quot;,&amp;x);
              root=Delete(root,x);
              break;
       case 4:
-             printf("\nPreorder sequence:\n");
+             printf(&quot;\nPreorder sequence:\n&quot;);
              preorder(root);
-             printf("\n\nInorder sequence:\n");
+             printf(&quot;\n\nInorder sequence:\n&quot;);
                           inorder(root);
-                          printf("\n");
+                          printf(&quot;\n&quot;);
                           break;
              }
       }while(op!=5);
@@ -1272,32 +2834,32 @@ node * insert(node *T,int x)
       if(T==NULL)
       {
              T=(node *)malloc(sizeof(node));
-             T->data=x;
-             T->left=NULL;
-             T->right=NULL;
+             T-&gt;data=x;
+             T-&gt;left=NULL;
+             T-&gt;right=NULL;
       }
       else
-             if(x > T->data)
+             if(x &gt; T-&gt;data)
              {
                    // insert in right subtree
-                   T->right=insert(T->right,x);
+                   T-&gt;right=insert(T-&gt;right,x);
                    if(BF(T) ==-2)
-                          if(x>T->right->data)
+                          if(x&gt;T-&gt;right-&gt;data)
                                    T=RR(T);
                           else
                                    T=RL(T);
              }
              else
-                    if(x<T->data)
+                    if(x&lt;T-&gt;data)
                     {
-                           T->left=insert(T->left,x);
+                           T-&gt;left=insert(T-&gt;left,x);
                            if(BF(T)==2)
-                                  if(x < T->left->data)
+                                  if(x &lt; T-&gt;left-&gt;data)
                                          T=LL(T);
                                   else
                                          T=LR(T);
                     }
-      T->ht=height(T);
+      T-&gt;ht=height(T);
       return(T);
 }
 node * Delete(node *T,int x)
@@ -1308,22 +2870,22 @@ node * Delete(node *T,int x)
              return NULL;
       }
       else
-             if(x > T->data)
+             if(x &gt; T-&gt;data)
              {
                     // insert in right subtree
-                    T->right-Delete(T->right,x);
+                    T-&gt;right-Delete(T-&gt;right,x);
                     if(BF(T)==2)
-                           if(BF(T->left)>=0)
+                           if(BF(T-&gt;left)&gt;=0)
                      T=LL(T);
               else
                      T=LR(T);
 }
 else
-       if(x<T->data)
+       if(x&lt;T-&gt;data)
        {
-              T->left-Delete(T->left,x);
+              T-&gt;left-Delete(T-&gt;left,x);
               if(BF(T) ==-2) //Rebalance during windup
-                     if(BF(T->right)<=0)
+                     if(BF(T-&gt;right)&lt;=0)
                             T=RR(T);
                      else
                             T=RL(T);
@@ -1331,25 +2893,25 @@ else
        else
        {
               //data to be deleted is found
-              if(T->right!=NULL)
+              if(T-&gt;right!=NULL)
               {
                      //delete its inorder succesor
-                     p=T->right;
-                     while(p->left!= NULL)
-                            p=p->left;
-                     T->data=p->data;
-                     T->right-Delete(T->right,p->data);
+                     p=T-&gt;right;
+                     while(p-&gt;left!= NULL)
+                            p=p-&gt;left;
+                     T-&gt;data=p-&gt;data;
+                     T-&gt;right-Delete(T-&gt;right,p-&gt;data);
                      if(BF(T)==2)
                             //Rebalance during windup
-                                        if(BF(T->left)>=0)
+                                        if(BF(T-&gt;left)&gt;=0)
                                                T=LL(T);
                                         else
                                                T=LR(T);
                            }
                            else
-                                  return(T->left);
+                                  return(T-&gt;left);
                      }
-      T->ht=height (T);
+      T-&gt;ht=height (T);
       return(T);
 }
 int height(node *T)
@@ -1357,36 +2919,36 @@ int height(node *T)
       int lh,rh;
       if(T==NULL)
              return(0);
-      if(T->left==NULL)
+      if(T-&gt;left==NULL)
              lh=0;
       else
-             lh=1+T->left->ht;
-      if(T->right==NULL)
+             lh=1+T-&gt;left-&gt;ht;
+      if(T-&gt;right==NULL)
              rh=0;
       else
-             rh=1+T->right->ht;
-      if(lh>rh)
+             rh=1+T-&gt;right-&gt;ht;
+      if(lh&gt;rh)
              return(lh);
       return(rh);
 }
 node* rotateright(node *x)
 {
       node *y;
-      y=x->left;
-      x->left=y->right;
-      y->right-x;
-      x->ht=height(x);
-      y->ht=height(y);
+      y=x-&gt;left;
+      x-&gt;left=y-&gt;right;
+      y-&gt;right-x;
+      x-&gt;ht=height(x);
+      y-&gt;ht=height(y);
       return(y);
 }
 node * rotateleft(node *x)
 {
       node *y;
-      y=x->right;
-      x->right=y->left;
-      y->left=x;
-      x->ht=height(x);
-      y->ht=height(y);
+      y=x-&gt;right;
+      x-&gt;right=y-&gt;left;
+      y-&gt;left=x;
+      x-&gt;ht=height(x);
+      y-&gt;ht=height(y);
       return(y);
 }
 node *RR(node *T)
@@ -1401,13 +2963,13 @@ node *LL(node *T)
 }
 node *LR(node *T)
 {
-     T->left=rotateleft(T->left);
+     T-&gt;left=rotateleft(T-&gt;left);
      T=rotateright(T);
      return(T);
 }
 node * RL(node *T)
 {
-     T->right=rotateright(T->right);
+     T-&gt;right=rotateright(T-&gt;right);
      T=rotateleft(T);
      return(T);
 }
@@ -1416,101 +2978,105 @@ int BF(node *T)
      int lh,rh;
      if(T==NULL)
             return(0);
-     if(T->left==NULL)
+     if(T-&gt;left==NULL)
             lh=0;
      else
-            lh=1+T->left->ht;
-     if(T->right==NULL)
+            lh=1+T-&gt;left-&gt;ht;
+     if(T-&gt;right==NULL)
             rh=0;
       else
-             rh=1+T->right->ht;
+             rh=1+T-&gt;right-&gt;ht;
       return(lh-rh);
 }
 void preorder(node *T)
 {
       if(T!=NULL)
       {
-             printf("%d(Bf-%d)",T->data,BF(T));
-             preorder(T->left);
-             preorder(T->right);
+             printf(&quot;%d(Bf-%d)&quot;,T-&gt;data,BF(T));
+             preorder(T-&gt;left);
+             preorder(T-&gt;right);
       }
 }
 void inorder(node *T)
 {
       if(T!=NULL)
       {
-             inorder(T->left);
-             printf("%d(Bf=%d)",T->data,BF(T));
-             inorder(T->right);
+             inorder(T-&gt;left);
+             printf(&quot;%d(Bf=%d)&quot;,T-&gt;data,BF(T));
+             inorder(T-&gt;right);
       }
-}
-
-
-/* ==================================================
-   EX.NO: 8
-   IMPLEMENTATION OF HEAPS USING PRIORITY QUEUE
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 12 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 8 implementation of heaps using priority queue /* ==================================================
+   ex.no: 8
+   implementation of heaps using priority queue
    ================================================== */
-#include<stdio.h>
-#include<stdlib.h>
-#define MAX 20
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define max 20
 void main()
 {
     int choice,top=1,a[20],item,i,min;
-    char str='c';
+    char str=&#x27;c&#x27;;
     void insert(int[],int,int);
-    void DeleteMin(int[],int);
-    int FindMin(int [],int);
+    void deletemin(int[],int);
+    int findmin(int [],int);
     void display(int [],int);
-    printf("Priority Queue Implementation(Binary Heaps)");
-    printf("\n                                                 \n");
-    while(str=='c')
+    printf(&quot;priority queue implementation(binary heaps)&quot;);
+    printf(&quot;\n                                                 \n&quot;);
+    while(str==&#x27;c&#x27;)
     {
-           printf("\n 1. Insert\n");
-           printf(" 2. DeleteMin\n");
-           printf(" 3. FindMin\n");
-           printf(" 4. Display\n");
-           printf(" 5. Exit\n");
-           printf(" Enter your Choice :");
-           scanf("%d",&choice);
+           printf(&quot;\n 1. insert\n&quot;);
+           printf(&quot; 2. deletemin\n&quot;);
+           printf(&quot; 3. findmin\n&quot;);
+           printf(&quot; 4. display\n&quot;);
+           printf(&quot; 5. exit\n&quot;);
+           printf(&quot; enter your choice :&quot;);
+           scanf(&quot;%d&quot;,&amp;choice);
            switch(choice)
            {
                     case 1:
-                          if(top<=MAX)
+                          if(top&lt;=max)
                           {
-                                   printf("\n Enter the element :");
-                                   scanf("%d",&item);
+                                   printf(&quot;\n enter the element :&quot;);
+                                   scanf(&quot;%d&quot;,&amp;item);
                                    insert(a,top,item);
                                    top++;
                display(a,top);
       }
       else
-               printf("Priority Queue is Full");
+               printf(&quot;priority queue is full&quot;);
       break;
 case 2:
-      if(top>0)
+      if(top&gt;0)
       {
-               DeleteMin(a,top);
+               deletemin(a,top);
                top--;
                display(a,top);
       }
       else
-               printf(" Priority Queue is Empty");
+               printf(&quot; priority queue is empty&quot;);
       break;
 case 3:
-      if(top>0)
+      if(top&gt;0)
       {
-               min=FindMin(a,top);
-               printf(" Minimum Element is:%d",min);
+               min=findmin(a,top);
+               printf(&quot; minimum element is:%d&quot;,min);
       }
       break;
 case 4:
-      printf(" Elements in the priority queue are:");
+      printf(&quot; elements in the priority queue are:&quot;);
       display(a,top);
       break;
 case 5:
                exit(0);
                }
-               printf(" \n Press c to continue:\n");
+               printf(&quot; \n press c to continue:\n&quot;);
                str=getch();
       }
 }
@@ -1519,9 +3085,144 @@ void insert(int a[20],int top,int item)
       int i,temp;
       a[top]=item;
       i=top;
-      while((i/2)>0)
+      while((i/2)&gt;0)
       {
-               if(a[i]<a[i/2])
+               if(a[i]&lt;a[i/2])
+               {
+                        temp=a[i];
+                        a[i]=a[i/2];
+                        a[i/2]=temp;
+               }
+               i=i/2;
+      }
+}
+void deletemin(int a[20],int top)
+{
+      int i,j,temp;
+      a[1]=a[top-1];
+      top--;
+      i=1;
+      while((i*2)+1&lt;top)
+      {
+             if(a[2*i]&gt;a[(2*i)+1])
+                    j=(2*i)+1;
+             else
+                    j=2*i;
+             if(a[i]&gt;a[j])
+             {
+                    temp=a[i];
+                    a[i]=a[j];
+                    a[j]=temp;
+                    i=j;
+             }
+      }
+      if(2*i&lt;top)
+             if(a[i]&gt;a[2*i])
+             {
+                    temp=a[i];
+                    a[i]=a[2*i];
+                    a[2*i]=temp;
+             }
+}
+int findmin(int a[20],int top)
+{
+      if(top&lt;1)
+      {
+                printf( &quot;priority queue is empty&quot; );
+                return 0;
+       }
+       else
+                return a[1];
+}
+void display(int a[20],int top)
+{
+       int i;
+       for(i=1;i&lt;top;i++)
+                printf(&quot; %d &quot;,a[i]);
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 8</span>
+          <h2>Implementation Of Heaps Using Priority Queue</h2>
+        </div>
+        <button class="copy-btn" data-index="13">📋 Copy Code</button>
+      </div>
+      <pre id="code-13"><code>/* ==================================================
+   EX.NO: 8
+   IMPLEMENTATION OF HEAPS USING PRIORITY QUEUE
+   ================================================== */
+#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define MAX 20
+void main()
+{
+    int choice,top=1,a[20],item,i,min;
+    char str=&#x27;c&#x27;;
+    void insert(int[],int,int);
+    void DeleteMin(int[],int);
+    int FindMin(int [],int);
+    void display(int [],int);
+    printf(&quot;Priority Queue Implementation(Binary Heaps)&quot;);
+    printf(&quot;\n                                                 \n&quot;);
+    while(str==&#x27;c&#x27;)
+    {
+           printf(&quot;\n 1. Insert\n&quot;);
+           printf(&quot; 2. DeleteMin\n&quot;);
+           printf(&quot; 3. FindMin\n&quot;);
+           printf(&quot; 4. Display\n&quot;);
+           printf(&quot; 5. Exit\n&quot;);
+           printf(&quot; Enter your Choice :&quot;);
+           scanf(&quot;%d&quot;,&amp;choice);
+           switch(choice)
+           {
+                    case 1:
+                          if(top&lt;=MAX)
+                          {
+                                   printf(&quot;\n Enter the element :&quot;);
+                                   scanf(&quot;%d&quot;,&amp;item);
+                                   insert(a,top,item);
+                                   top++;
+               display(a,top);
+      }
+      else
+               printf(&quot;Priority Queue is Full&quot;);
+      break;
+case 2:
+      if(top&gt;0)
+      {
+               DeleteMin(a,top);
+               top--;
+               display(a,top);
+      }
+      else
+               printf(&quot; Priority Queue is Empty&quot;);
+      break;
+case 3:
+      if(top&gt;0)
+      {
+               min=FindMin(a,top);
+               printf(&quot; Minimum Element is:%d&quot;,min);
+      }
+      break;
+case 4:
+      printf(&quot; Elements in the priority queue are:&quot;);
+      display(a,top);
+      break;
+case 5:
+               exit(0);
+               }
+               printf(&quot; \n Press c to continue:\n&quot;);
+               str=getch();
+      }
+}
+void insert(int a[20],int top,int item)
+{
+      int i,temp;
+      a[top]=item;
+      i=top;
+      while((i/2)&gt;0)
+      {
+               if(a[i]&lt;a[i/2])
                {
                         temp=a[i];
                         a[i]=a[i/2];
@@ -1536,13 +3237,13 @@ void DeleteMin(int a[20],int top)
       a[1]=a[top-1];
       top--;
       i=1;
-      while((i*2)+1<top)
+      while((i*2)+1&lt;top)
       {
-             if(a[2*i]>a[(2*i)+1])
+             if(a[2*i]&gt;a[(2*i)+1])
                     j=(2*i)+1;
              else
                     j=2*i;
-             if(a[i]>a[j])
+             if(a[i]&gt;a[j])
              {
                     temp=a[i];
                     a[i]=a[j];
@@ -1550,8 +3251,8 @@ void DeleteMin(int a[20],int top)
                     i=j;
              }
       }
-      if(2*i<top)
-             if(a[i]>a[2*i])
+      if(2*i&lt;top)
+             if(a[i]&gt;a[2*i])
              {
                     temp=a[i];
                     a[i]=a[2*i];
@@ -1560,9 +3261,9 @@ void DeleteMin(int a[20],int top)
 }
 int FindMin(int a[20],int top)
 {
-      if(top<1)
+      if(top&lt;1)
       {
-                printf( "Priority Queue is Empty" );
+                printf( &quot;Priority Queue is Empty&quot; );
                 return 0;
        }
        else
@@ -1571,48 +3272,52 @@ int FindMin(int a[20],int top)
 void display(int a[20],int top)
 {
        int i;
-       for(i=1;i<top;i++)
-                printf(" %d ",a[i]);
-}
-
-
-/* ==================================================
-   EX.NO: 9
-   IMPLEMENTATION OF DIJKSTRA'S ALGORITHM
+       for(i=1;i&lt;top;i++)
+                printf(&quot; %d &quot;,a[i]);
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 13 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 9 implementation of dijkstra&#x27;s algorithm /* ==================================================
+   ex.no: 9
+   implementation of dijkstra&#x27;s algorithm
    ================================================== */
-#include<stdio.h>
-#include<conio.h>
-#define INFINITY 9999
-#define MAX 10
-void dijikstra(int G[MAX][MAX], int n, int startnode);
+#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+#define infinity 9999
+#define max 10
+void dijikstra(int g[max][max], int n, int startnode);
 void main()
 {
-      int G[MAX][MAX], i, j, n, u;
+      int g[max][max], i, j, n, u;
       clrscr();
-      printf("\nEnter the no. of vertices:: ");
-      scanf("%d", &n);
-      printf("\nEnter the adjacency matrix::\n");
-      for(i=0;i < n;i++)
-              for(j=0;j < n;j++)
-                    scanf("%d", &G[i][j]);
-      printf("\nEnter the starting node:: ");
-      scanf("%d", &u);
-      dijikstra(G,n,u);
+      printf(&quot;\nenter the no. of vertices:: &quot;);
+      scanf(&quot;%d&quot;, &amp;n);
+      printf(&quot;\nenter the adjacency matrix::\n&quot;);
+      for(i=0;i &lt; n;i++)
+              for(j=0;j &lt; n;j++)
+                    scanf(&quot;%d&quot;, &amp;g[i][j]);
+      printf(&quot;\nenter the starting node:: &quot;);
+      scanf(&quot;%d&quot;, &amp;u);
+      dijikstra(g,n,u);
       getch();
 }
-void dijikstra(int G[MAX][MAX], int n, int startnode)
+void dijikstra(int g[max][max], int n, int startnode)
 {
-      int cost[MAX][MAX], distance[MAX], pred[MAX];
-      int visited[MAX], count, mindistance, nextnode, i,j;
-      for(i=0;i < n;i++)
-              for(j=0;j < n;j++)
-             if(G[i][j]==0)
-                      cost[i][j]=INFINITY;
+      int cost[max][max], distance[max], pred[max];
+      int visited[max], count, mindistance, nextnode, i,j;
+      for(i=0;i &lt; n;i++)
+              for(j=0;j &lt; n;j++)
+             if(g[i][j]==0)
+                      cost[i][j]=infinity;
              else
-                      cost[i][j]=G[i][j];
+                      cost[i][j]=g[i][j];
 
 
-for(i=0;i< n;i++)
+for(i=0;i&lt; n;i++)
 {
       distance[i]=cost[startnode][i];
       pred[i]=startnode;
@@ -1621,18 +3326,18 @@ for(i=0;i< n;i++)
 distance[startnode]=0;
 visited[startnode]=1;
 count=1;
-while(count < n-1){
-      mindistance=INFINITY;
-      for(i=0;i < n;i++)
-             if(distance[i] < mindistance&&!visited[i])
+while(count &lt; n-1){
+      mindistance=infinity;
+      for(i=0;i &lt; n;i++)
+             if(distance[i] &lt; mindistance&amp;&amp;!visited[i])
              {
                       mindistance=distance[i];
                       nextnode=i;
              }
       visited[nextnode]=1;
-      for(i=0;i < n;i++)
+      for(i=0;i &lt; n;i++)
              if(!visited[i])
-                      if(mindistance+cost[nextnode][i] < distance[i])
+                      if(mindistance+cost[nextnode][i] &lt; distance[i])
                       {
                                distance[i]=mindistance+cost[nextnode][i];
                                pred[i]=nextnode;
@@ -1641,49 +3346,139 @@ while(count < n-1){
     }
 
 
-    for(i=0;i < n;i++)
+    for(i=0;i &lt; n;i++)
           if(i!=startnode)
           {
-                 printf("\nDistance of %d = %d", i, distance[i]);
-                 printf("\nPath = %d", i);
+                 printf(&quot;\ndistance of %d = %d&quot;, i, distance[i]);
+                 printf(&quot;\npath = %d&quot;, i);
                  j=i;
                  do
                  {
                          j=pred[j];
-                         printf(" <-%d", j);
+                         printf(&quot; &lt;-%d&quot;, j);
                  }
                  while(j!=startnode);
           }
-}
-
-
-/* ==================================================
-   EX.NO: 10
-   IMPLEMENTATION OF PRIM'S ALGORITHM
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 9</span>
+          <h2>Implementation Of Dijkstra&#x27;S Algorithm</h2>
+        </div>
+        <button class="copy-btn" data-index="14">📋 Copy Code</button>
+      </div>
+      <pre id="code-14"><code>/* ==================================================
+   EX.NO: 9
+   IMPLEMENTATION OF DIJKSTRA&#x27;S ALGORITHM
    ================================================== */
-#include<stdio.h>
-#include<conio.h>
+#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+#define INFINITY 9999
+#define MAX 10
+void dijikstra(int G[MAX][MAX], int n, int startnode);
+void main()
+{
+      int G[MAX][MAX], i, j, n, u;
+      clrscr();
+      printf(&quot;\nEnter the no. of vertices:: &quot;);
+      scanf(&quot;%d&quot;, &amp;n);
+      printf(&quot;\nEnter the adjacency matrix::\n&quot;);
+      for(i=0;i &lt; n;i++)
+              for(j=0;j &lt; n;j++)
+                    scanf(&quot;%d&quot;, &amp;G[i][j]);
+      printf(&quot;\nEnter the starting node:: &quot;);
+      scanf(&quot;%d&quot;, &amp;u);
+      dijikstra(G,n,u);
+      getch();
+}
+void dijikstra(int G[MAX][MAX], int n, int startnode)
+{
+      int cost[MAX][MAX], distance[MAX], pred[MAX];
+      int visited[MAX], count, mindistance, nextnode, i,j;
+      for(i=0;i &lt; n;i++)
+              for(j=0;j &lt; n;j++)
+             if(G[i][j]==0)
+                      cost[i][j]=INFINITY;
+             else
+                      cost[i][j]=G[i][j];
+
+
+for(i=0;i&lt; n;i++)
+{
+      distance[i]=cost[startnode][i];
+      pred[i]=startnode;
+      visited[i]=0;
+}
+distance[startnode]=0;
+visited[startnode]=1;
+count=1;
+while(count &lt; n-1){
+      mindistance=INFINITY;
+      for(i=0;i &lt; n;i++)
+             if(distance[i] &lt; mindistance&amp;&amp;!visited[i])
+             {
+                      mindistance=distance[i];
+                      nextnode=i;
+             }
+      visited[nextnode]=1;
+      for(i=0;i &lt; n;i++)
+             if(!visited[i])
+                      if(mindistance+cost[nextnode][i] &lt; distance[i])
+                      {
+                               distance[i]=mindistance+cost[nextnode][i];
+                               pred[i]=nextnode;
+                         }
+                 count++;
+    }
+
+
+    for(i=0;i &lt; n;i++)
+          if(i!=startnode)
+          {
+                 printf(&quot;\nDistance of %d = %d&quot;, i, distance[i]);
+                 printf(&quot;\nPath = %d&quot;, i);
+                 j=i;
+                 do
+                 {
+                         j=pred[j];
+                         printf(&quot; &lt;-%d&quot;, j);
+                 }
+                 while(j!=startnode);
+          }
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 14 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 10 implementation of prim&#x27;s algorithm /* ==================================================
+   ex.no: 10
+   implementation of prim&#x27;s algorithm
+   ================================================== */
+#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
 int a,b,u,v,n,i,j,ne=1;
 int visited[10]= {0},min,mincost=0,cost[10][10];
 void main()
 {
-printf("\n Enter the number of nodes:");
-      scanf("%d",&n);
-      printf("\n Enter the adjacency matrix:\n");
-      for (i=1;i<=n;i++)
-             for (j=1;j<=n;j++)
+printf(&quot;\n enter the number of nodes:&quot;);
+      scanf(&quot;%d&quot;,&amp;n);
+      printf(&quot;\n enter the adjacency matrix:\n&quot;);
+      for (i=1;i&lt;=n;i++)
+             for (j=1;j&lt;=n;j++)
              {
-                       scanf("%d",&cost[i][j]);
+                       scanf(&quot;%d&quot;,&amp;cost[i][j]);
                        if(cost[i][j]==0)
                        cost[i][j]=999;
              }
        visited[1]=1;
-       printf("\n");
-       while(ne<n)
+       printf(&quot;\n&quot;);
+       while(ne&lt;n)
       {
-             for(i=1,min=999;i<=n;i++)
-                       for (j=1;j<=n;j++)
-                             if(cost[i][j]<min)
+             for(i=1,min=999;i&lt;=n;i++)
+                       for (j=1;j&lt;=n;j++)
+                             if(cost[i][j]&lt;min)
                                     if(visited[i]!=0)
                                     {
                                             min=cost[i][j];
@@ -1692,141 +3487,331 @@ printf("\n Enter the number of nodes:");
                                     }
 if(visited[u]==0 || visited[v]==0)
              {
-                       printf("\n Edge %d:(%d %d) cost:%d",ne++,a,b,min);
+                       printf(&quot;\n edge %d:(%d %d) cost:%d&quot;,ne++,a,b,min);
                        mincost+=min;
                        visited[b]=1;
             }
             cost[a][b]=cost[b][a]=999;
        }
-       printf("\n Minimun cost=%d",mincost);
+       printf(&quot;\n minimun cost=%d&quot;,mincost);
        getch();
-}
-
-
-/* ==================================================
-   EX.NO: 11(a)
-   IMPLEMENTATION OF LINEAR SEARCH
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 10</span>
+          <h2>Implementation Of Prim&#x27;S Algorithm</h2>
+        </div>
+        <button class="copy-btn" data-index="15">📋 Copy Code</button>
+      </div>
+      <pre id="code-15"><code>/* ==================================================
+   EX.NO: 10
+   IMPLEMENTATION OF PRIM&#x27;S ALGORITHM
    ================================================== */
-#include <stdio.h>
-#include <conio.h>
+#include&lt;stdio.h&gt;
+#include&lt;conio.h&gt;
+int a,b,u,v,n,i,j,ne=1;
+int visited[10]= {0},min,mincost=0,cost[10][10];
+void main()
+{
+printf(&quot;\n Enter the number of nodes:&quot;);
+      scanf(&quot;%d&quot;,&amp;n);
+      printf(&quot;\n Enter the adjacency matrix:\n&quot;);
+      for (i=1;i&lt;=n;i++)
+             for (j=1;j&lt;=n;j++)
+             {
+                       scanf(&quot;%d&quot;,&amp;cost[i][j]);
+                       if(cost[i][j]==0)
+                       cost[i][j]=999;
+             }
+       visited[1]=1;
+       printf(&quot;\n&quot;);
+       while(ne&lt;n)
+      {
+             for(i=1,min=999;i&lt;=n;i++)
+                       for (j=1;j&lt;=n;j++)
+                             if(cost[i][j]&lt;min)
+                                    if(visited[i]!=0)
+                                    {
+                                            min=cost[i][j];
+                                            a=u=i;
+                                            b=v=j;
+                                    }
+if(visited[u]==0 || visited[v]==0)
+             {
+                       printf(&quot;\n Edge %d:(%d %d) cost:%d&quot;,ne++,a,b,min);
+                       mincost+=min;
+                       visited[b]=1;
+            }
+            cost[a][b]=cost[b][a]=999;
+       }
+       printf(&quot;\n Minimun cost=%d&quot;,mincost);
+       getch();
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 15 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 11(a) implementation of linear search /* ==================================================
+   ex.no: 11(a)
+   implementation of linear search
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
 main()
 {
 int a[50],i, n, val, found;
 clrscr();
-printf("Enter number of elements : ");
-scanf("%d", &n);
-printf("Enter Array Elements : \n");
-for(i=0; i<n; i++)
-scanf("%d", &a[i]);
-printf("Enter element to locate : ");
-scanf("%d", &val);
+printf(&quot;enter number of elements : &quot;);
+scanf(&quot;%d&quot;, &amp;n);
+printf(&quot;enter array elements : \n&quot;);
+for(i=0; i&lt;n; i++)
+scanf(&quot;%d&quot;, &amp;a[i]);
+printf(&quot;enter element to locate : &quot;);
+scanf(&quot;%d&quot;, &amp;val);
 found = 0;
-for(i=0; i<n; i++)
+for(i=0; i&lt;n; i++)
 {
 if (a[i] == val)
 {
-printf("Element found at position %d", i);
+printf(&quot;element found at position %d&quot;, i);
 found = 1;
 break;
 }
 }
 if (found == 0)
-printf("\n Element not found");
+printf(&quot;\n element not found&quot;);
 getch();
-}
-
-
-/* ==================================================
-   EX.NO: 11(b)
-   IMPLEMENTATION OF BINARY SEARCH
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 11(a)</span>
+          <h2>Implementation Of Linear Search</h2>
+        </div>
+        <button class="copy-btn" data-index="16">📋 Copy Code</button>
+      </div>
+      <pre id="code-16"><code>/* ==================================================
+   EX.NO: 11(a)
+   IMPLEMENTATION OF LINEAR SEARCH
    ================================================== */
-#include <stdio.h>
-#include <conio.h>
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+main()
+{
+int a[50],i, n, val, found;
+clrscr();
+printf(&quot;Enter number of elements : &quot;);
+scanf(&quot;%d&quot;, &amp;n);
+printf(&quot;Enter Array Elements : \n&quot;);
+for(i=0; i&lt;n; i++)
+scanf(&quot;%d&quot;, &amp;a[i]);
+printf(&quot;Enter element to locate : &quot;);
+scanf(&quot;%d&quot;, &amp;val);
+found = 0;
+for(i=0; i&lt;n; i++)
+{
+if (a[i] == val)
+{
+printf(&quot;Element found at position %d&quot;, i);
+found = 1;
+break;
+}
+}
+if (found == 0)
+printf(&quot;\n Element not found&quot;);
+getch();
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 16 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 11(b) implementation of binary search /* ==================================================
+   ex.no: 11(b)
+   implementation of binary search
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
 main()
 {
 int a[50],i, n, upper, lower, mid, val, found;
 clrscr();
-printf("Enter array size : ");
-scanf("%d", &n);
-for(i=0; i<n; i++)
+printf(&quot;enter array size : &quot;);
+scanf(&quot;%d&quot;, &amp;n);
+for(i=0; i&lt;n; i++)
 a[i] = 2 * i;
-printf("\n Elements in Sorted Order \n");
-for(i=0; i<n; i++)
-printf("%4d", a[i]);
-printf("\n Enter element to locate : ");
-scanf("%d", &val);
+printf(&quot;\n elements in sorted order \n&quot;);
+for(i=0; i&lt;n; i++)
+printf(&quot;%4d&quot;, a[i]);
+printf(&quot;\n enter element to locate : &quot;);
+scanf(&quot;%d&quot;, &amp;val);
 upper = n;
 lower = 0;
 found = -1;
-while (lower <= upper)
+while (lower &lt;= upper)
 {
 mid = (upper + lower)/2;
 if (a[mid] == val)
 {
-printf("Located at position %d", mid);
+printf(&quot;located at position %d&quot;, mid);
 found = 1;
 break;
 }
-else if(a[mid] > val)
+else if(a[mid] &gt; val)
 upper = mid - 1;
 else
 lower = mid + 1;
 }
 if (found == -1)
-printf("Element not found");
+printf(&quot;element not found&quot;);
 getch();
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 11(b)</span>
+          <h2>Implementation Of Binary Search</h2>
+        </div>
+        <button class="copy-btn" data-index="17">📋 Copy Code</button>
+      </div>
+      <pre id="code-17"><code>/* ==================================================
+   EX.NO: 11(b)
+   IMPLEMENTATION OF BINARY SEARCH
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+main()
+{
+int a[50],i, n, upper, lower, mid, val, found;
+clrscr();
+printf(&quot;Enter array size : &quot;);
+scanf(&quot;%d&quot;, &amp;n);
+for(i=0; i&lt;n; i++)
+a[i] = 2 * i;
+printf(&quot;\n Elements in Sorted Order \n&quot;);
+for(i=0; i&lt;n; i++)
+printf(&quot;%4d&quot;, a[i]);
+printf(&quot;\n Enter element to locate : &quot;);
+scanf(&quot;%d&quot;, &amp;val);
+upper = n;
+lower = 0;
+found = -1;
+while (lower &lt;= upper)
+{
+mid = (upper + lower)/2;
+if (a[mid] == val)
+{
+printf(&quot;Located at position %d&quot;, mid);
+found = 1;
+break;
 }
-
-
-/* ==================================================
-   EX.NO: 12(a)
-   IMPLEMENTATION OF INSERTION SORT
+else if(a[mid] &gt; val)
+upper = mid - 1;
+else
+lower = mid + 1;
+}
+if (found == -1)
+printf(&quot;Element not found&quot;);
+getch();
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 17 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 12(a) implementation of insertion sort /* ==================================================
+   ex.no: 12(a)
+   implementation of insertion sort
    ================================================== */
 main()
 {
 int i, j, k, n, temp, a[20], p=0;
-printf("Enter total elements: ");
-scanf("%d",&n);
-printf("Enter array elements: ");
-for(i=0; i<n; i++)
-scanf("%d", &a[i]);
-for(i=1; i<n; i++)
+printf(&quot;enter total elements: &quot;);
+scanf(&quot;%d&quot;,&amp;n);
+printf(&quot;enter array elements: &quot;);
+for(i=0; i&lt;n; i++)
+scanf(&quot;%d&quot;, &amp;a[i]);
+for(i=1; i&lt;n; i++)
 {
 temp = a[i];
 j = i - 1;
-while((temp<a[j]) && (j>=0))
+while((temp&lt;a[j]) &amp;&amp; (j&gt;=0))
 {
 a[j+1] = a[j];
 j = j - 1;
 }
 a[j+1] = temp;
 p++;
-printf("\n After Pass %d: ", p);
-for(k=0; k<n; k++)
-printf(" %d", a[k]);
+printf(&quot;\n after pass %d: &quot;, p);
+for(k=0; k&lt;n; k++)
+printf(&quot; %d&quot;, a[k]);
 }
-printf("\n Sorted List : ");
-for(i=0; i<n; i++)
-printf(" %d", a[i]);
-}
-
-
-/* ==================================================
-   EX.NO: 12(b)
-   IMPLEMENTATION OF SELECTION SORT
+printf(&quot;\n sorted list : &quot;);
+for(i=0; i&lt;n; i++)
+printf(&quot; %d&quot;, a[i]);
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 12(a)</span>
+          <h2>Implementation Of Insertion Sort</h2>
+        </div>
+        <button class="copy-btn" data-index="18">📋 Copy Code</button>
+      </div>
+      <pre id="code-18"><code>/* ==================================================
+   EX.NO: 12(a)
+   IMPLEMENTATION OF INSERTION SORT
    ================================================== */
-#include <stdio.h>
-void selectionSort(int arr[], int size);
+main()
+{
+int i, j, k, n, temp, a[20], p=0;
+printf(&quot;Enter total elements: &quot;);
+scanf(&quot;%d&quot;,&amp;n);
+printf(&quot;Enter array elements: &quot;);
+for(i=0; i&lt;n; i++)
+scanf(&quot;%d&quot;, &amp;a[i]);
+for(i=1; i&lt;n; i++)
+{
+temp = a[i];
+j = i - 1;
+while((temp&lt;a[j]) &amp;&amp; (j&gt;=0))
+{
+a[j+1] = a[j];
+j = j - 1;
+}
+a[j+1] = temp;
+p++;
+printf(&quot;\n After Pass %d: &quot;, p);
+for(k=0; k&lt;n; k++)
+printf(&quot; %d&quot;, a[k]);
+}
+printf(&quot;\n Sorted List : &quot;);
+for(i=0; i&lt;n; i++)
+printf(&quot; %d&quot;, a[i]);
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 18 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 12(b) implementation of selection sort /* ==================================================
+   ex.no: 12(b)
+   implementation of selection sort
+   ================================================== */
+#include &lt;stdio.h&gt;
+void selectionsort(int arr[], int size);
 void swap(int *a, int *b);
-void selectionSort(int arr[], int size)
+void selectionsort(int arr[], int size)
 {
     int i, j;
-    for (i = 0 ; i < size;i++)
+    for (i = 0 ; i &lt; size;i++)
     {
-        for (j = i ; j < size; j++)
+        for (j = i ; j &lt; size; j++)
         {
-             if (arr[i] > arr[j])
-                swap(&arr[i], &arr[j]);
+             if (arr[i] &gt; arr[j])
+                swap(&amp;arr[i], &amp;arr[j]);
         }
     }
 }
@@ -1840,44 +3825,96 @@ void swap(int *a, int *b)
 int main()
 {
     int array[10], i, size;
-    printf("How many numbers you want to sort: ");
-    scanf("%d", &size);
-    printf("\nEnter %d numbers\t", size);
-    printf("\n");
-    for (i = 0; i < size; i++)
-    scanf("%d", &array[i]);
-    selectionSort(array, size);
-    printf("\nSorted array is ");
-    for (i = 0; i < size;i++)
-    printf(" %d ", array[i]);
+    printf(&quot;how many numbers you want to sort: &quot;);
+    scanf(&quot;%d&quot;, &amp;size);
+    printf(&quot;\nenter %d numbers\t&quot;, size);
+    printf(&quot;\n&quot;);
+    for (i = 0; i &lt; size; i++)
+    scanf(&quot;%d&quot;, &amp;array[i]);
+    selectionsort(array, size);
+    printf(&quot;\nsorted array is &quot;);
+    for (i = 0; i &lt; size;i++)
+    printf(&quot; %d &quot;, array[i]);
     return 0;
-}
-
-
-/* ==================================================
-   EX.NO: 13
-   IMPLEMENTATION OF MERGE SORT
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 12(b)</span>
+          <h2>Implementation Of Selection Sort</h2>
+        </div>
+        <button class="copy-btn" data-index="19">📋 Copy Code</button>
+      </div>
+      <pre id="code-19"><code>/* ==================================================
+   EX.NO: 12(b)
+   IMPLEMENTATION OF SELECTION SORT
    ================================================== */
-#include<stdio.h>
+#include &lt;stdio.h&gt;
+void selectionSort(int arr[], int size);
+void swap(int *a, int *b);
+void selectionSort(int arr[], int size)
+{
+    int i, j;
+    for (i = 0 ; i &lt; size;i++)
+    {
+        for (j = i ; j &lt; size; j++)
+        {
+             if (arr[i] &gt; arr[j])
+                swap(&amp;arr[i], &amp;arr[j]);
+        }
+    }
+}
+void swap(int *a, int *b)
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}
+int main()
+{
+    int array[10], i, size;
+    printf(&quot;How many numbers you want to sort: &quot;);
+    scanf(&quot;%d&quot;, &amp;size);
+    printf(&quot;\nEnter %d numbers\t&quot;, size);
+    printf(&quot;\n&quot;);
+    for (i = 0; i &lt; size; i++)
+    scanf(&quot;%d&quot;, &amp;array[i]);
+    selectionSort(array, size);
+    printf(&quot;\nSorted array is &quot;);
+    for (i = 0; i &lt; size;i++)
+    printf(&quot; %d &quot;, array[i]);
+    return 0;
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 19 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 13 implementation of merge sort /* ==================================================
+   ex.no: 13
+   implementation of merge sort
+   ================================================== */
+#include&lt;stdio.h&gt;
 void mergesort(int a[],int i,int j);
 void merge(int a[],int i1,int j1,int i2,int j2);
 void main()
 {
        int a[30],n,i;
-       printf("Enter no of elements:");
-       scanf("%d",&n);
-       printf("Enter array elements:");
-       for(i=0;i<n;i++)
-              scanf("%d",&a[i]);
+       printf(&quot;enter no of elements:&quot;);
+       scanf(&quot;%d&quot;,&amp;n);
+       printf(&quot;enter array elements:&quot;);
+       for(i=0;i&lt;n;i++)
+              scanf(&quot;%d&quot;,&amp;a[i]);
        mergesort(a,0,n-1);
-       printf("\nSorted array is :");
-       for(i=0;i<n;i++)
-                 printf("%d ",a[i]);
+       printf(&quot;\nsorted array is :&quot;);
+       for(i=0;i&lt;n;i++)
+                 printf(&quot;%d &quot;,a[i]);
 }
 void mergesort(int a[],int i,int j)
 {
        int mid;
-       if(i<j)
+       if(i&lt;j)
        {
                  mid=(i+j)/2;
                  mergesort(a,i,mid);
@@ -1892,37 +3929,180 @@ void merge(int a[],int i1,int j1,int i2,int j2)
        i=i1;
        j=i2;
        k=0;
-       while(i<=j1 && j<=j2)
+       while(i&lt;=j1 &amp;&amp; j&lt;=j2)
        {
-                 if(a[i]<a[j])
+                 if(a[i]&lt;a[j])
                         temp[k++]=a[i++];
                  else
                      temp[k++]=a[j++];
       }
-      while(i<=j1)
+      while(i&lt;=j1)
              temp[k++]=a[i++];
-      while(j<=j2)
+      while(j&lt;=j2)
              temp[k++]=a[j++];
-      for(i=i1,j=0;i<=j2;i++,j++)
+      for(i=i1,j=0;i&lt;=j2;i++,j++)
              a[i]=temp[j];
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 13</span>
+          <h2>Implementation Of Merge Sort</h2>
+        </div>
+        <button class="copy-btn" data-index="20">📋 Copy Code</button>
+      </div>
+      <pre id="code-20"><code>/* ==================================================
+   EX.NO: 13
+   IMPLEMENTATION OF MERGE SORT
+   ================================================== */
+#include&lt;stdio.h&gt;
+void mergesort(int a[],int i,int j);
+void merge(int a[],int i1,int j1,int i2,int j2);
+void main()
+{
+       int a[30],n,i;
+       printf(&quot;Enter no of elements:&quot;);
+       scanf(&quot;%d&quot;,&amp;n);
+       printf(&quot;Enter array elements:&quot;);
+       for(i=0;i&lt;n;i++)
+              scanf(&quot;%d&quot;,&amp;a[i]);
+       mergesort(a,0,n-1);
+       printf(&quot;\nSorted array is :&quot;);
+       for(i=0;i&lt;n;i++)
+                 printf(&quot;%d &quot;,a[i]);
 }
-
-
-/* ==================================================
+void mergesort(int a[],int i,int j)
+{
+       int mid;
+       if(i&lt;j)
+       {
+                 mid=(i+j)/2;
+                 mergesort(a,i,mid);
+                 mergesort(a,mid+1,j);
+                 merge(a,i,mid,mid+1,j);
+       }
+}
+void merge(int a[],int i1,int j1,int i2,int j2)
+{
+       int temp[50];
+       int i,j,k;
+       i=i1;
+       j=i2;
+       k=0;
+       while(i&lt;=j1 &amp;&amp; j&lt;=j2)
+       {
+                 if(a[i]&lt;a[j])
+                        temp[k++]=a[i++];
+                 else
+                     temp[k++]=a[j++];
+      }
+      while(i&lt;=j1)
+             temp[k++]=a[i++];
+      while(j&lt;=j2)
+             temp[k++]=a[j++];
+      for(i=i1,j=0;i&lt;=j2;i++,j++)
+             a[i]=temp[j];
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 20 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 14(a) implementation of hashing using linear probing /* ==================================================
+   ex.no: 14(a)
+   implementation of hashing using linear probing
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define table_size 10
+int h[table_size]={null};
+void insert()
+{
+int key,index,i,flag=0,hkey;
+printf(&quot;\nenter a value to insert into hash table\n&quot;);
+scanf(&quot;%d&quot;,&amp;key);
+hkey=key%table_size;
+for(i=0;i&lt;table_size;i++)
+    {
+    index=(hkey+i)%table_size;
+    if(h[index] == null)
+    {
+        h[index]=key;
+        break;
+    }
+    }
+    if(i == table_size)
+    printf(&quot;\nelement cannot be inserted\n&quot;);
+}
+void search()
+{
+int key,index,i,flag=0,hkey;
+printf(&quot;\nenter search element\n&quot;);
+scanf(&quot;%d&quot;,&amp;key);
+hkey=key%table_size;
+for(i=0;i&lt;table_size; i++)
+{
+        index=(hkey+i)%table_size;
+        if(h[index]==key)
+        {
+            printf(&quot;value is found at index %d&quot;,index);
+            break;
+        }
+    }
+    if(i == table_size)
+        printf(&quot;\n value is not found\n&quot;);
+}
+void display()
+{
+    int i;
+    printf(&quot;\nelements in the hash table are \n&quot;);
+    for(i=0;i&lt; table_size; i++)
+    printf(&quot;\nat index %d \t value = %d&quot;,i,h[i]);
+}
+main()
+{
+    int opt,i;
+    while(1)
+    {
+        printf(&quot;\npress 1. insert\t 2. display \t3. search \t4.exit \n&quot;);
+        scanf(&quot;%d&quot;,&amp;opt);
+        switch(opt)
+        {
+            case 1:
+              insert();
+              break;
+            case 2:
+              display();
+              break;
+            case 3:
+              search();
+              break;
+            case 4:exit(0);
+        }
+    }
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 14(a)</span>
+          <h2>Implementation Of Hashing Using Linear Probing</h2>
+        </div>
+        <button class="copy-btn" data-index="21">📋 Copy Code</button>
+      </div>
+      <pre id="code-21"><code>/* ==================================================
    EX.NO: 14(a)
    IMPLEMENTATION OF HASHING USING LINEAR PROBING
    ================================================== */
-#include <stdio.h>
-#include<stdlib.h>
+#include &lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
 #define TABLE_SIZE 10
 int h[TABLE_SIZE]={NULL};
 void insert()
 {
 int key,index,i,flag=0,hkey;
-printf("\nenter a value to insert into hash table\n");
-scanf("%d",&key);
+printf(&quot;\nenter a value to insert into hash table\n&quot;);
+scanf(&quot;%d&quot;,&amp;key);
 hkey=key%TABLE_SIZE;
-for(i=0;i<TABLE_SIZE;i++)
+for(i=0;i&lt;TABLE_SIZE;i++)
     {
     index=(hkey+i)%TABLE_SIZE;
     if(h[index] == NULL)
@@ -1932,40 +4112,40 @@ for(i=0;i<TABLE_SIZE;i++)
     }
     }
     if(i == TABLE_SIZE)
-    printf("\nelement cannot be inserted\n");
+    printf(&quot;\nelement cannot be inserted\n&quot;);
 }
 void search()
 {
 int key,index,i,flag=0,hkey;
-printf("\nenter search element\n");
-scanf("%d",&key);
+printf(&quot;\nenter search element\n&quot;);
+scanf(&quot;%d&quot;,&amp;key);
 hkey=key%TABLE_SIZE;
-for(i=0;i<TABLE_SIZE; i++)
+for(i=0;i&lt;TABLE_SIZE; i++)
 {
         index=(hkey+i)%TABLE_SIZE;
         if(h[index]==key)
         {
-            printf("value is found at index %d",index);
+            printf(&quot;value is found at index %d&quot;,index);
             break;
         }
     }
     if(i == TABLE_SIZE)
-        printf("\n value is not found\n");
+        printf(&quot;\n value is not found\n&quot;);
 }
 void display()
 {
     int i;
-    printf("\nelements in the hash table are \n");
-    for(i=0;i< TABLE_SIZE; i++)
-    printf("\nat index %d \t value = %d",i,h[i]);
+    printf(&quot;\nelements in the hash table are \n&quot;);
+    for(i=0;i&lt; TABLE_SIZE; i++)
+    printf(&quot;\nat index %d \t value = %d&quot;,i,h[i]);
 }
 main()
 {
     int opt,i;
     while(1)
     {
-        printf("\nPress 1. Insert\t 2. Display \t3. Search \t4.Exit \n");
-        scanf("%d",&opt);
+        printf(&quot;\nPress 1. Insert\t 2. Display \t3. Search \t4.Exit \n&quot;);
+        scanf(&quot;%d&quot;,&amp;opt);
         switch(opt)
         {
             case 1:
@@ -1980,24 +4160,108 @@ main()
             case 4:exit(0);
         }
     }
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 21 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+    <article class="program-card" data-search="ex.no: 14(b) implementation of hashing using quadratic probing /* ==================================================
+   ex.no: 14(b)
+   implementation of hashing using quadratic probing
+   ================================================== */
+#include &lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#define table_size 10
+int h[table_size]={null};
+void insert()
+{
+int key,index,i,flag=0,hkey;
+printf(&quot;\nenter a value to insert into hash table\n&quot;);
+scanf(&quot;%d&quot;,&amp;key);
+hkey=key%table_size;
+for(i=0;i&lt;table_size;i++)
+{
+    index=(hkey+i*i)%table_size;
+    if(h[index] == null)
+    {
+        h[index]=key;
+        break;
+    }
 }
-
-
-/* ==================================================
+if(i == table_size)
+    printf(&quot;\nelement cannot be inserted\n&quot;);
+}
+void search()
+{
+int key,index,i,flag=0,hkey;
+printf(&quot;\nenter search element\n&quot;);
+scanf(&quot;%d&quot;,&amp;key);
+hkey=key % table_size;
+for(i=0;i&lt;table_size; i++)
+{
+        index=(hkey+i*i)%table_size;
+        if(h[index]==key)
+        {
+            printf(&quot;value is found at index %d&quot;,index);
+            break;
+        }
+    }
+    if(i == table_size)
+        printf(&quot;\n value is not found\n&quot;);
+}
+void display()
+{
+    int i;
+    printf(&quot;\nelements in the hash table are \n&quot;);
+    for(i=0;i&lt; table_size; i++)
+                 printf(&quot;\nat index %d \t value = %d&quot;,i,h[i]);
+}
+main()
+{
+    int opt,i;
+    while(1)
+    {
+        printf(&quot;\npress 1. insert\t 2. display \t3. search \t4.exit \n&quot;);
+        scanf(&quot;%d&quot;,&amp;opt);
+        switch(opt)
+        {
+            case 1:
+              insert();
+              break;
+            case 2:
+              display();
+              break;
+            case 3:
+              search();
+              break;
+            case 4:exit(0);
+        }
+    }
+}">
+      <div class="card-head">
+        <div>
+          <span class="badge">EX.NO: 14(b)</span>
+          <h2>Implementation Of Hashing Using Quadratic Probing</h2>
+        </div>
+        <button class="copy-btn" data-index="22">📋 Copy Code</button>
+      </div>
+      <pre id="code-22"><code>/* ==================================================
    EX.NO: 14(b)
    IMPLEMENTATION OF HASHING USING QUADRATIC PROBING
    ================================================== */
-#include <stdio.h>
-#include<stdlib.h>
+#include &lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
 #define TABLE_SIZE 10
 int h[TABLE_SIZE]={NULL};
 void insert()
 {
 int key,index,i,flag=0,hkey;
-printf("\nenter a value to insert into hash table\n");
-scanf("%d",&key);
+printf(&quot;\nenter a value to insert into hash table\n&quot;);
+scanf(&quot;%d&quot;,&amp;key);
 hkey=key%TABLE_SIZE;
-for(i=0;i<TABLE_SIZE;i++)
+for(i=0;i&lt;TABLE_SIZE;i++)
 {
     index=(hkey+i*i)%TABLE_SIZE;
     if(h[index] == NULL)
@@ -2007,40 +4271,40 @@ for(i=0;i<TABLE_SIZE;i++)
     }
 }
 if(i == TABLE_SIZE)
-    printf("\nelement cannot be inserted\n");
+    printf(&quot;\nelement cannot be inserted\n&quot;);
 }
 void search()
 {
 int key,index,i,flag=0,hkey;
-printf("\nenter search element\n");
-scanf("%d",&key);
+printf(&quot;\nenter search element\n&quot;);
+scanf(&quot;%d&quot;,&amp;key);
 hkey=key % TABLE_SIZE;
-for(i=0;i<TABLE_SIZE; i++)
+for(i=0;i&lt;TABLE_SIZE; i++)
 {
         index=(hkey+i*i)%TABLE_SIZE;
         if(h[index]==key)
         {
-            printf("value is found at index %d",index);
+            printf(&quot;value is found at index %d&quot;,index);
             break;
         }
     }
     if(i == TABLE_SIZE)
-        printf("\n value is not found\n");
+        printf(&quot;\n value is not found\n&quot;);
 }
 void display()
 {
     int i;
-    printf("\nelements in the hash table are \n");
-    for(i=0;i< TABLE_SIZE; i++)
-                 printf("\nat index %d \t value = %d",i,h[i]);
+    printf(&quot;\nelements in the hash table are \n&quot;);
+    for(i=0;i&lt; TABLE_SIZE; i++)
+                 printf(&quot;\nat index %d \t value = %d&quot;,i,h[i]);
 }
 main()
 {
     int opt,i;
     while(1)
     {
-        printf("\nPress 1. Insert\t 2. Display \t3. Search \t4.Exit \n");
-        scanf("%d",&opt);
+        printf(&quot;\nPress 1. Insert\t 2. Display \t3. Search \t4.Exit \n&quot;);
+        scanf(&quot;%d&quot;,&amp;opt);
         switch(opt)
         {
             case 1:
@@ -2055,21 +4319,52 @@ main()
             case 4:exit(0);
         }
     }
-}
-ENDOFFILE
-echo "Done. Lines: $(wc -l < /home/claude/Data_Structures_All_Programs.c)"
-Output
-
-Done. Lines: 2019
-</pre>
+}</code></pre>
+      <div class="card-foot">
+        <span>Program 22 of 22</span>
+        <button class="top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Top</button>
+      </div>
+    </article>
+    
+  </div>
+  <div id="empty" class="empty">No matching program found.</div>
+</main>
 
 <script>
-function copyCode(){
-    let text=document.getElementById("code").innerText;
-    navigator.clipboard.writeText(text);
-    alert("Code Copied!");
-}
-</script>
+const search = document.getElementById('search');
+const cards = [...document.querySelectorAll('.program-card')];
+const count = document.getElementById('count');
+const empty = document.getElementById('empty');
 
+search.addEventListener('input', () => {
+  const q = search.value.trim().toLowerCase();
+  let visible = 0;
+  cards.forEach(card => {
+    const match = !q || card.dataset.search.includes(q);
+    card.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  count.textContent = `${visible} program${visible === 1 ? '' : 's'} found`;
+  empty.style.display = visible ? 'none' : 'block';
+});
+
+document.querySelectorAll('.copy-btn').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const id = btn.dataset.index;
+    const code = document.querySelector(`#code-${id} code`).textContent;
+    try {
+      await navigator.clipboard.writeText(code);
+    } catch (e) {
+      const area = document.createElement('textarea');
+      area.value = code; document.body.appendChild(area); area.select();
+      document.execCommand('copy'); area.remove();
+    }
+    const old = btn.textContent;
+    btn.textContent = '✅ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = old; btn.classList.remove('copied'); }, 1400);
+  });
+});
+</script>
 </body>
 </html>
