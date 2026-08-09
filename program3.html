@@ -3,158 +3,265 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Python NumPy & Data Analysis Code List</title>
+<title>Data Structures Programs</title>
 <style>
-  body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
-  h2 { color: #2E8B57; margin-top: 20px; }
-  h3 { color: #4682B4; margin-top: 15px; }
-  pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
-  .code-block { margin-bottom: 30px; }
+  body { font-family: Arial, sans-serif; background-color: #0d1b2a; color: #ffffff; padding: 20px; line-height: 1.6; }
+  h1 { font-size: 2em; font-weight: bold; margin-bottom: 20px; }
+  h2 { color: #ffd700; margin-top: 40px; }
+  pre { background: #1b263b; padding: 10px; border-radius: 5px; overflow-x: auto; }
+  button { background-color: #339af0; color: #fff; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-size: 0.9em; }
+  button:hover { background-color: #228be6; }
+  .program { margin-bottom: 40px; }
+  .title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
 </style>
 </head>
 <body>
 
-<h1>Python Data Analysis & Visualization Code List</h1>
+<h1>DATA STRUCTURES PROGRAMS</h1>
 
-<h2>PROGRAM 01: NumPy Array Basic Characteristics</h2>
-<div class="code-block">
-<pre><code># Python program to demonstrate
-# basic array characteristics
-import numpy as np
+<div class="program" id="program1">
+  <div class="title">
+    <h2>EX.NO: 1(a): Array Implementation Of Stack ADT</h2>
+    <button onclick="copyCode('code1')">Copy Code</button>
+  </div>
+  <pre id="code1">
+/* ==========================================
+   EX.NO: 1(a)
+   ARRAY IMPLEMENTATION OF STACK ADT
+========================================== */
+#include &lt;stdio.h&gt;
+#include &lt;conio.h&gt;
+#define max 5
+static int stack[max];
+int top = -1;
 
-# Creating array object
-arr = np.array( [[ 1, 2, 3],
-        [ 4, 2, 5]] )
+void push(int x) {
+  if (top < max - 1) {
+    stack[++top] = x;
+  } else {
+    printf("Stack overflow\n");
+  }
+}
 
-# Printing type of arr object
-print("Array is of type: ", type(arr))
+int pop() {
+  if (top >= 0) {
+    return (stack[top--]);
+  } else {
+    printf("Stack underflow\n");
+    return -1;
+  }
+}
 
-# Printing array dimensions (axes)
-print("No. of dimensions: ", arr.ndim)
+void view() {
+  int i;
+  if (top < 0) {
+    printf("Stack empty\n");
+  } else {
+    printf("Top--&gt;");
+    for (i = top; i >= 0; i--) {
+      printf("%4d", stack[i]);
+    }
+    printf("\n");
+  }
+}
 
-# Printing shape of array
-print("Shape of array: ", arr.shape)
-
-# Printing size (total number of elements) of array
-print("Size of array: ", arr.size)
-
-# Printing type of elements in array
-print("Array stores elements of type: ", arr.dtype)
-</code></pre>
+int main() {
+  int ch = 0, val;
+  while (ch != 4) {
+    printf("1.Push 2.Pop 3.View 4.Quit\n");
+    printf("Enter choice: ");
+    scanf("%d", &ch);
+    switch (ch) {
+      case 1:
+        printf("Enter element: ");
+        scanf("%d", &val);
+        push(val);
+        break;
+      case 2:
+        val = pop();
+        if (val != -1)
+          printf("Popped element: %d\n", val);
+        break;
+      case 3:
+        view();
+        break;
+      case 4:
+        return 0;
+      default:
+        printf("Invalid choice\n");
+    }
+  }
+  return 0;
+}
+  </pre>
 </div>
 
-<h2>PROGRAM 02: NumPy Array Creation Techniques</h2>
-<div class="code-block">
-<pre><code># Creating array from list with type float
-a = np.array([[1, 2, 4], [5, 8, 7]], dtype='float')
-print ("Array created using passed list:\n", a)
+<div class="program" id="program2">
+  <div class="title">
+    <h2>EX.NO: 2: Array Implementation Of Queue ADT</h2>
+    <button onclick="copyCode('code2')">Copy Code</button>
+  </div>
+  <pre id="code2">
+/* ==========================================
+   EX.NO: 2
+   ARRAY IMPLEMENTATION OF QUEUE ADT
+========================================== */
+#include &lt;stdio.h&gt;
+#define max 5
+static int queue[max];
+int front = -1, rear = -1;
 
-# Creating array from tuple
-b = np.array((1 , 3, 2))
-print ("\nArray created using passed tuple:\n", b)
+void insert(int x) {
+  if (rear < max - 1) {
+    queue[++rear] = x;
+    if (front == -1)
+      front = 0;
+  } else {
+    printf("Queue full\n");
+  }
+}
 
-# Creating a 3X4 array with all zeros
-c = np.zeros((3, 4))
-print ("\nAn array initialized with all zeros:\n", c)
+int remove() {
+  int val;
+  if (front == -1) {
+    printf("Queue empty\n");
+    return -1;
+  }
+  val = queue[front];
+  if (front == rear) {
+    front = rear = -1;
+  } else {
+    front++;
+  }
+  return val;
+}
 
-# Create a constant value array of complex type
-d = np.full((3, 3), 6, dtype='complex')
-print ("\nAn array initialized with all 6s. Array type is complex:\n", d)
+void view() {
+  int i;
+  if (front == -1) {
+    printf("Queue empty\n");
+  } else {
+    printf("Front--&gt;");
+    for (i = front; i <= rear; i++)
+      printf("%4d", queue[i]);
+    printf("&lt;--rear\n");
+  }
+}
 
-# Create an array with random values
-e = np.random.random((2, 2))
-print ("\nA random array:\n", e)
-
-# Create a sequence of integers from 0 to 30 with steps of 5
-f = np.arange(0, 30, 5)
-print ("\nA sequential array with steps of 5:\n", f)
-
-# Create a sequence of 10 values in range 0 to 5
-g = np.linspace(0, 5, 10)
-print ("\nA sequential array with 10 values between 0 and 5:\n", g)
-
-# Reshaping 3X4 array to 2X2X3 array
-arr = np.array([[1, 2, 3, 4],
-                [5, 2, 4, 2],
-                [1, 2, 0, 1]])
-newarr = arr.reshape(2, 2, 3)
-print ("\nOriginal array:\n", arr)
-print ("Reshaped array:\n", newarr)
-
-# Flatten array
-arr = np.array([[1, 2, 3], [4, 5, 6]])
-flarr = arr.flatten()
-print ("\nOriginal array:\n", arr)
-print ("Fattened array:\n", flarr)
-</code></pre>
+int main() {
+  int ch = 0, val;
+  while (ch != 4) {
+    printf("1.Insert 2.Delete 3.View 4.Quit\n");
+    printf("Enter choice: ");
+    scanf("%d", &ch);
+    switch (ch) {
+      case 1:
+        printf("Enter element: ");
+        scanf("%d", &val);
+        insert(val);
+        break;
+      case 2:
+        val = remove();
+        if (val != -1)
+          printf("Deleted element: %d\n", val);
+        break;
+      case 3:
+        view();
+        break;
+      case 4:
+        return 0;
+      default:
+        printf("Invalid choice\n");
+    }
+  }
+  return 0;
+}
+  </pre>
 </div>
 
-<h2>PROGRAM 03: NumPy Array Indexing</h2>
-<div class="code-block">
-<pre><code># An exemplar array
-arr = np.array([[-1, 2, 0, 4],
-                [4, -0.5, 6, 0],
-                [2.6, 0, 7, 8],
-                [3, -7, 4, 2.0]])
+<div class="program" id="program3">
+  <div class="title">
+    <h2>EX.NO: 3: Array Implementation of Circular Queue</h2>
+    <button onclick="copyCode('code3')">Copy Code</button>
+  </div>
+  <pre id="code3">
+/* ==========================================
+   EX.NO: 3
+   ARRAY IMPLEMENTATION OF CIRCULAR QUEUE
+========================================== */
+#include &lt;stdio.h&gt;
+#define maxsize 5
+int a[maxsize];
+int front = -1, rear = -1;
 
-# Slicing array
-temp = arr[:2, ::2]
-print ("Array with first 2 rows and alternate columns(0 and 2):\n", temp)
+void enqueue(int x) {
+  if ((front == 0 && rear == maxsize - 1) || (rear + 1) % maxsize == front) {
+    printf("Queue is full\n");
+  } else {
+    if (front == -1) front = 0;
+    rear = (rear + 1) % maxsize;
+    a[rear] = x;
+  }
+}
 
-# Integer array indexing example
-temp = arr[[0, 1, 2, 3], [3, 2, 1, 0]]
-print ("\nElements at indices (0, 3), (1, 2), (2, 1), (3, 0):\n", temp)
+void dequeue() {
+  if (front == -1) {
+    printf("Queue is empty\n");
+  } else {
+    if (front == rear) {
+      front = rear = -1;
+    } else {
+      front = (front + 1) % maxsize;
+    }
+  }
+}
 
-# Boolean array indexing example
-cond = arr > 0 # cond is a boolean array
-temp = arr[cond]
-print ("\nElements greater than 0:\n", temp)
-</code></pre>
+void print() {
+  int i, count;
+  if (front == -1) {
+    printf("Queue empty\n");
+  } else {
+    count = (rear + maxsize - front) % maxsize + 1;
+    for (i = 0; i < count; i++) {
+      printf("%d ", a[(front + i) % maxsize]);
+    }
+    printf("\n");
+  }
+}
+
+int main() {
+  enqueue(5);
+  enqueue(7);
+  enqueue(-3);
+  enqueue(9);
+  printf("After insertions:\n");
+  print();
+  dequeue();
+  printf("After first deletion:\n");
+  print();
+  dequeue();
+  printf("After second deletion:\n");
+  print();
+  enqueue(14);
+  printf("After insertion:\n");
+  print();
+  return 0;
+}
+  </pre>
 </div>
 
-<h2>PROGRAM 04: NumPy Basic Operations on Single Array</h2>
-<div class="code-block">
-<pre><code># Basic operations on numpy array
-a = np.array([1, 2, 5, 3])
+<!-- இங்கே மற்ற கோடுகள் தொடரக்கூடும் -->
 
-print ("Adding 1 to every element:", a+1)
-print ("Subtracting 3 from each element:", a-3)
-print ("Multiplying each element by 10:", a*10)
-print ("Squaring each element:", a**2)
-
-# Modify existing array
-a *= 2
-print ("Doubled each element of original array:", a)
-
-# Transpose of array
-a = np.array([[1, 2, 3], [3, 4, 5], [9, 6, 0]])
-print ("\nOriginal array:\n", a)
-print ("Transpose of array:\n", a.T)
-</code></pre>
-</div>
-
-<h2>PROGRAM 05: NumPy Sorting</h2>
-<div class="code-block">
-<pre><code># Sorting numpy array
-a = np.array([[1, 4, 2],
-              [3, 4, 6],
-              [0, -1, 5]])
-
-print ("Array elements in sorted order:\n", np.sort(a, axis=None))
-print ("Row-wise sorted array:\n", np.sort(a, axis=1))
-print ("Column wise sort by applying merge-sort:\n", np.sort(a, axis=0, kind='mergesort'))
-
-# Sorting structured array
-dtypes = [('name', 'S10'), ('grad_year', int), ('cgpa', float)]
-values = [('Hrithik', 2009, 8.5), ('Ajay', 2008, 8.7), ('Pankaj', 2008, 7.9), ('Aakash', 2009, 9.0)]
-arr = np.array(values, dtype=dtypes)
-
-print ("\nArray sorted by names:\n", np.sort(arr, order='name'))
-print ("Array sorted by graduation year and then cgpa:\n", np.sort(arr, order=['grad_year', 'cgpa']))
-</code></pre>
-</div>
-
-<!-- மேலும் பிற திட்டங்களை இங்கே தொடரலாம் -->
+<script>
+function copyCode(id) {
+  const code = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(code).then(function() {
+    alert('Code copied to clipboard!');
+  }, function(err) {
+    alert('Failed to copy text: ', err);
+  });
+}
+</script>
 
 </body>
 </html>
