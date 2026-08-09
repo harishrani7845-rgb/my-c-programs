@@ -1,1 +1,160 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Python NumPy & Data Analysis Code List</title>
+<style>
+  body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+  h2 { color: #2E8B57; margin-top: 20px; }
+  h3 { color: #4682B4; margin-top: 15px; }
+  pre { background: #f4f4f4; padding: 10px; overflow-x: auto; }
+  .code-block { margin-bottom: 30px; }
+</style>
+</head>
+<body>
 
+<h1>Python Data Analysis & Visualization Code List</h1>
+
+<h2>PROGRAM 01: NumPy Array Basic Characteristics</h2>
+<div class="code-block">
+<pre><code># Python program to demonstrate
+# basic array characteristics
+import numpy as np
+
+# Creating array object
+arr = np.array( [[ 1, 2, 3],
+        [ 4, 2, 5]] )
+
+# Printing type of arr object
+print("Array is of type: ", type(arr))
+
+# Printing array dimensions (axes)
+print("No. of dimensions: ", arr.ndim)
+
+# Printing shape of array
+print("Shape of array: ", arr.shape)
+
+# Printing size (total number of elements) of array
+print("Size of array: ", arr.size)
+
+# Printing type of elements in array
+print("Array stores elements of type: ", arr.dtype)
+</code></pre>
+</div>
+
+<h2>PROGRAM 02: NumPy Array Creation Techniques</h2>
+<div class="code-block">
+<pre><code># Creating array from list with type float
+a = np.array([[1, 2, 4], [5, 8, 7]], dtype='float')
+print ("Array created using passed list:\n", a)
+
+# Creating array from tuple
+b = np.array((1 , 3, 2))
+print ("\nArray created using passed tuple:\n", b)
+
+# Creating a 3X4 array with all zeros
+c = np.zeros((3, 4))
+print ("\nAn array initialized with all zeros:\n", c)
+
+# Create a constant value array of complex type
+d = np.full((3, 3), 6, dtype='complex')
+print ("\nAn array initialized with all 6s. Array type is complex:\n", d)
+
+# Create an array with random values
+e = np.random.random((2, 2))
+print ("\nA random array:\n", e)
+
+# Create a sequence of integers from 0 to 30 with steps of 5
+f = np.arange(0, 30, 5)
+print ("\nA sequential array with steps of 5:\n", f)
+
+# Create a sequence of 10 values in range 0 to 5
+g = np.linspace(0, 5, 10)
+print ("\nA sequential array with 10 values between 0 and 5:\n", g)
+
+# Reshaping 3X4 array to 2X2X3 array
+arr = np.array([[1, 2, 3, 4],
+                [5, 2, 4, 2],
+                [1, 2, 0, 1]])
+newarr = arr.reshape(2, 2, 3)
+print ("\nOriginal array:\n", arr)
+print ("Reshaped array:\n", newarr)
+
+# Flatten array
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+flarr = arr.flatten()
+print ("\nOriginal array:\n", arr)
+print ("Fattened array:\n", flarr)
+</code></pre>
+</div>
+
+<h2>PROGRAM 03: NumPy Array Indexing</h2>
+<div class="code-block">
+<pre><code># An exemplar array
+arr = np.array([[-1, 2, 0, 4],
+                [4, -0.5, 6, 0],
+                [2.6, 0, 7, 8],
+                [3, -7, 4, 2.0]])
+
+# Slicing array
+temp = arr[:2, ::2]
+print ("Array with first 2 rows and alternate columns(0 and 2):\n", temp)
+
+# Integer array indexing example
+temp = arr[[0, 1, 2, 3], [3, 2, 1, 0]]
+print ("\nElements at indices (0, 3), (1, 2), (2, 1), (3, 0):\n", temp)
+
+# Boolean array indexing example
+cond = arr > 0 # cond is a boolean array
+temp = arr[cond]
+print ("\nElements greater than 0:\n", temp)
+</code></pre>
+</div>
+
+<h2>PROGRAM 04: NumPy Basic Operations on Single Array</h2>
+<div class="code-block">
+<pre><code># Basic operations on numpy array
+a = np.array([1, 2, 5, 3])
+
+print ("Adding 1 to every element:", a+1)
+print ("Subtracting 3 from each element:", a-3)
+print ("Multiplying each element by 10:", a*10)
+print ("Squaring each element:", a**2)
+
+# Modify existing array
+a *= 2
+print ("Doubled each element of original array:", a)
+
+# Transpose of array
+a = np.array([[1, 2, 3], [3, 4, 5], [9, 6, 0]])
+print ("\nOriginal array:\n", a)
+print ("Transpose of array:\n", a.T)
+</code></pre>
+</div>
+
+<h2>PROGRAM 05: NumPy Sorting</h2>
+<div class="code-block">
+<pre><code># Sorting numpy array
+a = np.array([[1, 4, 2],
+              [3, 4, 6],
+              [0, -1, 5]])
+
+print ("Array elements in sorted order:\n", np.sort(a, axis=None))
+print ("Row-wise sorted array:\n", np.sort(a, axis=1))
+print ("Column wise sort by applying merge-sort:\n", np.sort(a, axis=0, kind='mergesort'))
+
+# Sorting structured array
+dtypes = [('name', 'S10'), ('grad_year', int), ('cgpa', float)]
+values = [('Hrithik', 2009, 8.5), ('Ajay', 2008, 8.7), ('Pankaj', 2008, 7.9), ('Aakash', 2009, 9.0)]
+arr = np.array(values, dtype=dtypes)
+
+print ("\nArray sorted by names:\n", np.sort(arr, order='name'))
+print ("Array sorted by graduation year and then cgpa:\n", np.sort(arr, order=['grad_year', 'cgpa']))
+</code></pre>
+</div>
+
+<!-- மேலும் பிற திட்டங்களை இங்கே தொடரலாம் -->
+
+</body>
+</html>
